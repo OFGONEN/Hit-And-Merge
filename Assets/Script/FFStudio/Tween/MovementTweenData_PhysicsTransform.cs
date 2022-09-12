@@ -6,10 +6,10 @@ using DG.Tweening;
 
 namespace FFStudio
 {
-	public class MovementTweenData : TweenData
+	public class MovementTweenData_PhysicsTransform : TweenData
 	{
 #region Fields
-	[ Title( "Movement Tween" ) ]
+	[ Title( "Movement Tween (Physics Transform)" ) ]
 		[ BoxGroup( "Tween" ), PropertyOrder( int.MinValue ) ] public bool useDelta = true;
 #if UNITY_EDITOR
 		[ InfoBox( "End Value is RELATIVE.", "useDelta" ) ]
@@ -48,13 +48,13 @@ namespace FFStudio
 
 			recycledTween.Tween
 				.SetLoops( loop ? -1 : 0, loopType )
-				.SetEase( easing );
-				
+				.SetEase( easing )
+				.SetUpdate( UpdateType.Fixed ); // Info: This is the only differing line of code between this & the MovementTweenData.
+
 			if( useDelta )
 				recycledTween.Tween.SetRelative();
-
 #if UNITY_EDITOR
-			recycledTween.Tween.SetId( "_ff_movement_tween___" + description );
+			recycledTween.Tween.SetId( "_ff_movement_tween_physics_transform___" + description );
 #endif
 
 			base.CreateAndStartTween( onComplete, isReversed );

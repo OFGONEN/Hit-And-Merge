@@ -30,4 +30,6 @@ namespace FFStudio
         Nope,
         Big
     }
+
+	public enum MovementMode { Local, World }
 }

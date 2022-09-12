@@ -6,10 +6,10 @@ using DG.Tweening;
 
 namespace FFStudio
 {
-	public class MovementTweenData : TweenData
+	public class MovementTweenData_PhysicsRigidbody : TweenData
 	{
 #region Fields
-	[ Title( "Movement Tween" ) ]
+	[ Title( "Movement Tween (Physics Rigidbody)" ) ]
 		[ BoxGroup( "Tween" ), PropertyOrder( int.MinValue ) ] public bool useDelta = true;
 #if UNITY_EDITOR
 		[ InfoBox( "End Value is RELATIVE.", "useDelta" ) ]
@@ -21,7 +21,6 @@ namespace FFStudio
 		[ InfoBox( "Duration is VELOCITY.", "EndValueIsAbsolute" ) ]
 #endif
 		[ BoxGroup( "Tween" ), PropertyOrder( int.MinValue ) ] public float duration;
-		[ BoxGroup( "Tween" ), PropertyOrder( int.MinValue ) ] public MovementMode movementMode;
 #endregion
 
 #region Properties
@@ -39,22 +38,21 @@ namespace FFStudio
 #region Implementation
 		protected override void CreateAndStartTween( UnityMessage onComplete, bool isReversed = false )
 		{
+            var theRigidbody = transform.GetComponent< Rigidbody >();
+            
 			var duration = useDelta ? Mathf.Abs( endValue.magnitude / this.duration ) : this.duration;
 
-			if( movementMode == MovementMode.Local )
-				recycledTween.Recycle( transform.DOLocalMove( isReversed ? -endValue : endValue, duration ), onComplete );
-			else
-				recycledTween.Recycle( transform.DOMove( isReversed ? -endValue : endValue, duration ), onComplete );
+            recycledTween.Recycle( theRigidbody.DOMove( isReversed ? -endValue : endValue, duration ), onComplete );
 
 			recycledTween.Tween
 				.SetLoops( loop ? -1 : 0, loopType )
-				.SetEase( easing );
-				
+				.SetEase( easing )
+				.SetUpdate( UpdateType.Fixed ); // Info: This is the main differing line of code between this & the MovementTweenData.
+
 			if( useDelta )
 				recycledTween.Tween.SetRelative();
-
 #if UNITY_EDITOR
-			recycledTween.Tween.SetId( "_ff_movement_tween___" + description );
+			recycledTween.Tween.SetId( "_ff_movement_tween_physics_rigidbody___" + description );
 #endif
 
 			base.CreateAndStartTween( onComplete, isReversed );
