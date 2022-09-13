@@ -19,6 +19,7 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		[ SerializeField ] GameSettings gameSettings;
 		[ SerializeField ] CurrentLevelData currentLevelData;
+		[ SerializeField ] RectTransform pool_ui_parent;
 
 	[ Title( "Pool" ) ]
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
