@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_info: {fileID: 11400000, guid: 3638628bc7467424faaa3d41e39b30be, type: 2}
   pool_projectile: {fileID: 11400000, guid: 618681ceb702516408a8435de4679ae5, type: 2}
+  event_particle_spawn: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
 --- !u!114 &5298156320924703791
 MonoBehaviour:
   m_ObjectHideFlags: 0
