@@ -2,21 +2,28 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
     public class LevelManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Fired Events" ) ]
+    [ Title( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
 
-        [ Header( "Level Releated" ) ]
+    [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
+        public GunInfo gun_info_current;
+        public GunInfo gun_info_default;
 #endregion
 
 #region UnityAPI
+        private void Awake()
+        {
+			gun_info_current.ChangeData( gun_info_default );
+		}
 #endregion
 
 #region API
@@ -44,6 +51,11 @@ namespace FFStudio
         {
 
         }
+
+        public void OnLevelLoadStart()
+        {
+			gun_info_default.ChangeData( gun_info_current );
+		}
 #endregion
 
 #region Implementation
