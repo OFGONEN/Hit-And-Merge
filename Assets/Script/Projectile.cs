@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
   [ Title( "Setup" ) ]
     [ SerializeField ] ProjectileInfo projectile_info;
     [ SerializeField ] Pool_Projectile pool_projectile;
+    [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
 
 // Private
     UnityMessage onUpdateMethod;
@@ -49,8 +50,7 @@ public class Projectile : MonoBehaviour
     public void OnTrigger()
     {
 		ProjectileReturnToPool();
-
-        // Raise pfx 
+		event_particle_spawn.Raise( projectile_info.ProjectileOnHitPFXKey, transform.position );
 	}
 
     public void OnProjectilesDisappear()
