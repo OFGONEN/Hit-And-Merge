@@ -70,6 +70,9 @@ MonoBehaviour:
   currentLevelData: {fileID: 11400000, guid: d35c98ef4c868d94f85bf38a98066033, type: 2}
   parent_pool_ui: {fileID: 0}
   pool_money: {fileID: 11400000, guid: 08c694af6fdd52946adc6a160694fb54, type: 2}
+  pool_projectile_pistol: {fileID: 11400000, guid: 33a0b25878c7c9749b1a3df227ca2b5d, type: 2}
+  pool_projectile_desertEagle: {fileID: 11400000, guid: 618681ceb702516408a8435de4679ae5, type: 2}
+  pool_projectile_uzi: {fileID: 11400000, guid: ac62fbaece2a6ec4980c9c9f6591d1bc, type: 2}
   pool_UIPopUpText: {fileID: 11400000, guid: eaaacbd90b1464ad2b2a3a962a8a84b2, type: 2}
   pool_UI_particle: {fileID: 11400000, guid: 77c6d44f10b4f3e448dd1f594d054ce1, type: 2}
 --- !u!114 &7751064681048781016
