@@ -35,6 +35,7 @@ public class Projectile : MonoBehaviour
 #endregion
 
 #region API
+    [ Button() ]
     public void Spawn( Vector3 position, Vector3 forward )
     {
 		gameObject.SetActive( true );
@@ -44,7 +45,7 @@ public class Projectile : MonoBehaviour
 
 		projectile_distance = 0;
 
-		onUpdateMethod();
+		onUpdateMethod = OnUpdate_Move;
 	}
 
     public void OnTrigger()
@@ -62,7 +63,7 @@ public class Projectile : MonoBehaviour
 #region Implementation
     void OnUpdate_Move()
     {
-		var delta = Time.deltaTime + projectile_info.ProjectileSpeed;
+		var delta = Time.deltaTime * projectile_info.ProjectileSpeed;
 
         projectile_distance += delta;
 
