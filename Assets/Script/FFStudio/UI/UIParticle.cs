@@ -46,7 +46,10 @@ namespace FFStudio
 		[ Button() ]
 		public void Spawn( Vector3 screenPosition, SharedReferenceNotifier targetReference )
 		{
-			transform.localScale = Vector3.zero;
+			gameObject.SetActive( true );
+
+			transform.position    = screenPosition;
+			transform.localScale  = Vector3.zero;
 			transform.eulerAngles = Vector3.forward * Random.Range(
 				-GameSettings.Instance.ui_particle_spawn_rotationRange,
 				GameSettings.Instance.ui_particle_spawn_rotationRange
