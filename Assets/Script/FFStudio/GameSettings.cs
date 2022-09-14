@@ -16,6 +16,18 @@ namespace FFStudio
     
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
+
+    [ Title( "UI Particle" ) ]
+        [ LabelText( "Random Spawn Rotation Range") ] public float ui_particle_spawn_rotationRange;
+        [ LabelText( "Spawn Size") ] public float ui_particle_spawn_size;
+        [ LabelText( "Spawn Duration") ] public float ui_particle_spawn_duration;
+        [ LabelText( "Spawn Ease") ] public Ease ui_particle_spawn_ease;
+        [ LabelText( "Return Default Duration") ] public float ui_particle_return_duration;
+        [ LabelText( "Return Default Ease") ] public Ease ui_particle_return_ease;
+        [ LabelText( "Target Movement Duration") ] public float ui_particle_movement_duration;
+        [ LabelText( "Target Movement Ease") ] public Ease ui_particle_movement_ease;
+        [ LabelText( "Target Movement End Size") ] public float ui_particle_movement_size_end;
+        [ LabelText( "Target Movement End Size Duration") ] public float ui_particle_movement_size_end_duration;
         
         // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
@@ -28,17 +40,21 @@ namespace FFStudio
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Joy Stick"                                        ) ] public float ui_Entity_JoyStick_Gap;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Pop Up Text relative float height"                ) ] public float ui_PopUp_height;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Pop Up Text float duration"                       ) ] public float ui_PopUp_duration;
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Random Spawn Area in Screen" ), SuffixLabel( "percentage" ) ] public float ui_particle_spawn_width; 
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Spawn Duration" ), SuffixLabel( "seconds" ) ] public float ui_particle_spawn_duration; 
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Spawn Ease" ) ] public Ease ui_particle_spawn_ease;
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Wait Time Before Target" ) ] public float ui_particle_target_waitTime;
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Target Travel Time" ) ] public float ui_particle_target_duration;
-		[ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Target Travel Ease" ) ] public Ease ui_particle_target_ease;
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Random Spawn Area in Screen" ), SuffixLabel( "percentage" ) ] public float ui_particle_spawn_width; 
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Spawn Duration" ), SuffixLabel( "seconds" ) ] public float ui_particle_spawn_duration; 
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Spawn Ease" ) ] public Ease ui_particle_spawn_ease;
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Wait Time Before Target" ) ] public float ui_particle_target_waitTime;
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Target Travel Time" ) ] public float ui_particle_target_duration;
+		// [ FoldoutGroup( "UI Settings" ), Tooltip( "UI Particle Target Travel Ease" ) ] public Ease ui_particle_target_ease;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Safe Area Base Top Offset" ) ] public int ui_safeArea_offset_top = 88;
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
+#endregion
+
+#region Property
+        public float UIParticleDuration => ui_particle_spawn_duration + ui_particle_return_duration + ui_particle_movement_duration;
 #endregion
 
 #region Fields (Singleton Related)
