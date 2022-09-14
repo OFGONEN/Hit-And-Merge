@@ -22,6 +22,7 @@ namespace FFStudio
 		[ SerializeField ] RectTransform parent_pool_ui;
 
 	[ Title( "Pool" ) ]
+		[ SerializeField ] Pool_Money pool_money;
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
 		[ SerializeField ] UIParticlePool pool_UI_particle;
 #endregion
@@ -36,6 +37,7 @@ namespace FFStudio
 		{
 			Vibration.Init();
 
+			pool_money.InitPool( transform, false );
 			pool_UIPopUpText.InitPool( transform, false );
 			pool_UI_particle.InitPool( parent_pool_ui, false );
 
@@ -47,8 +49,6 @@ namespace FFStudio
 			onStartEvent.Invoke();
 		}
 #endregion
-
-
 
 #region API
 		public void VibrateAPI( IntGameEvent vibrateEvent )
