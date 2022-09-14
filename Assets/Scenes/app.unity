@@ -879,6 +879,10 @@ PrefabInstance:
       value: manager_asset
       objectReference: {fileID: 0}
     - target: {fileID: 4364745634903858524, guid: ceed65b0ed263c842930cd7fefac090a, type: 3}
+      propertyPath: parent_pool_ui
+      value: 
+      objectReference: {fileID: 124199664350933745}
+    - target: {fileID: 4364745634903858524, guid: ceed65b0ed263c842930cd7fefac090a, type: 3}
       propertyPath: pool_ui_parent
       value: 
       objectReference: {fileID: 124199664350933745}
