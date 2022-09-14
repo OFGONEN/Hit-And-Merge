@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera_follow_speed_depth: 2.8
   maxLevelCount: 1
+  ui_particle_spawn_rotationRange: 20
+  ui_particle_spawn_size: 1.2
+  ui_particle_spawn_duration: 0.75
+  ui_particle_spawn_ease: 1
+  ui_particle_return_duration: 0.35
+  ui_particle_return_ease: 1
+  ui_particle_movement_duration: 0.65
+  ui_particle_movement_ease: 1
+  ui_particle_movement_size_end: 0.35
+  ui_particle_movement_size_end_duration: 0.325
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   ui_Entity_Move_TweenDuration: 0.5
@@ -23,12 +33,6 @@ MonoBehaviour:
   ui_Entity_JoyStick_Gap: 50
   ui_PopUp_height: 1
   ui_PopUp_duration: 0.75
-  ui_particle_spawn_width: 10
-  ui_particle_spawn_duration: 0.1
-  ui_particle_spawn_ease: 1
-  ui_particle_target_waitTime: 0.16
-  ui_particle_target_duration: 0.4
-  ui_particle_target_ease: 1
   swipeThreshold: 2
   ui_safeArea_offset_top: 88
   debug_ui_text_float_height: 1
