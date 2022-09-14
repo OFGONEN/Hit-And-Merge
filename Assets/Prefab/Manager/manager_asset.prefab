@@ -68,7 +68,9 @@ MonoBehaviour:
       m_Calls: []
   gameSettings: {fileID: 11400000, guid: 109113abc7450a64db67bb41e0cc2dc0, type: 2}
   currentLevelData: {fileID: 11400000, guid: d35c98ef4c868d94f85bf38a98066033, type: 2}
+  parent_pool_ui: {fileID: 0}
   pool_UIPopUpText: {fileID: 11400000, guid: eaaacbd90b1464ad2b2a3a962a8a84b2, type: 2}
+  pool_UI_particle: {fileID: 11400000, guid: 77c6d44f10b4f3e448dd1f594d054ce1, type: 2}
 --- !u!114 &7751064681048781016
 MonoBehaviour:
   m_ObjectHideFlags: 0

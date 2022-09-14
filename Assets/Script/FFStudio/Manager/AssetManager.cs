@@ -19,10 +19,11 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		[ SerializeField ] GameSettings gameSettings;
 		[ SerializeField ] CurrentLevelData currentLevelData;
-		[ SerializeField ] RectTransform pool_ui_parent;
+		[ SerializeField ] RectTransform parent_pool_ui;
 
 	[ Title( "Pool" ) ]
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
+		[ SerializeField ] UIParticlePool pool_UI_particle;
 #endregion
 
 #region UnityAPI
@@ -36,6 +37,8 @@ namespace FFStudio
 			Vibration.Init();
 
 			pool_UIPopUpText.InitPool( transform, false );
+			pool_UI_particle.InitPool( parent_pool_ui, false );
+
 			onAwakeEvent.Invoke();
 		}
 
