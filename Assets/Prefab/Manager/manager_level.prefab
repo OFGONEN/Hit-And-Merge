@@ -50,6 +50,7 @@ MonoBehaviour:
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   gun_info_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gun_info_default: {fileID: 11400000, guid: 51e9013b5e8dbfe488b0d760fbc84f72, type: 2}
+  notif_money_currency: {fileID: 0}
 --- !u!114 &6253295288017648143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +127,24 @@ MonoBehaviour:
         - m_Target: {fileID: 3087407567312676473}
           m_TargetAssemblyTypeName: FFStudio.LevelManager, Assembly-CSharp
           m_MethodName: OnLevelLoadStart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 679a482980701414ba75e4fb16014acc, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3087407567312676473}
+          m_TargetAssemblyTypeName: FFStudio.LevelManager, Assembly-CSharp
+          m_MethodName: OnMoneyGained
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

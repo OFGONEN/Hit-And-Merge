@@ -17,6 +17,7 @@ namespace FFStudio
         public SharedFloatNotifier levelProgress;
         public GunInfo gun_info_current;
         public GunInfo gun_info_default;
+        public SharedFloatNotifier notif_money_currency;
 #endregion
 
 #region UnityAPI
@@ -55,6 +56,11 @@ namespace FFStudio
         public void OnLevelLoadStart()
         {
 			gun_info_default.ChangeData( gun_info_current );
+		}
+
+        public void OnMoneyGained()
+        {
+			notif_money_currency.SharedValue += CurrentLevelData.Instance.levelData.money_value;
 		}
 #endregion
 
