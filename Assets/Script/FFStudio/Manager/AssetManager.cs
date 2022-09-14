@@ -23,6 +23,9 @@ namespace FFStudio
 
 	[ Title( "Pool" ) ]
 		[ SerializeField ] Pool_Money pool_money;
+		[ SerializeField ] Pool_Projectile pool_projectile_pistol;
+		[ SerializeField ] Pool_Projectile pool_projectile_desertEagle;
+		[ SerializeField ] Pool_Projectile pool_projectile_uzi;
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
 		[ SerializeField ] UIParticlePool pool_UI_particle;
 #endregion
@@ -38,6 +41,11 @@ namespace FFStudio
 			Vibration.Init();
 
 			pool_money.InitPool( transform, false );
+			pool_projectile_pistol.InitPool( transform, false );
+			pool_projectile_desertEagle.InitPool( transform, false );
+			pool_projectile_uzi.InitPool( transform, false );
+
+			// UI Pools
 			pool_UIPopUpText.InitPool( transform, false );
 			pool_UI_particle.InitPool( parent_pool_ui, false );
 
