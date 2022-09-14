@@ -14,6 +14,7 @@ namespace FFStudio
 	[ Title( "SharedVariable" ) ]
 		[ SerializeField ] RectTransform _rectTransform;
 		[ SerializeField ] UIParticlePool pool_ui_particle;
+		[ SerializeField ] GameEvent event_ui_particle_done;
 
 		RecycledSequence recycledSequence = new RecycledSequence();
 #endregion
@@ -87,6 +88,7 @@ namespace FFStudio
 #region Implementation
 		void OnSequenceComplete()
 		{
+			event_ui_particle_done.Raise();
 			pool_ui_particle.ReturnEntity( this );
 		}
 #endregion

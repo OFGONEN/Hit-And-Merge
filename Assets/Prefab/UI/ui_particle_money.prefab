@@ -91,3 +91,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 4405790128007825854}
   pool_ui_particle: {fileID: 11400000, guid: 77c6d44f10b4f3e448dd1f594d054ce1, type: 2}
+  event_ui_particle_done: {fileID: 11400000, guid: 679a482980701414ba75e4fb16014acc, type: 2}
