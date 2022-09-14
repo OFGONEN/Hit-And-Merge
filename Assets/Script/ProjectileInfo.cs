@@ -13,6 +13,9 @@ public class ProjectileInfo : ScriptableObject
   [ Title("Setup") ]
     [ SerializeField ] string projectile_onHit_pfx_key;
     [ SerializeField ] float projectile_speed;
+
+    public float ProjectileSpeed => projectile_speed;
+    public string ProjectileOnHitPFXKey => projectile_onHit_pfx_key;
 #endregion
 
 #region Properties
