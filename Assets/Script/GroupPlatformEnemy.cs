@@ -75,7 +75,7 @@ public class GroupPlatformEnemy : MonoBehaviour
     {
 		var distance = Vector3.Distance( transform.position, ally_group_transform.position );
 
-		if( distance <= enemy_spawn_distance )
+		if( distance <= enemy_movement_distance )
 		{
 			StartMovementPath();
 			onUpdateMethod = ExtensionMethods.EmptyMethod;
