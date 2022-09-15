@@ -12,7 +12,8 @@ namespace FFStudio
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
-        [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_movement_speed;
+        [ LabelText( "Platform Enemy Movement Speed" ) ] public float enemy_movement_speed;
+        [ LabelText( "Platform Enemy Spawn Radius" ) ] public float enemy_spawn_radius;
         [ LabelText( "Enemy Death Duration" ) ] public float enemy_death_duration;
         [ LabelText( "Enemy Death Color" ) ] public Color enemy_death_color;
 
