@@ -5,17 +5,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 public class PlatformEnemy : MonoBehaviour
 {
 #region Fields
   [ Title( "Shared" ) ]
     [ SerializeField ] Pool_PlatformEnemy pool_enemy_platform;
+    [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
+
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
     [ SerializeField ] ColorSetter renderer_color_setter;
     [ SerializeField ] BoxCollider collider_projectile_receiver;
     [ SerializeField ] BoxCollider collider_ally_receiver;
+
+// Private Fields
+	RecycledTween recycledTween = new RecycledTween();
 #endregion
 
 #region Properties
@@ -29,8 +35,9 @@ public class PlatformEnemy : MonoBehaviour
     {
 		gameObject.SetActive( true );
 
-		transform.position = position;
-		transform.forward  = forward;
+		transform.position   = position;
+		transform.forward    = forward;
+		transform.localScale = Vector3.one;
 
 		collider_ally_receiver.enabled       = false;
 		collider_projectile_receiver.enabled = false;
@@ -63,13 +70,28 @@ public class PlatformEnemy : MonoBehaviour
 		transform.parent = pool_enemy_platform.PoolParent;
 
 		renderer_color_setter.SetColor( GameSettings.Instance.enemy_death_color );
+
 		_animator.SetTrigger( "die" );
+		event_particle_spawn.Raise( "death_red", RandomSpawnPoint() );
+
+		recycledTween.Recycle( transform.DOScale( 0, GameSettings.Instance.enemy_death_duration ), ReturnToPool );
 	}
 
     void InstantlyDie()
     {
+		event_particle_spawn.Raise( "death_red", RandomSpawnPoint() );
+		ReturnToPool();
+	}
 
-    }
+	Vector3 RandomSpawnPoint()
+	{
+		return transform.position + Vector3.up / 2 + Random.onUnitSphere;
+	}
+
+	void ReturnToPool()
+	{
+		pool_enemy_platform.ReturnEntity( this );
+	}
 #endregion
 
 #region Editor Only
