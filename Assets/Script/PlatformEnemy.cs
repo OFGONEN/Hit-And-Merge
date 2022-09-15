@@ -22,6 +22,7 @@ public class PlatformEnemy : MonoBehaviour
 
 // Private Fields
 	RecycledTween recycledTween = new RecycledTween();
+	GroupPlatformEnemy group_enemy_platform;
 #endregion
 
 #region Properties
@@ -31,13 +32,16 @@ public class PlatformEnemy : MonoBehaviour
 #endregion
 
 #region API
-    public void Spawn( Vector3 position, Vector3 forward )
+    public void Spawn( Transform parent, Vector3 position, Vector3 forward, GroupPlatformEnemy groupPlatformEnemy )
     {
 		gameObject.SetActive( true );
 
+		transform.parent     = parent;
 		transform.position   = position;
 		transform.forward    = forward;
 		transform.localScale = Vector3.one;
+
+		group_enemy_platform = groupPlatformEnemy;
 
 		collider_ally_receiver.enabled       = false;
 		collider_projectile_receiver.enabled = false;
@@ -61,12 +65,19 @@ public class PlatformEnemy : MonoBehaviour
 
     public void OnTrigger_Projectile()
     {
+		group_enemy_platform.UnRegisterEnemy( ReturnKey() );
 		Die();
 	}
 
     public void OnTrigger_Ally()
     {
+		group_enemy_platform.UnRegisterEnemy( ReturnKey() );
 		InstantlyDie();
+	}
+
+	public int ReturnKey()
+	{
+		return GetInstanceID();
 	}
 #endregion
 
