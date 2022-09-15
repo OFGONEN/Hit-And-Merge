@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using FFStudio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -121,6 +122,22 @@ public class GroupPlatformEnemy : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+		var position         = transform.position;
+		var spawnPosition    = transform.position + Vector3.back * enemy_spawn_distance;
+		var movementPosition = transform.position + Vector3.back * enemy_movement_distance;
+
+		Handles.color = Color.yellow;
+		Handles.DrawDottedLine( position, spawnPosition, 0.1f );
+		Handles.DrawWireDisc( spawnPosition, Vector3.up, 0.25f );
+		Handles.Label( spawnPosition + Vector3.up / 2f, gameObject.name + " Spawn Position" );
+
+		Handles.color = Color.red;
+		Handles.DrawDottedLine( position, movementPosition, 0.1f );
+		Handles.DrawWireDisc( movementPosition, Vector3.up, 0.25f );
+		Handles.Label( movementPosition + Vector3.up / 2f, gameObject.name + " Movement Position" );
+	}
 #endif
 #endregion
 }
