@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
+  enemy_finalStage_movement_speed: 2.5
+  enemy_death_duration: 0.65
+  enemy_death_color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
   projectile_travel_distance: 5
   camera_follow_speed_depth: 2.8
   maxLevelCount: 1
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2
+  ui_particle_spawn_delay: 0.2
   ui_particle_spawn_duration: 0.75
   ui_particle_spawn_ease: 1
   ui_particle_return_duration: 0.35

@@ -27,6 +27,7 @@ namespace FFStudio
     [ Title( "UI Particle" ) ]
         [ LabelText( "Random Spawn Rotation Range") ] public float ui_particle_spawn_rotationRange;
         [ LabelText( "Spawn Size") ] public float ui_particle_spawn_size;
+        [ LabelText( "Spawn Delay Max") ] public float ui_particle_spawn_delay;
         [ LabelText( "Spawn Duration") ] public float ui_particle_spawn_duration;
         [ LabelText( "Spawn Ease") ] public Ease ui_particle_spawn_ease;
         [ LabelText( "Return Default Duration") ] public float ui_particle_return_duration;
