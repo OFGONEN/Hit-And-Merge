@@ -12,6 +12,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 #region Fields
   [ Title( "Shared" ) ]
     [ SerializeField ] SharedReferenceNotifier notif_ally_group_reference;
+    [ SerializeField ] Pool_PlatformEnemy pool_enemy_platform;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] int enemy_spawn_count;
@@ -22,7 +23,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 
     Transform ally_group_transform;
 	RecycledTween recycledTween = new RecycledTween();
-	List< PlatformEnemy > list_platform_enemy;
+	Dictionary< int, PlatformEnemy > dictionary_platform_enemy;
 
     UnityMessage onUpdateMethod;
 #endregion
@@ -33,7 +34,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 #region Unity API
     private void Start()
     {
-		list_platform_enemy = new List< PlatformEnemy >( enemy_spawn_count );
+		dictionary_platform_enemy = new Dictionary< int, PlatformEnemy >( enemy_spawn_count );
 	}
 #endregion
 
@@ -50,6 +51,11 @@ public class GroupPlatformEnemy : MonoBehaviour
 
 		recycledTween.Kill();
 		DeSpawnAllEnemies();
+	}
+
+    public void UnRegisterEnemy( int key )
+    {
+		dictionary_platform_enemy.Remove( key );
 	}
 #endregion
 
@@ -78,7 +84,17 @@ public class GroupPlatformEnemy : MonoBehaviour
 
     void SpawnEnemies()
     {
+        for( var i = 0; i < enemy_spawn_count; i++ )
+        {
+			var random = Random.insideUnitCircle.ConvertV3_Z();
 
+			random *= enemy_spawn_radius - GameSettings.Instance.enemy_spawn_radius;
+
+			var enemy = pool_enemy_platform.GetEntity();
+
+			enemy.Spawn( transform, transform.TransformPoint( random ), transform.forward, this );
+			dictionary_platform_enemy.Add( enemy.ReturnKey(), enemy );
+		}
     }
 
     void StartMovementPath()
@@ -90,16 +106,16 @@ public class GroupPlatformEnemy : MonoBehaviour
             DeSpawnAllEnemies
         );
 
-        for( var i = 0; i < list_platform_enemy.Count; i++ )
-			list_platform_enemy[ i ].StartRunning();
+		foreach( var element in dictionary_platform_enemy )
+			element.Value.StartRunning();
 	}
 
     void DeSpawnAllEnemies()
     {
-        for( var i = 0; i < list_platform_enemy.Count; i++ )
-			list_platform_enemy[ i ].DeSpawn();
+		foreach( var element in dictionary_platform_enemy )
+			element.Value.DeSpawn();
 
-		list_platform_enemy.Clear();
+		dictionary_platform_enemy.Clear();
 	}
 #endregion
 
