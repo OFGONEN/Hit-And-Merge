@@ -45,6 +45,12 @@ public class PlatformEnemy : MonoBehaviour
 		_animator.Play( "Idle" );
 	}
 
+	public void DeSpawn()
+	{
+		recycledTween.Kill();
+		ReturnToPool();
+	}
+
     public void StartRunning()
     {
 		collider_ally_receiver.enabled       = true;
