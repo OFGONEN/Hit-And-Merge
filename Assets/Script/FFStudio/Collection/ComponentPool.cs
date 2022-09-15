@@ -13,6 +13,8 @@ namespace FFStudio
 
 		Transform pool_parent;
 		bool pool_active;
+
+		public Transform PoolParent => pool_parent;
 #if UNITY_EDITOR
 		int count_spawned;
 #endif
