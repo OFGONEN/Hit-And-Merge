@@ -71,7 +71,7 @@ public class FinalStageEnemy : MonoBehaviour
 
     void OnMovementComplete()
     {
-		_animator.SetBool( "run", true );
+		_animator.SetBool( "run", false );
 		event_enemy_finalStage_UnRegister.Raise();
     }
 
