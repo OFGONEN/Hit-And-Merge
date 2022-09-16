@@ -28,6 +28,11 @@ public class Projectile : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void Awake()
+	{
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
     private void Update()
     {
 		onUpdateMethod();
