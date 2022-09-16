@@ -17,8 +17,8 @@ public class PlatformEnemy : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
     [ SerializeField ] ColorSetter renderer_color_setter;
-    [ SerializeField ] BoxCollider collider_projectile_receiver;
-    [ SerializeField ] BoxCollider collider_ally_receiver;
+    [ SerializeField ] Collider collider_projectile_receiver;
+    [ SerializeField ] Collider collider_ally_receiver;
 
 // Private Fields
 	RecycledTween recycledTween = new RecycledTween();
