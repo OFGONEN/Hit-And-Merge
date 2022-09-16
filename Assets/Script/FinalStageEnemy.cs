@@ -83,11 +83,21 @@ public class FinalStageEnemy : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+	Vector3 startPosition;
+
+	private void Awake()
+	{
+		startPosition = transform.position;
+	}
+
     private void OnDrawGizmos()
     {
-		Handles.DrawWireDisc( transform.position, Vector3.up, 0.1f );
-		Handles.DrawWireDisc( transform.position + Vector3.forward * movement_distance, Vector3.up, 0.1f );
-		Handles.DrawDottedLine( transform.position, transform.position + Vector3.forward * movement_distance, 0.1f );
+		if( !Application.isPlaying )
+			startPosition = transform.position;
+
+		Handles.DrawWireDisc( startPosition, Vector3.up, 0.1f );
+		Handles.DrawWireDisc( startPosition + Vector3.forward * movement_distance, Vector3.up, 0.1f );
+		Handles.DrawDottedLine( startPosition, startPosition + Vector3.forward * movement_distance, 0.1f );
 	}
 #endif
 #endregion
