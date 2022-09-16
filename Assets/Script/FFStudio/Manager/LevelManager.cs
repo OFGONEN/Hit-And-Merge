@@ -93,7 +93,7 @@ namespace FFStudio
 			sequence.AppendCallback( event_finalStage_complete.Raise );
 			sequence.AppendCallback( event_projectile_disappear.Raise );
 			sequence.AppendCallback( event_spawn_particle_money.Raise );
-			sequence.AppendInterval( GameSettings.Instance.ui_particle_spawn_delay );
+			sequence.AppendInterval( GameSettings.Instance.game_event_level_complete_delay );
 		}
 #endregion
     }

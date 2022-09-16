@@ -23,6 +23,9 @@ namespace FFStudio
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
     
+    [ Title( "Game" ) ]
+        [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;
+    
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
 
