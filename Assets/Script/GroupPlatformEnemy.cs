@@ -20,6 +20,7 @@ public class GroupPlatformEnemy : MonoBehaviour
     [ SerializeField ] float enemy_spawn_radius;
     [ SerializeField ] float enemy_spawn_distance;
     [ SerializeField ] float enemy_movement_distance;
+    [ SerializeField ] Vector3[] enemy_spawn_points;
     [ SerializeField ] Vector3[] enemy_path;
 
     Transform ally_group_transform;
@@ -87,13 +88,9 @@ public class GroupPlatformEnemy : MonoBehaviour
     {
         for( var i = 0; i < enemy_spawn_count; i++ )
         {
-			var random = Random.insideUnitCircle.ConvertV3_Z();
-
-			random *= enemy_spawn_radius - GameSettings.Instance.enemy_spawn_radius;
-
 			var enemy = pool_enemy_platform.GetEntity();
 
-			enemy.Spawn( transform, transform.TransformPoint( random ), transform.forward, this );
+			enemy.Spawn( transform, enemy_spawn_points[ i ], transform.forward, this );
 			dictionary_platform_enemy.Add( enemy.ReturnKey(), enemy );
 		}
     }
@@ -122,8 +119,33 @@ public class GroupPlatformEnemy : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+	[ Button() ]
+	private void CacheSpawnPoints()
+	{
+		enemy_spawn_points = new Vector3[ enemy_spawn_count ];
+
+		for( var i = 0; i < enemy_spawn_count; i++ )
+		{
+			var random = Random.insideUnitCircle.ConvertV3_Z();
+
+			random *= enemy_spawn_radius - GameSettings.Instance.enemy_spawn_radius;
+
+			enemy_spawn_points[ i ] = transform.TransformPoint( random );
+		}
+	}
+
 	private void OnDrawGizmos()
 	{
+		// Draw spawned enemies
+		Handles.color = Color.blue;
+		Handles.DrawWireDisc( transform.position, Vector3.up, enemy_spawn_radius );
+		for( var i = 0; i < enemy_spawn_points.Length; i++ )
+		{
+			Handles.DrawWireDisc( enemy_spawn_points[ i ], Vector3.up, 0.25f );
+			Handles.Label( enemy_spawn_points[ i ] + Vector3.up / 2f,"Enemy_" + i );
+		}
+
+		// Draw Spawn and Movement Position
 		var position         = transform.position;
 		var spawnPosition    = transform.position + Vector3.back * enemy_spawn_distance;
 		var movementPosition = transform.position + Vector3.back * enemy_movement_distance;
