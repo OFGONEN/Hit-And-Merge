@@ -21,7 +21,8 @@ public class GroupPlatformEnemy : MonoBehaviour
     [ SerializeField ] float enemy_spawn_distance;
     [ SerializeField ] float enemy_movement_distance;
     [ SerializeField ] Vector3[] enemy_spawn_points;
-    [ SerializeField ] Vector3[] enemy_path;
+    [ SerializeField ] Transform enemy_path_parent;
+    [ SerializeField ] Vector3[] enemy_path_points;
 
     Transform ally_group_transform;
 	RecycledTween recycledTween = new RecycledTween();
@@ -97,7 +98,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 
     void StartMovementPath()
     {
-		recycledTween.Recycle( transform.DOPath( enemy_path,
+		recycledTween.Recycle( transform.DOPath( enemy_path_points,
 			GameSettings.Instance.enemy_movement_speed, PathType.Linear )
 			.SetSpeedBased()
 			.SetEase( Ease.Linear ),
@@ -120,6 +121,15 @@ public class GroupPlatformEnemy : MonoBehaviour
 #region Editor Only
 #if UNITY_EDITOR
 	[ Button() ]
+	void CachePathPoints()
+	{
+		enemy_path_points = new Vector3[ enemy_path_parent.childCount ];
+		
+		for( var i = 0; i < enemy_path_points.Length; i++ )
+			enemy_path_points[ i ] = enemy_path_parent.GetChild( i ).position;
+	}
+
+	[ Button() ]
 	private void CacheSpawnPoints()
 	{
 		enemy_spawn_points = new Vector3[ enemy_spawn_count ];
@@ -130,19 +140,40 @@ public class GroupPlatformEnemy : MonoBehaviour
 
 			random *= enemy_spawn_radius - GameSettings.Instance.enemy_spawn_radius;
 
-			enemy_spawn_points[ i ] = transform.TransformPoint( random );
+			enemy_spawn_points[ i ] = random;
 		}
 	}
 
 	private void OnDrawGizmos()
 	{
+		// Draw movement path
+		Handles.color = Color.green;
+		Vector3 currentPoint   = transform.position;
+		Vector3 currentPointUp = transform.position + Vector3.up;
+
+		for( var i = 0; i < enemy_path_points.Length; i++ )
+		{
+			var nextPoint   = enemy_path_points[ i ];
+			var nextPointUp = enemy_path_points[ i ] + Vector3.up;
+
+			Handles.DrawLine( currentPoint, currentPointUp );
+			Handles.DrawLine( nextPoint, nextPointUp );
+			Handles.DrawDottedLine( currentPointUp, nextPointUp, 1f );
+			Handles.Label( ( currentPointUp + nextPointUp ) / 2f, gameObject.name + "_Path_" + i );
+
+			currentPoint   = enemy_path_points[ i ];
+			currentPointUp = enemy_path_points[ i ] + Vector3.up;
+		}
+
 		// Draw spawned enemies
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc( transform.position, Vector3.up, enemy_spawn_radius );
+
 		for( var i = 0; i < enemy_spawn_points.Length; i++ )
 		{
-			Handles.DrawWireDisc( enemy_spawn_points[ i ], Vector3.up, 0.25f );
-			Handles.Label( enemy_spawn_points[ i ] + Vector3.up / 2f,"Enemy_" + i );
+			var worldPosition = transform.TransformPoint( enemy_spawn_points[ i ] );
+			Handles.DrawWireDisc( worldPosition, Vector3.up, 0.25f );
+			Handles.Label( worldPosition + Vector3.up / 2f,"Enemy_" + i );
 		}
 
 		// Draw Spawn and Movement Position
@@ -156,9 +187,9 @@ public class GroupPlatformEnemy : MonoBehaviour
 		Handles.Label( spawnPosition + Vector3.up / 2f, gameObject.name + " Spawn Position" );
 
 		Handles.color = Color.red;
-		Handles.DrawDottedLine( position, movementPosition, 0.1f );
-		Handles.DrawWireDisc( movementPosition, Vector3.up, 0.25f );
-		Handles.Label( movementPosition + Vector3.up / 2f, gameObject.name + " Movement Position" );
+		Handles.DrawDottedLine( position + Vector3.up / 4f, movementPosition + Vector3.up / 4f, 0.1f );
+		Handles.DrawWireDisc( movementPosition + Vector3.up / 4f, Vector3.up, 0.25f );
+		Handles.Label( movementPosition + Vector3.up / 2f + Vector3.up / 4f, gameObject.name + " Movement Position" );
 	}
 #endif
 #endregion
