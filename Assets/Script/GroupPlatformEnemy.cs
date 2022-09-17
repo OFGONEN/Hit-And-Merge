@@ -108,7 +108,8 @@ public class GroupPlatformEnemy : MonoBehaviour
 		recycledTween.Recycle( transform.DOPath( enemy_path_points,
 			enemy_movement_speed, PathType.Linear )
 			.SetSpeedBased()
-			.SetEase( Ease.Linear ),
+			.SetEase( Ease.Linear )
+			.SetLookAt( GameSettings.Instance.enemy_movement_lookAt ),
             DeSpawnAllEnemies
         );
 
