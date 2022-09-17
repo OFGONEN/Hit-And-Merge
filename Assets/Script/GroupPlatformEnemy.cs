@@ -20,6 +20,7 @@ public class GroupPlatformEnemy : MonoBehaviour
     [ SerializeField ] float enemy_spawn_radius;
     [ SerializeField ] float enemy_spawn_distance;
     [ SerializeField ] float enemy_movement_distance;
+    [ SerializeField ] float enemy_movement_speed;
     [ SerializeField ] Vector3[] enemy_spawn_points;
     [ SerializeField ] Transform enemy_path_parent;
     [ SerializeField ] Vector3[] enemy_path_points;
@@ -35,9 +36,15 @@ public class GroupPlatformEnemy : MonoBehaviour
 #endregion
 
 #region Unity API
-    private void Start()
+    private void Awake()
     {
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
 		dictionary_platform_enemy = new Dictionary< int, PlatformEnemy >( enemy_spawn_count );
+	}
+
+	private void Update()
+	{
+		onUpdateMethod();
 	}
 #endregion
 
@@ -99,7 +106,7 @@ public class GroupPlatformEnemy : MonoBehaviour
     void StartMovementPath()
     {
 		recycledTween.Recycle( transform.DOPath( enemy_path_points,
-			GameSettings.Instance.enemy_movement_speed, PathType.Linear )
+			enemy_movement_speed, PathType.Linear )
 			.SetSpeedBased()
 			.SetEase( Ease.Linear ),
             DeSpawnAllEnemies
