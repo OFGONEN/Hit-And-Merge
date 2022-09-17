@@ -37,7 +37,7 @@ public class PlatformEnemy : MonoBehaviour
 		gameObject.SetActive( true );
 
 		transform.parent     = parent;
-		transform.position   = position;
+		transform.localPosition   = position;
 		transform.forward    = forward;
 		transform.localScale = Vector3.one;
 
@@ -46,7 +46,7 @@ public class PlatformEnemy : MonoBehaviour
 		collider_ally_receiver.enabled       = false;
 		collider_projectile_receiver.enabled = false;
 
-		_animator.Play( "Idle" );
+		_animator.Play( "idle" );
 	}
 
 	public void DeSpawn()
