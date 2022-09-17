@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelFailedEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   levelCompleted: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+  event_level_started: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
   event_finalStage_complete: {fileID: 11400000, guid: 72faa2be393174099941460a600c039f, type: 2}
   event_projectile_disappear: {fileID: 11400000, guid: 4df8e51514bbb754f96d1774078579d2, type: 2}
   event_spawn_particle_money: {fileID: 11400000, guid: 0e518bb68f41b634fafc76f59009b847, type: 2}

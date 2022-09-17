@@ -13,6 +13,7 @@ namespace FFStudio
     [ Title( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
+        public GameEvent event_level_started;
         public GameEvent event_finalStage_complete;
         public GameEvent event_projectile_disappear;
         public GameEvent event_spawn_particle_money;
@@ -53,8 +54,8 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelRevealedResponse()
         {
-
-        }
+			event_level_started.Raise();
+		}
 
         // Info: Called from Editor.
         public void LevelStartedResponse()
