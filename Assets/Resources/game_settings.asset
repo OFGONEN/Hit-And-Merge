@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
+  ally_movement_speed: 1
   enemy_finalStage_movement_speed: 2.5
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 1
