@@ -75,7 +75,7 @@ public class Ally : MonoBehaviour
 		ResetGunCooldown();
 	}
 
-    public void OnLevelStart()
+    public void OnLevelStarted()
     {
 		_animator.SetTrigger( "trigger" ); // Move to run and aim state
 		StartShooting();
@@ -107,15 +107,6 @@ public class Ally : MonoBehaviour
 		StartShooting();
 	}
 
-    public void Spawn( Transform parent, Vector3 position, Vector3 forward )
-    {
-		gameObject.SetActive( true );
-
-		transform.parent = parent;
-		transform.localPosition = position;
-		transform.forward = forward;
-    }
-
     public void StartShooting()
     {
 		ResetGunCooldown();
@@ -124,6 +115,15 @@ public class Ally : MonoBehaviour
 #endregion
 
 #region Implementation
+    void Spawn( Transform parent, Vector3 position, Vector3 forward )
+    {
+		gameObject.SetActive( true );
+
+		transform.parent = parent;
+		transform.localPosition = position;
+		transform.forward = forward;
+    }
+
     void OnFinishLineMovementComplete()
     {
 		_animator.SetTrigger( "trigger" ); // Move to aiming state
