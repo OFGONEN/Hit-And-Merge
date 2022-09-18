@@ -91,6 +91,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gfx_projectile_uzi
       objectReference: {fileID: 0}
+    - target: {fileID: 6997531132809875826, guid: 7921ce358d34d684e9e1a409e2d60a68, type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290034299285955933, guid: 7921ce358d34d684e9e1a409e2d60a68, type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 8183923541668670269, guid: 7921ce358d34d684e9e1a409e2d60a68, type: 3}
       propertyPath: m_RootOrder
       value: 0

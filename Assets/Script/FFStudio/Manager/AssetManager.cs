@@ -26,6 +26,7 @@ namespace FFStudio
 		[ SerializeField ] Pool_Projectile pool_projectile_pistol;
 		[ SerializeField ] Pool_Projectile pool_projectile_desertEagle;
 		[ SerializeField ] Pool_Projectile pool_projectile_uzi;
+		[ SerializeField ] Pool_PlatformEnemy pool_enemy_platform;
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
 		[ SerializeField ] UIParticlePool pool_UI_particle;
 #endregion
@@ -44,6 +45,7 @@ namespace FFStudio
 			pool_projectile_pistol.InitPool( transform, false );
 			pool_projectile_desertEagle.InitPool( transform, false );
 			pool_projectile_uzi.InitPool( transform, false );
+			pool_enemy_platform.InitPool( transform, false );
 
 			// UI Pools
 			pool_UIPopUpText.InitPool( transform, false );

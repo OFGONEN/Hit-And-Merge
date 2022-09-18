@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 namespace FFStudio
@@ -12,12 +13,21 @@ namespace FFStudio
     [ Title( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
+        public GameEvent event_level_started;
+        public GameEvent event_finalStage_complete;
+        public GameEvent event_projectile_disappear;
+        public GameEvent event_spawn_particle_money;
 
     [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
         public GunInfo gun_info_current;
         public GunInfo gun_info_default;
         public SharedFloatNotifier notif_money_currency;
+
+// Private
+        int enemy_finalStage_count;
+
+		RecycledSequence recycledSequence_FinalStage = new RecycledSequence();
 #endregion
 
 #region UnityAPI
@@ -44,18 +54,31 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelRevealedResponse()
         {
-
-        }
+			event_level_started.Raise();
+		}
 
         // Info: Called from Editor.
         public void LevelStartedResponse()
         {
-
+            enemy_finalStage_count = 0;
         }
 
         public void OnLevelLoadStart()
         {
 			gun_info_default.ChangeData( gun_info_current );
+		}
+
+        public void OnEnemyFinalStageRegister()
+        {
+			enemy_finalStage_count++;
+		}
+
+		public void OnEnemyFinalStageUnRegister()
+		{
+			enemy_finalStage_count--;
+
+            if( enemy_finalStage_count == 0 )
+				StartLevelCompleteSequence();
 		}
 
         public void OnMoneyGained()
@@ -65,6 +88,14 @@ namespace FFStudio
 #endregion
 
 #region Implementation
+        void StartLevelCompleteSequence()
+        {
+			var sequence = recycledSequence_FinalStage.Recycle( levelCompleted.Raise );
+			sequence.AppendCallback( event_finalStage_complete.Raise );
+			sequence.AppendCallback( event_projectile_disappear.Raise );
+			sequence.AppendCallback( event_spawn_particle_money.Raise );
+			sequence.AppendInterval( GameSettings.Instance.game_event_level_complete_delay );
+		}
 #endregion
     }
 }

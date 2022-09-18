@@ -10,6 +10,12 @@ namespace FFStudio
     {
 #region Fields (Settings)
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
+    [ Title( "Enemy" ) ]
+        [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
+        [ LabelText( "Platform Enemy Spawn Radius" ) ] public float enemy_spawn_radius;
+        [ LabelText( "Platform Enemy Path Look At" ) ] public float enemy_movement_lookAt = 1f;
+        [ LabelText( "Enemy Death Duration" ) ] public float enemy_death_duration;
+        [ LabelText( "Enemy Death Color" ) ] public Color enemy_death_color;
 
     [ Title( "Projectile" ) ]
         [ LabelText( "Projectile Travel Distance" ) ] public float projectile_travel_distance;
@@ -17,12 +23,16 @@ namespace FFStudio
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
     
+    [ Title( "Game" ) ]
+        [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;
+    
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
 
     [ Title( "UI Particle" ) ]
         [ LabelText( "Random Spawn Rotation Range") ] public float ui_particle_spawn_rotationRange;
         [ LabelText( "Spawn Size") ] public float ui_particle_spawn_size;
+        [ LabelText( "Spawn Delay Max") ] public float ui_particle_spawn_delay;
         [ LabelText( "Spawn Duration") ] public float ui_particle_spawn_duration;
         [ LabelText( "Spawn Ease") ] public Ease ui_particle_spawn_ease;
         [ LabelText( "Return Default Duration") ] public float ui_particle_return_duration;
