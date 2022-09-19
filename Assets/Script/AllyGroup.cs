@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using UnityEditor;
 using Sirenix.OdinInspector;
 
@@ -12,8 +13,11 @@ public class AllyGroup : MonoBehaviour
 #region Fields
   [ Title( "Shared Variable" ) ]
     [ SerializeField ] SharedIntNotifier notif_ally_count;
+    [ SerializeField ] SharedVector3Notifier notif_fireRange_position;
     [ SerializeField ] Pool_Ally pool_ally;
     [ SerializeField ] SharedVector2 shared_input_delta; // updates every frame
+    [ SerializeField ] GameEvent event_ally_finalStage_Register;
+    [ SerializeField ] GameEvent event_ally_finalStage_UnRegister;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Vector3[] ally_spawn_points;
@@ -26,7 +30,9 @@ public class AllyGroup : MonoBehaviour
 	int spawn_row_index = 0;
 	float movement_clamp = 0;
 
-    UnityMessage onAllySpawn;
+	RecycledTween recycledTween = new RecycledTween();
+
+	UnityMessage onAllySpawn;
     UnityMessage onUpdateMethod;
 #endregion
 
@@ -57,6 +63,18 @@ public class AllyGroup : MonoBehaviour
 		onAllySpawn = SpawnAlly_Running;
 	}
 
+	public void OnFinishLine()
+	{
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		AlignAlliesOnFinalStage();
+
+		event_ally_finalStage_Register.Raise();
+
+		recycledTween.Recycle( transform.DOMove( notif_fireRange_position.sharedValue, GameSettings.Instance.ally_group_movement_speed_forward ),
+			event_ally_finalStage_UnRegister.Raise 
+		);
+	}
+
     public void OnSpawnAlly( IntGameEvent gameEvent )
     {
 		var eventValue = gameEvent.eventValue;
@@ -73,6 +91,31 @@ public class AllyGroup : MonoBehaviour
 #endregion
 
 #region Implementation
+	void AlignAlliesOnFinalStage()
+	{
+		var position      = notif_fireRange_position.sharedValue;
+		    position.z   -= GameSettings.Instance.game_finalStage_offset;
+		var lateralCount  = GameSettings.Instance.AllyLateralCountOnFinalStage;
+		var rowCount      = ally_list.Count / lateralCount;
+
+		int allyCount = 0;
+
+		for( var y = 0; y < rowCount; y++ )
+		{
+			for( var x = 0; x < lateralCount; x++ )
+			{
+				var movePosition = new Vector3(
+					-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
+					0,
+					position.z - y * GameSettings.Instance.ally_spawn_radius
+				);
+
+				ally_list[ allyCount ].MoveToFinishLine( movePosition );
+				allyCount++;
+			}
+		}
+	}
+
     [ Button() ]
     void SpawnAlly_Idle()
     {
