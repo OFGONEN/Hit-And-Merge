@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ally_movement_speed: 1
   ally_spawn_radius: 0.225
+  ally_spawn_radius_buffer: 0
+  ally_group_count_max: 331
   enemy_finalStage_movement_speed: 2.5
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 1
@@ -22,6 +24,7 @@ MonoBehaviour:
   projectile_travel_distance: 5
   camera_follow_speed_depth: 2.8
   game_event_level_complete_delay: 0
+  game_input_resolution: 0
   maxLevelCount: 1
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2

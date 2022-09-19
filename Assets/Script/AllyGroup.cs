@@ -57,7 +57,10 @@ public class AllyGroup : MonoBehaviour
 
     public void OnSpawnAlly( IntGameEvent gameEvent )
     {
-        for( var i = 0; i < gameEvent.eventValue; i++ )
+		var eventValue = gameEvent.eventValue;
+		var spawnCount = Mathf.Min( GameSettings.Instance.ally_group_count_max - ally_list.Count, eventValue );
+
+		for( var i = 0; i < spawnCount; i++ )
 			onAllySpawn();
 	}
 

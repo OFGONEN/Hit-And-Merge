@@ -13,7 +13,9 @@ namespace FFStudio
     [ Title( "Ally" ) ]
         [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
-        [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius_buffer;
+        [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
+    [ Title( "Ally Group" ) ]
+        [ LabelText( "Ally Group Max Count" ) ] public int ally_group_count_max;
 
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
@@ -30,6 +32,7 @@ namespace FFStudio
     
     [ Title( "Game" ) ]
         [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;
+        [ LabelText( "Input Resolution" ) ] public float game_input_resolution;
     
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
