@@ -55,6 +55,7 @@ MonoBehaviour:
   event_spawn_particle_money: {fileID: 11400000, guid: 0e518bb68f41b634fafc76f59009b847, type: 2}
   event_enemy_finalStage_run: {fileID: 11400000, guid: 463b6aef907e4364fb33dde48102d7a1, type: 2}
   event_ally_finalStage_shoot: {fileID: 11400000, guid: dd530caba63259f4ba7773e4602f715e, type: 2}
+  event_ally_spawn: {fileID: 11400000, guid: 1e900cfe14661cc499e14821292bb5a8, type: 2}
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   gun_info_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gun_info_default: {fileID: 11400000, guid: 51e9013b5e8dbfe488b0d760fbc84f72, type: 2}

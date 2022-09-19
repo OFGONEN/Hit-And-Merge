@@ -20,6 +20,7 @@ namespace FFStudio
         public GameEvent event_spawn_particle_money;
         public GameEvent event_enemy_finalStage_run;
         public GameEvent event_ally_finalStage_shoot;
+        public IntGameEvent event_ally_spawn;
 
     [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
@@ -66,6 +67,7 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelRevealedResponse()
         {
+			event_ally_spawn.Raise( CurrentLevelData.Instance.levelData.ally_count );
 			event_level_started.Raise();
 		}
 
