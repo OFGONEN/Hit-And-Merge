@@ -13,6 +13,7 @@ namespace FFStudio
     [ Title( "Ally" ) ]
         [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
+        [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius_buffer;
 
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
