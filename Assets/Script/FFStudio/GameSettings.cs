@@ -37,6 +37,7 @@ namespace FFStudio
     [ Title( "Game" ) ]
         [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;
         [ LabelText( "Input Resolution" ) ] public float game_input_resolution;
+        [ LabelText( "Final Stage Offset" ) ] public float game_finalStage_offset;
     
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
@@ -80,6 +81,7 @@ namespace FFStudio
 
 #region Property
         public float UIParticleDuration => ui_particle_spawn_duration + ui_particle_return_duration + ui_particle_movement_duration;
+        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp / ally_spawn_radius );
 #endregion
 
 #region Fields (Singleton Related)

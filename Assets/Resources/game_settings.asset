@@ -28,6 +28,7 @@ MonoBehaviour:
   camera_follow_speed_depth: 2.8
   game_event_level_complete_delay: 1
   game_input_resolution: 100
+  game_finalStage_offset: 0.5
   maxLevelCount: 1
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2
