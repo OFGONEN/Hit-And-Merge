@@ -18,8 +18,8 @@ public class Ally : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
     [ SerializeField ] Transform parent_projectile_shoot;
-
 // Private
+	int spawn_index;
     float gun_fire_cooldown;
 	RecycledTween recycledTween = new RecycledTween();
 
@@ -88,18 +88,20 @@ public class Ally : MonoBehaviour
 	}
 
     // Spawn
-    public void SpawnIdle( Transform parent, Vector3 position, Vector3 forward )
+    public void SpawnIdle( Transform parent, Vector3 position, int spawnIndex )
     {
-		Spawn( parent, position, forward );
+		spawn_index = spawnIndex;
+		Spawn( parent, position );
 
 		// group_enemy_platform = groupPlatformEnemy;
 
 		_animator.Play( "idle" );
 	}
 
-	public void SpawnRunning( Transform parent, Vector3 position, Vector3 forward )
+	public void SpawnRunning( Transform parent, Vector3 position, int spawnIndex )
 	{
-		Spawn( parent, position, forward );
+		spawn_index = spawnIndex;
+		Spawn( parent, position );
 		// group_enemy_platform = groupPlatformEnemy;
 
 		_animator.Play( "running_aiming" );
@@ -115,13 +117,13 @@ public class Ally : MonoBehaviour
 #endregion
 
 #region Implementation
-    void Spawn( Transform parent, Vector3 position, Vector3 forward )
+    void Spawn( Transform parent, Vector3 position )
     {
 		gameObject.SetActive( true );
 
 		transform.parent = parent;
 		transform.localPosition = position;
-		transform.forward = forward;
+		transform.forward = parent.forward;
     }
 
     void OnFinishLineMovementComplete()
