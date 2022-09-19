@@ -14,8 +14,12 @@ namespace FFStudio
         [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
         [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
+        
     [ Title( "Ally Group" ) ]
         [ LabelText( "Ally Group Max Count" ) ] public int ally_group_count_max;
+        [ LabelText( "Ally Group Movement Speed Forward" ) ] public float ally_group_movement_speed_forward;
+        [ LabelText( "Ally Group Movement Speed Lateral" ) ] public float ally_group_movement_speed_lateral;
+        [ LabelText( "Ally Group Movement Clamp" ) ] public float ally_group_movement_clamp;
 
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
