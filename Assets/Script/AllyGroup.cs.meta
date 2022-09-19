@@ -3,7 +3,13 @@ guid: 2cf9effadd0314a339774ce97a61f81a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - notif_ally_count: {fileID: 11400000, guid: a99e263a65be3ef40938f3c8c30c60e3, type: 2}
+  - notif_fireRange_position: {fileID: 11400000, guid: b2aa8fe155653bc48ba1b505bdb3d234, type: 2}
+  - pool_ally: {fileID: 11400000, guid: df6fbabccc7888e4dac185ae472eb78e, type: 2}
+  - shared_input_delta: {fileID: 11400000, guid: de0314699c2cd064a981260b3e372d0e, type: 2}
+  - event_ally_finalStage_Register: {fileID: 11400000, guid: 133d5554020844040a30113c403f7eb0, type: 2}
+  - event_ally_finalStage_UnRegister: {fileID: 11400000, guid: 5358af797de2247e9a78d7f96b649b0b, type: 2}
   executionOrder: 200
   icon: {instanceID: 0}
   userData: 
