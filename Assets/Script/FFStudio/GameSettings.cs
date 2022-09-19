@@ -12,6 +12,8 @@ namespace FFStudio
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
     [ Title( "Ally" ) ]
         [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
+        [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
+
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
         [ LabelText( "Platform Enemy Spawn Radius" ) ] public float enemy_spawn_radius;

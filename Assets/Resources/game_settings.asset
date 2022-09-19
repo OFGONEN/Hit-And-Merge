@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   ally_movement_speed: 1
+  ally_spawn_radius: 0.225
   enemy_finalStage_movement_speed: 2.5
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 1
