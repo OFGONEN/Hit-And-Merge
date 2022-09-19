@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: pool_ally
   m_EditorClassIdentifier: 
   stackSize: 128
-  pool_entity: {fileID: 0}
+  pool_entity: {fileID: 1063950334472053722, guid: a1af189fb6c9e8e4ca4ae77e6010c199, type: 3}
