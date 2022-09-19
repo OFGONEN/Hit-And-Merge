@@ -10,20 +10,138 @@ using Sirenix.OdinInspector;
 public class AllyGroup : MonoBehaviour
 {
 #region Fields
+  [ Title( "Shared Variable" ) ]
+    [ SerializeField ] SharedIntNotifier notif_ally_count;
+    [ SerializeField ] Pool_Ally pool_ally;
   [ Title( "Setup" ) ]
     [ SerializeField ] Vector3[] ally_spawn_points;
+
+// Private	
+    List< Ally > ally_list = new List< Ally >( 331 );
+	int spawn_index     = 0;
+	int spawn_row_ceil  = 0;
+	int spawn_row_floor = 0;
+	int spawn_row_index = 0;
+
+    UnityMessage onAllySpawn;
+    UnityMessage onUpdateMethod;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+    private void OnDisable()
+    {
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+    private void Awake()
+    {
+		onAllySpawn    = SpawnAlly_Idle;
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+    private void Update()
+    {
+		onUpdateMethod();
+	}
 #endregion
 
 #region API
+    public void OnLevelStarted()
+    {
+		onAllySpawn = SpawnAlly_Running;
+	}
+
+    public void OnSpawnAlly( IntGameEvent gameEvent )
+    {
+        for( var i = 0; i < gameEvent.eventValue; i++ )
+			onAllySpawn();
+	}
+
+    public void OnAllyDied( IntGameEvent gameEvent )
+    {
+		ally_list.RemoveAt( gameEvent.eventValue );
+	}
 #endregion
 
 #region Implementation
+    [ Button() ]
+    void SpawnAlly_Idle()
+    {
+		var ally = pool_ally.GetEntity();
+
+		var targetPosition = ally_spawn_points[ spawn_index ];
+		var spawnPosition = targetPosition - targetPosition.normalized * GameSettings.Instance.ally_spawn_radius;
+
+		ally.SpawnIdle( transform, spawnPosition, spawn_index );
+		ally.DoLocalMovePosition( targetPosition + ReturnBufferedPosition() );
+
+		ally_list.Add( ally );
+
+		IncreaseSpawnIndex();
+	}
+
+    [ Button() ]
+	void SpawnAlly_Running()
+	{
+		var ally = pool_ally.GetEntity();
+
+		var targetPosition = ally_spawn_points[ spawn_index ];
+		var spawnPosition = targetPosition - targetPosition.normalized * GameSettings.Instance.ally_spawn_radius;
+
+		ally.SpawnRunning( transform, spawnPosition, spawn_index );
+		ally.DoLocalMovePosition( targetPosition + ReturnBufferedPosition() );
+
+		ally_list.Add( ally );
+
+		IncreaseSpawnIndex();
+	}
+
+    void IncreaseSpawnIndex()
+    {
+		spawn_index++;
+		notif_ally_count.SharedValue++;
+
+		if( spawn_index >= spawn_row_ceil )
+		{
+			spawn_row_index++;
+
+			spawn_row_floor = spawn_row_ceil;
+			spawn_row_ceil += spawn_row_index * 6;
+		}
+    }
+
+	void DecreaseSpawnIndex()
+	{
+		spawn_index--;
+		notif_ally_count.SharedValue--;
+
+		bool arrangeAllies = notif_ally_count.sharedValue <= spawn_row_floor;
+
+		if( spawn_index < spawn_row_ceil )
+		{
+			spawn_row_index--;
+
+			spawn_row_ceil = spawn_row_floor;
+			spawn_row_floor -= spawn_row_index * 6;
+		}
+
+        if( arrangeAllies )
+			ArrangeAllies();
+	}
+
+    void ArrangeAllies()
+    {
+        for( var i = 0; i < ally_list.Count; i++ )
+			ally_list[ i ].Rearrange( i, ally_spawn_points[ i ] + ReturnBufferedPosition() );
+	}
+
+    Vector3 ReturnBufferedPosition()
+    {
+        return Random.insideUnitCircle.ConvertV3_Z() * GameSettings.Instance.ally_spawn_radius_buffer;
+	}
 #endregion
 
 #region Editor Only
