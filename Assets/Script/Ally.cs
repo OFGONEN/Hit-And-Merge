@@ -64,6 +64,12 @@ public class Ally : MonoBehaviour
 		);
 	}
 
+	public void Rearrange( int index, Vector3 position )
+	{
+		spawn_index = index;
+		DoLocalMovePosition( position );
+	}
+
     public void OnTrigger()
     {
 		// Unregister from ally group
