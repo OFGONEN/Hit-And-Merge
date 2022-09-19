@@ -59,6 +59,7 @@ MonoBehaviour:
   gun_info_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gun_info_default: {fileID: 11400000, guid: 51e9013b5e8dbfe488b0d760fbc84f72, type: 2}
   notif_money_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
+  notif_ally_count: {fileID: 11400000, guid: a99e263a65be3ef40938f3c8c30c60e3, type: 2}
 --- !u!114 &6253295288017648143
 MonoBehaviour:
   m_ObjectHideFlags: 0

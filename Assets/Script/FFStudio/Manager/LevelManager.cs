@@ -26,6 +26,7 @@ namespace FFStudio
         public GunInfo gun_info_current;
         public GunInfo gun_info_default;
         public SharedFloatNotifier notif_money_currency;
+        public SharedIntNotifier notif_ally_count;
 
 // Private
         int enemy_finalStage_count;
@@ -48,6 +49,7 @@ namespace FFStudio
 			var levelData = CurrentLevelData.Instance.levelData;
 
 			levelProgress.SetValue_NotifyAlways( 0 );
+			notif_ally_count.SharedValue = 0;
 
 			enemy_finalStage_count = 0;
 			ally_finalStage_count  = 0;
