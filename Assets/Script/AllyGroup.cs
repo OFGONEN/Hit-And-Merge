@@ -22,6 +22,7 @@ public class AllyGroup : MonoBehaviour
 	int spawn_row_ceil  = 0;
 	int spawn_row_floor = 0;
 	int spawn_row_index = 0;
+	float movement_clamp = 0;
 
     UnityMessage onAllySpawn;
     UnityMessage onUpdateMethod;
@@ -110,6 +111,8 @@ public class AllyGroup : MonoBehaviour
 
 			spawn_row_floor = spawn_row_ceil;
 			spawn_row_ceil += spawn_row_index * 6;
+
+			movement_clamp = ( spawn_row_index + 0.5f ) * GameSettings.Instance.ally_spawn_radius;
 		}
     }
 
@@ -126,6 +129,8 @@ public class AllyGroup : MonoBehaviour
 
 			spawn_row_ceil = spawn_row_floor;
 			spawn_row_floor -= spawn_row_index * 6;
+
+			movement_clamp = ( spawn_row_index + 0.5f ) * GameSettings.Instance.ally_spawn_radius;
 		}
 
         if( arrangeAllies )
