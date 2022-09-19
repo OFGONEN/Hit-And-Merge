@@ -23,11 +23,13 @@ public class AllyGroup : MonoBehaviour
     [ SerializeField ] Vector3[] ally_spawn_points;
 
 // Private	
+    Dictionary< int, Ally > ally_dictionary = new Dictionary<int, Ally>( 331 );
     List< Ally > ally_list = new List< Ally >( 331 );
-	int spawn_index     = 0;
-	int spawn_row_ceil  = 0;
-	int spawn_row_floor = 0;
-	int spawn_row_index = 0;
+
+	[ ShowInInspector, ReadOnly ] int spawn_index     = 0;
+	[ ShowInInspector, ReadOnly ] int spawn_row_ceil  = 0;
+	[ ShowInInspector, ReadOnly ] int spawn_row_floor = 0;
+	[ ShowInInspector, ReadOnly ] int spawn_row_index = 0;
 	float movement_clamp = 0;
 
 	RecycledTween recycledTween = new RecycledTween();
@@ -84,7 +86,7 @@ public class AllyGroup : MonoBehaviour
     public void OnSpawnAlly( IntGameEvent gameEvent )
     {
 		var eventValue = gameEvent.eventValue;
-		var spawnCount = Mathf.Min( GameSettings.Instance.ally_group_count_max - ally_list.Count, eventValue );
+		var spawnCount = Mathf.Min( GameSettings.Instance.ally_group_count_max - ally_dictionary.Count, eventValue );
 
 		for( var i = 0; i < spawnCount; i++ )
 			onAllySpawn();
@@ -102,22 +104,45 @@ public class AllyGroup : MonoBehaviour
 		var position      = notif_fireRange_position.sharedValue;
 		    position.z   -= GameSettings.Instance.game_finalStage_offset;
 		var lateralCount  = GameSettings.Instance.AllyLateralCountOnFinalStage;
-		var rowCount      = ally_list.Count / lateralCount;
+		var rowCount      = ally_dictionary.Count / lateralCount;
 
-		int allyCount = 0;
+		// int allyCount = 0;
 
-		for( var y = 0; y < rowCount; y++ )
+		// for( var y = 0; y < rowCount; y++ )
+		// {
+		// 	for( var x = 0; x < lateralCount; x++ )
+		// 	{
+		// 		var movePosition = new Vector3(
+		// 			-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
+		// 			0,
+		// 			position.z - y * GameSettings.Instance.ally_spawn_radius
+		// 		);
+
+
+		// 		ally_list[ allyCount ].MoveToFinishLine( movePosition );
+		// 		allyCount++;
+		// 	}
+		// }
+
+		int y = 0;
+		int x = 0;
+
+		foreach( var ally in ally_dictionary.Values )
 		{
-			for( var x = 0; x < lateralCount; x++ )
-			{
-				var movePosition = new Vector3(
-					-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
-					0,
-					position.z - y * GameSettings.Instance.ally_spawn_radius
-				);
+			var movePosition = new Vector3(
+				-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
+				0,
+				position.z - y * GameSettings.Instance.ally_spawn_radius
+			);
 
-				ally_list[ allyCount ].MoveToFinishLine( movePosition );
-				allyCount++;
+			ally.MoveToFinishLine( movePosition );
+
+			x++;
+
+			if( x >= lateralCount )
+			{
+				x = 0;
+				y++;
 			}
 		}
 	}
@@ -133,7 +158,7 @@ public class AllyGroup : MonoBehaviour
 		ally.SpawnIdle( transform, spawnPosition, spawn_index );
 		ally.DoLocalMovePosition( targetPosition + ReturnBufferedPosition() );
 
-		ally_list.Add( ally );
+		ally_dictionary.Add( spawn_index, ally );
 
 		IncreaseSpawnIndex();
 	}
@@ -149,7 +174,7 @@ public class AllyGroup : MonoBehaviour
 		ally.SpawnRunning( transform, spawnPosition, spawn_index );
 		ally.DoLocalMovePosition( targetPosition + ReturnBufferedPosition() );
 
-		ally_list.Add( ally );
+		ally_dictionary.Add( spawn_index, ally );
 
 		IncreaseSpawnIndex();
 	}
@@ -172,12 +197,11 @@ public class AllyGroup : MonoBehaviour
 
 	void DecreaseSpawnIndex()
 	{
-		spawn_index--;
 		notif_ally_count.SharedValue--;
 
 		bool arrangeAllies = notif_ally_count.sharedValue <= spawn_row_floor;
 
-		if( spawn_index < spawn_row_ceil )
+		if( arrangeAllies )
 		{
 			spawn_row_index--;
 
@@ -193,8 +217,29 @@ public class AllyGroup : MonoBehaviour
 
     void ArrangeAllies()
     {
-        for( var i = 0; i < ally_list.Count; i++ )
-			ally_list[ i ].Rearrange( i, ally_spawn_points[ i ] + ReturnBufferedPosition() );
+		ally_list.Clear();
+
+		int index = 0;
+
+		foreach( var ally in ally_dictionary.Values )
+		{
+			ally_list.Add( ally );
+			ally.Rearrange( index, ally_spawn_points[ index ] + ReturnBufferedPosition() );
+			index++;
+		}
+
+
+		ally_dictionary.Clear();
+
+		index = 0;
+
+		foreach( var ally in ally_list )
+		{
+			ally_dictionary.Add( index, ally );
+			index++;
+		}
+
+		spawn_index = ally_list.Count;
 	}
 
     Vector3 ReturnBufferedPosition()
