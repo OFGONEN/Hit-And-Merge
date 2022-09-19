@@ -7,5 +7,9 @@ namespace FFStudio
 	[ CreateAssetMenu( fileName = "shared_", menuName = "FF/Data/Shared/Vector2" ) ]
 	public class SharedVector2 : SharedData< Vector2 >
 	{
+		public void UpdateValue( Vector2 value )
+		{
+			sharedValue = value;
+		}
 	}
 }

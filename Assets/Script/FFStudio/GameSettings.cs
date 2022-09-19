@@ -10,6 +10,17 @@ namespace FFStudio
     {
 #region Fields (Settings)
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
+    [ Title( "Ally" ) ]
+        [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
+        [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
+        [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
+        
+    [ Title( "Ally Group" ) ]
+        [ LabelText( "Ally Group Max Count" ) ] public int ally_group_count_max;
+        [ LabelText( "Ally Group Movement Speed Forward" ) ] public float ally_group_movement_speed_forward;
+        [ LabelText( "Ally Group Movement Speed Lateral" ) ] public float ally_group_movement_speed_lateral;
+        [ LabelText( "Ally Group Movement Clamp" ) ] public float ally_group_movement_clamp;
+
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;
         [ LabelText( "Platform Enemy Spawn Radius" ) ] public float enemy_spawn_radius;
@@ -25,6 +36,8 @@ namespace FFStudio
     
     [ Title( "Game" ) ]
         [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;
+        [ LabelText( "Input Resolution" ) ] public float game_input_resolution;
+        [ LabelText( "Final Stage Offset" ) ] public float game_finalStage_offset;
     
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
@@ -68,6 +81,7 @@ namespace FFStudio
 
 #region Property
         public float UIParticleDuration => ui_particle_spawn_duration + ui_particle_return_duration + ui_particle_movement_duration;
+        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp / ally_spawn_radius );
 #endregion
 
 #region Fields (Singleton Related)

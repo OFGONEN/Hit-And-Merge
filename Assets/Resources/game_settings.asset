@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
+  ally_movement_speed: 1
+  ally_spawn_radius: 0.225
+  ally_spawn_radius_buffer: 0.05625
+  ally_group_count_max: 331
+  ally_group_movement_speed_forward: 1
+  ally_group_movement_speed_lateral: 10
+  ally_group_movement_clamp: 4
   enemy_finalStage_movement_speed: 2.5
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 1
@@ -19,7 +26,9 @@ MonoBehaviour:
   enemy_death_color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
   projectile_travel_distance: 5
   camera_follow_speed_depth: 2.8
-  game_event_level_complete_delay: 0
+  game_event_level_complete_delay: 1
+  game_input_resolution: 100
+  game_finalStage_offset: 0.5
   maxLevelCount: 1
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2

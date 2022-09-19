@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a38bea399dc6a4db827c2b0892fb09, type: 3}
   m_Name: info_gun_current
   m_EditorClassIdentifier: 
-  pool_projectile: {fileID: 0}
-  gun_mesh: {fileID: 0}
-  gun_damage: 0
-  gun_fireRate: 0
+  pool_projectile: {fileID: 11400000, guid: 33a0b25878c7c9749b1a3df227ca2b5d, type: 2}
+  gun_mesh: {fileID: -9201165820359124677, guid: d0b7f5f41db513343b6905bb395044dd, type: 3}
+  gun_damage: 1
+  gun_fireRate: 1
