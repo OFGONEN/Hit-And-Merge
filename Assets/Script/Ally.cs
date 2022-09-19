@@ -13,6 +13,7 @@ public class Ally : MonoBehaviour
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] Pool_Ally pool_ally;
     [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
+    [ SerializeField ] IntGameEvent event_ally_died;
     [ SerializeField ] GunInfo shared_gun_info;
    
   [ Title( "Components" ) ]
@@ -154,6 +155,7 @@ public class Ally : MonoBehaviour
     void InstantlyDie()
     {
 		event_particle_spawn.Raise( "death_blue", RandomSpawnPoint() );
+		event_ally_died.Raise( spawn_index );
 		ReturnToPool();
 	}
 
