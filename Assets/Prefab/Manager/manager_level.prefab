@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4082198329059391463}
+  - {fileID: 5899954231491858130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,6 +53,8 @@ MonoBehaviour:
   event_finalStage_complete: {fileID: 11400000, guid: 72faa2be393174099941460a600c039f, type: 2}
   event_projectile_disappear: {fileID: 11400000, guid: 4df8e51514bbb754f96d1774078579d2, type: 2}
   event_spawn_particle_money: {fileID: 11400000, guid: 0e518bb68f41b634fafc76f59009b847, type: 2}
+  event_enemy_finalStage_run: {fileID: 11400000, guid: 463b6aef907e4364fb33dde48102d7a1, type: 2}
+  event_ally_finalStage_shoot: {fileID: 11400000, guid: dd530caba63259f4ba7773e4602f715e, type: 2}
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   gun_info_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gun_info_default: {fileID: 11400000, guid: 51e9013b5e8dbfe488b0d760fbc84f72, type: 2}
@@ -150,6 +153,87 @@ MonoBehaviour:
         - m_Target: {fileID: 3087407567312676473}
           m_TargetAssemblyTypeName: FFStudio.LevelManager, Assembly-CSharp
           m_MethodName: OnMoneyGained
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &6532795313350798854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5899954231491858130}
+  - component: {fileID: 3183476909502127292}
+  m_Layer: 0
+  m_Name: logic_ally_finalStage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &5899954231491858130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532795313350798854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 545607841950496312}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3183476909502127292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532795313350798854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 133d5554020844040a30113c403f7eb0, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3087407567312676473}
+          m_TargetAssemblyTypeName: FFStudio.LevelManager, Assembly-CSharp
+          m_MethodName: OnAllyFinalStageRegister
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 5358af797de2247e9a78d7f96b649b0b, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3087407567312676473}
+          m_TargetAssemblyTypeName: FFStudio.LevelManager, Assembly-CSharp
+          m_MethodName: OnAllyFinalStageUnRegister
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

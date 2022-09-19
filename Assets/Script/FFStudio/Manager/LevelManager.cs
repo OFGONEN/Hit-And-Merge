@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -17,6 +18,8 @@ namespace FFStudio
         public GameEvent event_finalStage_complete;
         public GameEvent event_projectile_disappear;
         public GameEvent event_spawn_particle_money;
+        public GameEvent event_enemy_finalStage_run;
+        public GameEvent event_ally_finalStage_shoot;
 
     [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
@@ -26,6 +29,7 @@ namespace FFStudio
 
 // Private
         int enemy_finalStage_count;
+        int ally_finalStage_count;
 
 		RecycledSequence recycledSequence_FinalStage = new RecycledSequence();
 #endregion
@@ -41,9 +45,15 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelLoadedResponse()
         {
+			var levelData = CurrentLevelData.Instance.levelData;
+
 			levelProgress.SetValue_NotifyAlways( 0 );
 
-			var levelData = CurrentLevelData.Instance.levelData;
+			enemy_finalStage_count = 0;
+			ally_finalStage_count  = 0;
+
+            // Spawn allies according to level data
+
             // Set Active Scene.
 			if( levelData.scene_overrideAsActiveScene )
 				SceneManager.SetActiveScene( SceneManager.GetSceneAt( 1 ) );
@@ -77,8 +87,21 @@ namespace FFStudio
 		{
 			enemy_finalStage_count--;
 
-            if( enemy_finalStage_count == 0 )
+            if( enemy_finalStage_count <= 0 )
 				StartLevelCompleteSequence();
+		}
+
+		public void OnAllyFinalStageRegister()
+		{
+			ally_finalStage_count++;
+		}
+
+		public void OnAllyFinalStageUnRegister()
+		{
+			ally_finalStage_count--;
+
+			if( ally_finalStage_count <= 0 )
+				FinalStageSequence();
 		}
 
         public void OnMoneyGained()
@@ -95,6 +118,15 @@ namespace FFStudio
 			sequence.AppendCallback( event_projectile_disappear.Raise );
 			sequence.AppendCallback( event_spawn_particle_money.Raise );
 			sequence.AppendInterval( GameSettings.Instance.game_event_level_complete_delay );
+		}
+
+        void FinalStageSequence()
+        {
+			var sequence = recycledSequence_FinalStage.Recycle();
+			sequence.AppendCallback( event_enemy_finalStage_run.Raise );
+			sequence.AppendInterval( GameSettings.Instance.game_finalStage_shoot_delay );
+			sequence.AppendCallback( event_ally_finalStage_shoot.Raise );
+
 		}
 #endregion
     }
