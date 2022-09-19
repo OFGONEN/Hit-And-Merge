@@ -206,7 +206,7 @@ public class AllyGroup : MonoBehaviour
 	{
 		var position = transform.position;
 		position.z += Time.deltaTime * GameSettings.Instance.ally_group_movement_speed_forward;
-		position.x += shared_input_delta.sharedValue.x * GameSettings.Instance.ally_group_movement_speed_lateral * GameSettings.Instance.game_input_resolution;
+		position.x += shared_input_delta.sharedValue.x * GameSettings.Instance.ally_group_movement_speed_lateral / GameSettings.Instance.game_input_resolution;
 
 		var clamValue = GameSettings.Instance.ally_group_movement_clamp - movement_clamp;
 		position.x = Mathf.Clamp( position.x, -clamValue, clamValue );
