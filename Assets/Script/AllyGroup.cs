@@ -63,6 +63,11 @@ public class AllyGroup : MonoBehaviour
 		onAllySpawn = SpawnAlly_Running;
 	}
 
+	public void OnLevelFailed()
+	{
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
 	public void OnFinishLine()
 	{
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
