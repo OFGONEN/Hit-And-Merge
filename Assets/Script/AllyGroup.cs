@@ -18,6 +18,7 @@ public class AllyGroup : MonoBehaviour
     [ SerializeField ] SharedVector2 shared_input_delta; // updates every frame
     [ SerializeField ] GameEvent event_ally_finalStage_Register;
     [ SerializeField ] GameEvent event_ally_finalStage_UnRegister;
+    [ SerializeField ] GameEvent event_level_failed;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Vector3[] ally_spawn_points;
@@ -69,6 +70,7 @@ public class AllyGroup : MonoBehaviour
 	public void OnLevelFailed()
 	{
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		event_level_failed.Raise();
 	}
 
 	public void OnFinishLine()
@@ -94,7 +96,11 @@ public class AllyGroup : MonoBehaviour
 
     public void OnAllyDied( IntGameEvent gameEvent )
     {
-		ally_list.RemoveAt( gameEvent.eventValue );
+		ally_dictionary.Remove( gameEvent.eventValue );
+		DecreaseSpawnIndex();
+
+		if( notif_ally_count.sharedValue <= 0 )
+			OnLevelFailed();
 	}
 #endregion
 

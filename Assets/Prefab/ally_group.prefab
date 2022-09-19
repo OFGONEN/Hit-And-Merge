@@ -47,24 +47,6 @@ MonoBehaviour:
   eventPairs:
   - eventListener:
       gameEvents:
-      - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7334785641493999455}
-          m_TargetAssemblyTypeName: AllyGroup, Assembly-CSharp
-          m_MethodName: OnLevelFailed
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventListener:
-      gameEvents:
       - {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
     unityEvent:
       m_PersistentCalls:
@@ -151,6 +133,7 @@ MonoBehaviour:
   shared_input_delta: {fileID: 11400000, guid: de0314699c2cd064a981260b3e372d0e, type: 2}
   event_ally_finalStage_Register: {fileID: 11400000, guid: 133d5554020844040a30113c403f7eb0, type: 2}
   event_ally_finalStage_UnRegister: {fileID: 11400000, guid: 5358af797de2247e9a78d7f96b649b0b, type: 2}
+  event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   ally_spawn_points:
   - {x: 0, y: 0, z: 0}
   - {x: 0.45, y: 0, z: 0}
