@@ -15,6 +15,8 @@ public class Ally : MonoBehaviour
     [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
     [ SerializeField ] IntGameEvent event_ally_died;
     [ SerializeField ] GunInfo shared_gun_info;
+    [ SerializeField ] GameEvent event_ally_finalStage_Register;
+    [ SerializeField ] GameEvent event_ally_finalStage_UnRegister;
    
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
@@ -51,6 +53,8 @@ public class Ally : MonoBehaviour
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 
 		transform.parent = null;
+
+		event_ally_finalStage_Register.Raise();
 
 		recycledTween.Recycle( transform.DOMove( position, GameSettings.Instance.ally_movement_speed )
 			.SetSpeedBased(),
@@ -135,6 +139,7 @@ public class Ally : MonoBehaviour
 
     void OnFinishLineMovementComplete()
     {
+		event_ally_finalStage_UnRegister.Raise();
 		_animator.SetTrigger( "trigger" ); // Move to aiming state
 	}
 
