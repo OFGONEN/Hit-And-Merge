@@ -60,7 +60,8 @@ public class AllyGroup : MonoBehaviour
 #region API
     public void OnLevelStarted()
     {
-		onAllySpawn = SpawnAlly_Running;
+		onAllySpawn    = SpawnAlly_Running;
+		onUpdateMethod = OnUpdate_Movement;
 	}
 
 	public void OnLevelFailed()
