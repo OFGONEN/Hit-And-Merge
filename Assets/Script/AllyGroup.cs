@@ -13,6 +13,8 @@ public class AllyGroup : MonoBehaviour
   [ Title( "Shared Variable" ) ]
     [ SerializeField ] SharedIntNotifier notif_ally_count;
     [ SerializeField ] Pool_Ally pool_ally;
+    [ SerializeField ] SharedVector2 shared_input_delta; // updates every frame
+
   [ Title( "Setup" ) ]
     [ SerializeField ] Vector3[] ally_spawn_points;
 
@@ -149,6 +151,20 @@ public class AllyGroup : MonoBehaviour
     Vector3 ReturnBufferedPosition()
     {
         return Random.insideUnitCircle.ConvertV3_Z() * GameSettings.Instance.ally_spawn_radius_buffer;
+	}
+
+	void OnUpdate_Movement()
+	{
+		var position = transform.position;
+		position.z += Time.deltaTime * GameSettings.Instance.ally_group_movement_speed_forward;
+		position.x += shared_input_delta.sharedValue.x * GameSettings.Instance.ally_group_movement_speed_lateral * GameSettings.Instance.game_input_resolution;
+
+		var clamValue = GameSettings.Instance.ally_group_movement_clamp - movement_clamp;
+		position.x = Mathf.Clamp( position.x, -clamValue, clamValue );
+
+		transform.position = position;
+
+		shared_input_delta.sharedValue = Vector2.zero;
 	}
 #endregion
 
