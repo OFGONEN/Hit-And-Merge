@@ -52,6 +52,8 @@ public class AllyGroup : MonoBehaviour
     {
 		onAllySpawn    = SpawnAlly_Idle;
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
+
+		spawn_row_ceil = 1;
 	}
 
 	private void Start()
@@ -204,7 +206,7 @@ public class AllyGroup : MonoBehaviour
 		spawn_index++;
 		notif_ally_count.SharedValue++;
 
-		if( spawn_index >= spawn_row_ceil )
+		if( spawn_index > spawn_row_ceil )
 		{
 			spawn_row_index++;
 
