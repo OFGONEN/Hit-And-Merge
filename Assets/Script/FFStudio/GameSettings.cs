@@ -31,6 +31,14 @@ namespace FFStudio
 
     [ Title( "Projectile" ) ]
         [ LabelText( "Projectile Travel Distance" ) ] public float projectile_travel_distance;
+
+    [ Title( "Gate" ) ]
+        [ LabelText( "Gate Height" ) ] public float gate_height;
+	    [ LabelText( "Gate UI Spawn Offset" ) ] public float gate_ui_spawn_damage_offset; 
+	    [ LabelText( "Gate UI Spawn Damage Size" ) ] public float gate_ui_spawn_damage_size; 
+	    [ LabelText( "Gate UI Spawn Damage Color" ) ] public Color gate_ui_spawn_damage_color; 
+	    [ LabelText( "Gate UI Spawn Money Size" ) ] public float gate_ui_spawn_money_size; 
+	    [ LabelText( "Gate UI Spawn Money Color" ) ] public Color gate_ui_spawn_money_color; 
     
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
