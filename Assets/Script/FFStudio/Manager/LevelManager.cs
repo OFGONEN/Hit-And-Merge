@@ -50,7 +50,6 @@ namespace FFStudio
 			var levelData = CurrentLevelData.Instance.levelData;
 
 			levelProgress.SetValue_NotifyAlways( 0 );
-			notif_ally_count.SharedValue = 0;
 
 			enemy_finalStage_count = 0;
 			ally_finalStage_count  = 0;
@@ -67,7 +66,6 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelRevealedResponse()
         {
-			event_ally_spawn.Raise( CurrentLevelData.Instance.levelData.ally_count );
 			event_level_started.Raise();
 		}
 

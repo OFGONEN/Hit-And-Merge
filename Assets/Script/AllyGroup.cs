@@ -54,6 +54,12 @@ public class AllyGroup : MonoBehaviour
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
 
+	private void Start()
+	{
+		notif_ally_count.SetValue_NotifyAlways( 0 );
+		OnSpawnAlly( CurrentLevelData.Instance.levelData.ally_count );
+	}
+
     private void Update()
     {
 		onUpdateMethod();
@@ -105,6 +111,14 @@ public class AllyGroup : MonoBehaviour
 #endregion
 
 #region Implementation
+    void OnSpawnAlly( int count )
+    {
+		var spawnCount = Mathf.Min( GameSettings.Instance.ally_group_count_max - ally_dictionary.Count, count );
+
+		for( var i = 0; i < spawnCount; i++ )
+			onAllySpawn();
+	}
+
 	void AlignAlliesOnFinalStage()
 	{
 		var position      = notif_fireRange_position.sharedValue;
