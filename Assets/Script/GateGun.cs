@@ -7,14 +7,17 @@ using FFStudio;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
-public class GateGun : MonoBehaviour
+public class GateGun : MonoBehaviour, IGate
 {
 #region Fields
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] GunInfo shared_gun_current;
     [ LabelText( "Gun Gate Health" ), SerializeField ] float gate_gun_health;
-    [ SerializeField ] Image gate_gun_image; 
+
+  [ Title( "Components" ) ]
+	[ SerializeField ] Collider gate_collider_projectile;
     [ SerializeField ] GameObject gate_gun_loot; 
+    [ SerializeField ] Image gate_gun_image; 
 
     float gate_gun_health_current = 0;
 #endregion
@@ -39,6 +42,11 @@ public class GateGun : MonoBehaviour
 
 			gameObject.SetActive( false );
         }
+	}
+
+	public void Disable()
+	{
+		gate_collider_projectile.enabled = false;
 	}
 #endregion
 

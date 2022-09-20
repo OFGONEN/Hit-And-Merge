@@ -22,6 +22,8 @@ public class GateMoney : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] TextMeshProUGUI gate_text; 
     [ SerializeField ] ParticleSpawner gate_particleSpawner; 
+    [ SerializeField ] Collider gate_collider_ally; 
+    [ SerializeField ] Collider gate_collider_projectile; 
 #endregion
 
 #region Properties
@@ -57,6 +59,12 @@ public class GateMoney : MonoBehaviour
 		gate_particleSpawner.Spawn( 0 );
 
 		gameObject.SetActive( false );
+	}
+
+	public void Disable()
+	{
+		gate_collider_ally.enabled       = false;
+		gate_collider_projectile.enabled = false;
 	}
 #endregion
 
