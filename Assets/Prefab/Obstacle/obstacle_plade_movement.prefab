@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2317565807145173774}
   - component: {fileID: 2317565807145173775}
   - component: {fileID: 2317565807145173772}
+  - component: {fileID: 5514597767713507204}
   m_Layer: 29
   m_Name: obstacle_plade_movement
   m_TagString: Untagged
@@ -153,6 +154,50 @@ MonoBehaviour:
         duration: 200
         rotationMode: 0
         rotationAxisMaskVector: {x: 0, y: 1, z: 0}
+--- !u!114 &5514597767713507204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317565807145173769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+      - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2317565807145173775}
+          m_TargetAssemblyTypeName: FFStudio.TweenChain, Assembly-CSharp
+          m_MethodName: Kill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2317565807145173772}
+          m_TargetAssemblyTypeName: FFStudio.TweenChain, Assembly-CSharp
+          m_MethodName: Kill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &2317565808875689719
 PrefabInstance:
   m_ObjectHideFlags: 0
