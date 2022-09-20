@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 public class LootMoney : MonoBehaviour
@@ -40,14 +41,18 @@ public class LootMoney : MonoBehaviour
 
     public void OnSpawnParticleMoney()
     {
+		DOVirtual.DelayedCall( Random.Range( 0, GameSettings.Instance.ui_particle_spawn_delay ), SpawnParticleMoney );
+	}
+#endregion
+
+#region Implementation
+	void SpawnParticleMoney()
+	{
 		var screenPosition = _camera.WorldToScreenPoint( transform.position );
 		pool_ui_particle_money.Spawn( screenPosition );
 
 		pool_money.ReturnEntity( this );
 	}
-#endregion
-
-#region Implementation
 #endregion
 
 #region Editor Only
