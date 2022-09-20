@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   ally_movement_speed: 1
-  ally_spawn_radius: 0.225
+  ally_spawn_radius: 0.3375
   ally_spawn_radius_buffer: 0.05625
   ally_group_count_max: 331
   ally_group_movement_speed_forward: 1
