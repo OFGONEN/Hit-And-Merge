@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2542766793598200762}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2542766792680227210
 BoxCollider:
@@ -328,8 +328,8 @@ Transform:
   - {fileID: 3048868827242555409}
   - {fileID: 2542766794116824837}
   - {fileID: 2542766793347298042}
-  - {fileID: 2542766793704558133}
   - {fileID: 2542766792680227316}
+  - {fileID: 2542766793704558133}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -352,6 +352,8 @@ MonoBehaviour:
   gate_money_value_cofactor: 1
   gate_text: {fileID: 2542766793491010167}
   gate_particleSpawner: {fileID: 2542766793598200761}
+  gate_collider_ally: {fileID: 2542766792680227210}
+  gate_collider_projectile: {fileID: 2542766793704558539}
 --- !u!114 &2542766793598200761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +419,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2542766793598200762}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2542766793704558539
 BoxCollider:

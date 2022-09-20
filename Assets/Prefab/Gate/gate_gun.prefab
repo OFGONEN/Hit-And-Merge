@@ -53,8 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shared_gun_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gate_gun_health: 100
-  gate_gun_image: {fileID: 5190251225466983948}
+  gate_collider_projectile: {fileID: 239187795079722796}
   gate_gun_loot: {fileID: 0}
+  gate_gun_image: {fileID: 5190251225466983948}
 --- !u!54 &239187794976232280
 Rigidbody:
   m_ObjectHideFlags: 0
