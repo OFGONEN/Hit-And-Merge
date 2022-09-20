@@ -19,6 +19,7 @@ MonoBehaviour:
   ally_group_movement_speed_forward: 1
   ally_group_movement_speed_lateral: 10
   ally_group_movement_clamp: 4
+  ally_group_reArrange_delay: 0.75
   enemy_finalStage_movement_speed: 2.5
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 1

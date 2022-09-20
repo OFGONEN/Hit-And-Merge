@@ -20,6 +20,7 @@ namespace FFStudio
         [ LabelText( "Ally Group Movement Speed Forward" ) ] public float ally_group_movement_speed_forward;
         [ LabelText( "Ally Group Movement Speed Lateral" ) ] public float ally_group_movement_speed_lateral;
         [ LabelText( "Ally Group Movement Clamp" ) ] public float ally_group_movement_clamp;
+        [ LabelText( "Ally Group ReArrange Delay" ) ] public float ally_group_reArrange_delay = 0.75f;
 
     [ Title( "Enemy" ) ]
         [ LabelText( "Final Stage Enemy Movement Speed" ) ] public float enemy_finalStage_movement_speed;

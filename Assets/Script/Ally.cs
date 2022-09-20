@@ -21,7 +21,9 @@ public class Ally : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
     [ SerializeField ] Transform parent_projectile_shoot;
-// Private
+
+	public int SpawnIndex => spawn_index;
+	// Private
 	int spawn_index;
     float gun_fire_cooldown;
 	RecycledTween recycledTween = new RecycledTween();

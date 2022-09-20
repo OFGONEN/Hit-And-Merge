@@ -34,6 +34,7 @@ public class AllyGroup : MonoBehaviour
 	float movement_clamp = 0;
 
 	RecycledTween recycledTween = new RecycledTween();
+	RecycledTween recycledTween_ReArrange = new RecycledTween();
 
 	UnityMessage onAllySpawn;
     UnityMessage onUpdateMethod;
@@ -221,9 +222,7 @@ public class AllyGroup : MonoBehaviour
 	{
 		notif_ally_count.SharedValue--;
 
-		bool arrangeAllies = notif_ally_count.sharedValue <= spawn_row_floor;
-
-		if( arrangeAllies )
+		if( notif_ally_count.sharedValue <= spawn_row_floor )
 		{
 			spawn_row_index--;
 
@@ -233,8 +232,11 @@ public class AllyGroup : MonoBehaviour
 			movement_clamp = ( spawn_row_index + 0.5f ) * GameSettings.Instance.ally_spawn_radius;
 		}
 
-        if( arrangeAllies )
-			ArrangeAllies();
+		if( !recycledTween_ReArrange.IsPlaying() )
+			recycledTween_ReArrange.Recycle( DOVirtual.DelayedCall(
+				GameSettings.Instance.ally_group_reArrange_delay,
+				ArrangeAllies
+			) );
 	}
 
     void ArrangeAllies()
@@ -249,7 +251,6 @@ public class AllyGroup : MonoBehaviour
 			ally.Rearrange( index, ally_spawn_points[ index ] + ReturnBufferedPosition() );
 			index++;
 		}
-
 
 		ally_dictionary.Clear();
 
