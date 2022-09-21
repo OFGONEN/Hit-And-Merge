@@ -15,6 +15,7 @@ public class GateSpawn : MonoBehaviour
   [ Title( "Shared Variable" ) ]
     [ SerializeField ] GunInfo shared_gun_current;
     [ SerializeField ] IntGameEvent event_ally_spawn;
+    [ SerializeField ] IntGameEvent event_ally_kill;
     [ SerializeField ] Pool_UIPopUpText pool_ui_popUpText;
 
   [ Title( "Setup" ) ]
@@ -36,6 +37,7 @@ public class GateSpawn : MonoBehaviour
     char gate_spawn_sign;
 
     UnityMessage onTrigger_Ally;
+    UnityMessage onAllySpawn;
     UnityMessage onSetGateColor;
     TriggerMessage onTrigger_Projectile;
 #endregion
@@ -50,15 +52,19 @@ public class GateSpawn : MonoBehaviour
 		onTrigger_Ally       = Trigger_Ally;
 		onGateUpdate         = ExtensionMethods.EmptyMethod;
 		onSetGateColor       = ExtensionMethods.EmptyMethod;
+		onAllySpawn          = SpawnAlly;
 
-        if( gate_spawn_isLocked )
+		if( gate_spawn_isLocked )
         {
 			onTrigger_Projectile = ExtensionMethods.EmptyMethod;
 			onTrigger_Ally       = ExtensionMethods.EmptyMethod;
         }
 
         if( gate_spawn_count < 0 )
+		{
 			onSetGateColor = SetGateColor;
+			onAllySpawn    = KillAlly;
+		}
 	}
 #endregion
 
@@ -122,7 +128,7 @@ public class GateSpawn : MonoBehaviour
     {
 		event_ally_spawn.Raise( Mathf.FloorToInt( gate_spawn_count ) );
 		onGateActivate();
-		gate_spawn_event_activate.Invoke();
+		onAllySpawn();
 
 		gameObject.SetActive( false );
     }
@@ -134,10 +140,22 @@ public class GateSpawn : MonoBehaviour
 			var main            = gate_spawn_color.main;
 			    main.startColor = GameSettings.Instance.gate_color_positive;
 
-			onSetGateColor = ExtensionMethods.EmptyMethod;
+			onSetGateColor  = ExtensionMethods.EmptyMethod;
 			gate_spawn_sign = '+';
-        }
+
+			onAllySpawn = SpawnAlly;
+		}
     }
+
+	void SpawnAlly()
+	{
+		event_ally_spawn.Raise( Mathf.FloorToInt( gate_spawn_count ) );
+	}
+
+	void KillAlly()
+	{
+		event_ally_kill.Raise( Mathf.FloorToInt( gate_spawn_count ) );
+	}
 #endregion
 
 #region Editor Only
