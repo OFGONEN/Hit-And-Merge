@@ -42,15 +42,25 @@ public class GateMoney : MonoBehaviour
 		uiSpawnPosition.y = Random.Range( gateHeight / 4f, gateHeight);
 		uiSpawnPosition.z = transform.position.z + GameSettings.Instance.gate_ui_spawn_damage_offset;
 
+		var stringBuilder = ExtensionMethods.stringBuilder;
+		stringBuilder.Clear();
+		stringBuilder.Append( '$' );
+		stringBuilder.Append( damage );
+
 		pool_ui_popUpText.GetEntity().Spawn( 
 			uiSpawnPosition, 
-			"$" + damage, 
+			stringBuilder.ToString(), 
 			GameSettings.Instance.gate_ui_spawn_money_size, 
 			GameSettings.Instance.gate_ui_spawn_money_color 
 		);
 
 		gate_money_value += damage;
-		gate_text.text = "$" + gate_money_value;
+
+		stringBuilder.Clear();
+		stringBuilder.Append( '$' );
+		stringBuilder.Append( gate_money_value );
+
+		gate_text.text = stringBuilder.ToString();
 	}
 
     public void OnTrigger_Ally()
@@ -75,7 +85,12 @@ public class GateMoney : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-		gate_text.text = "$" + gate_money_value;
+		var stringBuilder = ExtensionMethods.stringBuilder;
+		stringBuilder.Clear();
+		stringBuilder.Append( '$' );
+		stringBuilder.Append( gate_money_value );
+
+		gate_text.text = ExtensionMethods.stringBuilder.ToString();
 	}
 #endif
 #endregion
