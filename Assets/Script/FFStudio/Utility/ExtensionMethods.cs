@@ -179,6 +179,11 @@ namespace FFStudio
 			/* Intentionally empty, by definition. */
 		}
 
+		public static void EmptyMethod( Collider collider )
+		{
+			/* Intentionally empty, by definition. */
+		}
+
 		public static Vector2 Clamp( this Vector2 value, Vector2 min, Vector2 max )
 		{
 			value.x = Mathf.Clamp( value.x, min.x, max.x );
