@@ -58,7 +58,7 @@ public class GateMoney : MonoBehaviour
 
 		stringBuilder.Clear();
 		stringBuilder.Append( '$' );
-		stringBuilder.Append( gate_money_value );
+		stringBuilder.Append( gate_money_value.ToString( "0.0" ) );
 
 		gate_text.text = stringBuilder.ToString();
 	}
@@ -88,7 +88,7 @@ public class GateMoney : MonoBehaviour
 		var stringBuilder = ExtensionMethods.stringBuilder;
 		stringBuilder.Clear();
 		stringBuilder.Append( '$' );
-		stringBuilder.Append( gate_money_value );
+		stringBuilder.Append( gate_money_value.ToString( "0.0" ) );
 
 		gate_text.text = ExtensionMethods.stringBuilder.ToString();
 	}
