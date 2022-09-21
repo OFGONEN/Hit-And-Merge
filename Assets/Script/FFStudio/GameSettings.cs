@@ -34,6 +34,9 @@ namespace FFStudio
 
     [ Title( "Gate" ) ]
         [ LabelText( "Gate Height" ) ] public float gate_height;
+        [ LabelText( "Gate Color Positive" ) ] public Color gate_color_positive;
+        [ LabelText( "Gate Color Negative" ) ] public Color gate_color_negative;
+        [ LabelText( "Gate Color Locked" ) ] public Color gate_color_locked;
 	    [ LabelText( "Gate UI Spawn Offset" ) ] public float gate_ui_spawn_damage_offset; 
 	    [ LabelText( "Gate UI Spawn Damage Size" ) ] public float gate_ui_spawn_damage_size; 
 	    [ LabelText( "Gate UI Spawn Damage Color" ) ] public Color gate_ui_spawn_damage_color; 
