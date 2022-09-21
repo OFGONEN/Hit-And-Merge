@@ -34,9 +34,13 @@ public class GateSpawn : MonoBehaviour
     [ SerializeField ] Transform gate_spawn_canvas;
     [ SerializeField ] Transform gate_spawn_pole_right;
 
-    public UnityMessage onGateUpdate;
+	public float GateCount => gate_spawn_count;
+	public float GateSize => gate_spawn_size;
+
+	public GateValueUpdate onGateUpdate;
     public UnityMessage onGateActivate;
 // Private
+    int gate_spawn_index;
     char gate_spawn_sign;
 
     UnityMessage onTrigger_Ally;
@@ -72,6 +76,21 @@ public class GateSpawn : MonoBehaviour
 #endregion
 
 #region API
+	public void Spawn( int index )
+	{
+		gate_spawn_index = index;
+	}
+
+	public void Merge( float count, float size )
+	{
+	}
+
+	public void OnMerged()
+	{
+		//todo Disable
+		//todo if locked, locked image
+	}
+
     public void OnTrigger_Projectile( Collider collider )
     {
 		onTrigger_Projectile( collider );
@@ -130,7 +149,7 @@ public class GateSpawn : MonoBehaviour
 		gate_spawn_text.text = stringBuilder.ToString();
 
 		onSetGateColor();
-		onGateUpdate();
+		onGateUpdate( gate_spawn_index );
 	}
 
     void Trigger_Ally()
