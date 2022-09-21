@@ -28,8 +28,11 @@ public class GateSpawn : MonoBehaviour
     [ SerializeField ] ParticleSystem gate_spawn_color;
     [ SerializeField ] TextMeshProUGUI gate_spawn_text;
     [ SerializeField ] Image gate_spawn_locked_image;
-    [ SerializeField ] Collider gate_spawn_collider_projectile;
     [ SerializeField ] Collider gate_spawn_collider_ally;
+    [ SerializeField ] Collider gate_spawn_collider_projectile;
+    [ SerializeField ] Transform gate_spawn_pivot_scale_left;
+    [ SerializeField ] Transform gate_spawn_canvas;
+    [ SerializeField ] Transform gate_spawn_pole_right;
 
     public UnityMessage onGateUpdate;
     public UnityMessage onGateActivate;
@@ -79,9 +82,15 @@ public class GateSpawn : MonoBehaviour
 		onTrigger_Ally();
 	}
 
+	[ Button() ]
     public void ChangeSize( float size )
     {
-    }
+		gate_spawn_size = size;
+
+		gate_spawn_pivot_scale_left.localScale = Vector3.one.SetX( gate_spawn_size );
+		gate_spawn_pole_right.localPosition    = gate_spawn_pole_right.localPosition.SetX( gate_spawn_size );
+		gate_spawn_canvas.localPosition        = gate_spawn_canvas.localPosition.SetX( gate_spawn_size / 2f );
+	}
 
 	public void Disable()
 	{
@@ -174,6 +183,10 @@ public class GateSpawn : MonoBehaviour
 			main.startColor = GameSettings.Instance.gate_color_positive;
 			gate_spawn_sign = '+';
         }
+
+		gate_spawn_locked_image.enabled        = false;
+		gate_spawn_collider_ally.enabled       = true;
+		gate_spawn_collider_projectile.enabled = true;
         
         if( gate_spawn_isLocked )
         {
