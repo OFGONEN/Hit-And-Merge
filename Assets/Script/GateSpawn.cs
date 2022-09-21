@@ -76,6 +76,12 @@ public class GateSpawn : MonoBehaviour
     public void ChangeSize( float size )
     {
     }
+
+	public void Disable()
+	{
+		gate_spawn_collider_ally.enabled = false;
+		gate_spawn_collider_projectile.enabled = false;
+	}
 #endregion
 
 #region Implementation
