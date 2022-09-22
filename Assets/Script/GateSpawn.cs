@@ -155,6 +155,13 @@ public class GateSpawn : MonoBehaviour
 		gate_spawn_canvas.localPosition        = gate_spawn_canvas.localPosition.SetX( gate_spawn_size / 2f );
 	}
 
+	public void ChangeSize()
+	{
+		gate_spawn_pivot_scale_left.localScale = Vector3.one.SetX( gate_spawn_size );
+		gate_spawn_pole_right.localPosition    = gate_spawn_pole_right.localPosition.SetX( gate_spawn_size );
+		gate_spawn_canvas.localPosition        = gate_spawn_canvas.localPosition.SetX( gate_spawn_size / 2f );
+	}
+
 	public void DisableColliders()
 	{
 		gate_spawn_collider_ally.enabled       = false;
