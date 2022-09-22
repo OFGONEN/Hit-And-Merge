@@ -83,7 +83,27 @@ public class GateSpawn : MonoBehaviour
 #region API
 	public void Merge( float count, float size )
 	{
+		if( gate_spawn_isLocked )
+		{
+			var gateLockedImage = gate_spawn_canvas.GetChild( 0 );
+			gateLockedImage.SetParent( null );
+
+			var sequence_locked = recycledSequence_Locked.Recycle();
+			sequence_locked.Join( gateLockedImage.DOMove(
+				gateLockedImage.position.SetY( GameSettings.Instance.gate_ui_canvas_float_position ),
+				GameSettings.Instance.gate_ui_canvas_float_duration )
+			);
+
+			sequence_locked.AppendCallback( () =>
+			{
+				gateLockedImage.gameObject.SetActive( false );
+				// gameObject.SetActive( false );
+			} );
+		}
+
+		UnlockGate();
 		DisableColliders();
+
 		var sequence = recycledSequence.Recycle();
 
 		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
@@ -176,6 +196,15 @@ public class GateSpawn : MonoBehaviour
 #endregion
 
 #region Implementation
+	void UnlockGate()
+	{
+		gate_spawn_isLocked  = false;
+		onTrigger_Projectile = Trigger_Projectile;
+		onTrigger_Ally       = Trigger_Ally;
+
+		EnableColliders();
+		SetGateColor();
+	}
     void Trigger_Projectile( Collider collider )
     {
 		var damage = shared_gun_current.GunDamage;
