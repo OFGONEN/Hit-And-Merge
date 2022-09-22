@@ -17,9 +17,6 @@ public class GateMultipleSystem : MonoBehaviour
 #endregion
 
 #region Unity API
-#endregion
-
-#region API
     private void Start()
     {
         for( var i = 0; i < gate_list.Count; i++ )
@@ -29,6 +26,14 @@ public class GateMultipleSystem : MonoBehaviour
 			gate.onGateActivate = OnGateActivate;
 		}
     }
+#endregion
+
+#region API
+	public void DisableAllGates()
+	{
+        for( var i = 0; i < gate_list.Count; i++ )
+			gate_list[ i ].DisableColliders();
+	}
 #endregion
 
 #region Implementation
