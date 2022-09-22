@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2542766792680227316
 Transform:
@@ -309,7 +309,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2542766793598200762
 Transform:
@@ -350,6 +350,9 @@ MonoBehaviour:
   notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
   gate_money_value: 1
   gate_money_value_cofactor: 1
+  gate_money_event_activate:
+    m_PersistentCalls:
+      m_Calls: []
   gate_text: {fileID: 2542766793491010167}
   gate_particleSpawner: {fileID: 2542766793598200761}
   gate_collider_ally: {fileID: 2542766792680227210}
@@ -404,7 +407,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2542766793704558133
 Transform:
@@ -471,7 +474,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 633988019181555864, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004297242384740758, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_RootOrder
@@ -523,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022439446990846542, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
@@ -607,7 +610,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 633988019181555864, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004297242384740758, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_RootOrder
@@ -659,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022439446990846542, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
