@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using FFStudio;
 using TMPro;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 public class GateSpawn : MonoBehaviour
@@ -47,6 +48,8 @@ public class GateSpawn : MonoBehaviour
     UnityMessage onAllySpawn;
     UnityMessage onSetGateColor;
     TriggerMessage onTrigger_Projectile;
+
+	RecycledSequence recycledSequence = new RecycledSequence();
 #endregion
 
 #region Properties
@@ -83,12 +86,44 @@ public class GateSpawn : MonoBehaviour
 
 	public void Merge( float count, float size )
 	{
+		Disable();
+		var sequence = recycledSequence.Recycle();
+
+		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
+			GameSettings.Instance.gate_merge_duration ) );
+		sequence.AppendCallback( () => 
+			{
+				gate_spawn_count += count;
+				gate_spawn_size += size;
+				ChangeSize( gate_spawn_size );
+				Enable();
+			} );
 	}
 
 	public void OnMerged()
 	{
-		//todo Disable
-		//todo if locked, locked image
+		Disable();
+
+		var sequence = recycledSequence.Recycle();
+		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
+			GameSettings.Instance.gate_merge_duration ) );
+
+		if( gate_spawn_isLocked )
+		{
+			gate_spawn_canvas.SetParent( null );
+			gate_spawn_canvas.GetChild( 1 ).gameObject.SetActive( false );
+
+			sequence.Join( gate_spawn_canvas.DOMove(
+				gate_spawn_canvas.position.SetY( GameSettings.Instance.gate_ui_canvas_float_position ),
+				GameSettings.Instance.gate_merge_duration )
+			);
+		}
+
+		sequence.AppendCallback( () =>
+			{
+				gate_spawn_canvas.gameObject.SetActive( false );
+				gameObject.SetActive( false );
+			});
 	}
 
     public void OnTrigger_Projectile( Collider collider )
@@ -113,8 +148,14 @@ public class GateSpawn : MonoBehaviour
 
 	public void Disable()
 	{
-		gate_spawn_collider_ally.enabled = false;
+		gate_spawn_collider_ally.enabled       = false;
 		gate_spawn_collider_projectile.enabled = false;
+	}
+
+	public void Enable()
+	{
+		gate_spawn_collider_ally.enabled       = true;
+		gate_spawn_collider_projectile.enabled = true;
 	}
 #endregion
 
