@@ -34,7 +34,8 @@ namespace FFStudio
 
     [ Title( "Gate" ) ]
         [ LabelText( "Gate Height" ) ] public float gate_height;
-        [ LabelText( "Gate Height" ) ] public float gate_merge_buffer = 0.1f;
+        [ LabelText( "Gate Size" ) ] public float gate_size = 5;
+        [ LabelText( "Gate Merge Buffer" ) ] public float gate_merge_buffer = 0.1f;
         [ LabelText( "Gate Color Positive" ) ] public Color gate_color_positive;
         [ LabelText( "Gate Color Negative" ) ] public Color gate_color_negative;
         [ LabelText( "Gate Color Locked" ) ] public Color gate_color_locked;
