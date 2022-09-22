@@ -93,10 +93,15 @@ public class GateSpawn : MonoBehaviour
 
 		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
+
 		sequence.AppendCallback( () => 
 			{
+				transform.localScale = Vector3.one;
+
 				gate_spawn_count += count;
-				gate_spawn_size += size;
+				gate_spawn_size  += size;
+
+				UpdateGateText();
 				ChangeSize( gate_spawn_size );
 				EnableColliders();
 			} );
