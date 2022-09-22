@@ -89,7 +89,7 @@ public class GateSpawn : MonoBehaviour
 		DisableColliders();
 		var sequence = recycledSequence.Recycle();
 
-		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
+		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
 		sequence.AppendCallback( () => 
 			{
@@ -105,7 +105,7 @@ public class GateSpawn : MonoBehaviour
 		DisableColliders();
 
 		var sequence = recycledSequence.Recycle();
-		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
+		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
 
 		if( gate_spawn_isLocked )
