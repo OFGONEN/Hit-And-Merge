@@ -26,6 +26,7 @@ public class AllyGroup : MonoBehaviour
 // Private	
     Dictionary< int, Ally > ally_dictionary = new Dictionary<int, Ally>( 331 );
     List< Ally > ally_list = new List< Ally >( 331 );
+    List< Ally > ally_list_kill_cache = new List< Ally >( 32 );
 
 	[ ShowInInspector, ReadOnly ] int spawn_index     = 0;
 	[ ShowInInspector, ReadOnly ] int spawn_row_ceil  = 0;
@@ -101,6 +102,27 @@ public class AllyGroup : MonoBehaviour
 
 		for( var i = 0; i < spawnCount; i++ )
 			onAllySpawn();
+	}
+
+	public void OnKillAlly( IntGameEvent gameEvent )
+	{
+		var eventValue = gameEvent.eventValue;
+		var killCount = Mathf.Min( eventValue, ally_dictionary.Count );
+
+		ally_list_kill_cache.Clear();
+
+		int count = 0;
+		foreach( var ally in ally_dictionary.Values )
+		{
+			ally_list_kill_cache.Add( ally );
+			count++;
+
+			if( count == killCount )
+				break;
+		}
+
+		foreach( var ally in ally_list_kill_cache )
+			ally.OnTrigger(); // Insta Death
 	}
 
     public void OnAllyDied( IntGameEvent gameEvent )
