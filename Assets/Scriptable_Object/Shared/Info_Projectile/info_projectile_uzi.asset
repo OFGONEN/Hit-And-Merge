@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: info_projectile_uzi
   m_EditorClassIdentifier: 
   projectile_onHit_pfx_key: bullet_powerful
-  projectile_speed: 1.5
+  projectile_speed: 30
