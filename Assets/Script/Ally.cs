@@ -125,7 +125,7 @@ public class Ally : MonoBehaviour
     public void StartShooting()
     {
 		ResetGunCooldown();
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		onUpdateMethod = ShootingRoutine;
 	}
 #endregion
 
