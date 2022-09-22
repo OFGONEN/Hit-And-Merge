@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: tool_level_creator
   m_EditorClassIdentifier: 
   ground_count: 10
+  environment_offset: -10
   data_ground:
     ground_object: {fileID: 3882032098502979236, guid: ea14e41328eff9c468f4ac9beabdd639, type: 3}
     ground_length: 10
   data_finishLine:
-    finishLine_object: {fileID: 0}
+    finishLine_object: {fileID: 7895865270222798804, guid: eb691e682be47834facdfd792cc65631, type: 3}
     finishLine_offset: 0

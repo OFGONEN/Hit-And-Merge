@@ -15,6 +15,7 @@ public class LevelCreator : ScriptableObject
 {
   [ Title( "Environment Setup" ) ]
     [ SerializeField ] public int ground_count;
+    [ SerializeField ] public float environment_offset;
 
   [ Title( "Data Setup" ) ]
     [ SerializeField ] GroundData data_ground;
@@ -28,6 +29,7 @@ public class LevelCreator : ScriptableObject
 		// EditorUtility.SetDirty( environmentParent );
 		EditorSceneManager.MarkAllScenesDirty();
 		environmentParent.DestoryAllChildren();
+		environmentParent.position = Vector3.forward * environment_offset;
 
 		int i;
 		for( i = 0; i < ground_count; i++ )
