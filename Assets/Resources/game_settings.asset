@@ -36,9 +36,12 @@ MonoBehaviour:
   gate_ui_spawn_damage_color: {r: 1, g: 1, b: 1, a: 1}
   gate_ui_spawn_money_size: 3
   gate_ui_spawn_money_color: {r: 0.12583709, g: 1, b: 0, a: 1}
-  gate_ui_canvas_float_position: 0
-  gate_merge_size_cofactor: 0
-  gate_merge_duration: 0
+  gate_ui_canvas_float_position: 3
+  gate_ui_canvas_float_duration: 1
+  gate_merge_size_cofactor: 0.33333334
+  gate_merge_duration: 0.25
+  gate_merge_punch_value: 1
+  gate_merge_punch_duration: 0.35
   camera_follow_speed_depth: 2.8
   game_event_level_complete_delay: 1
   game_input_resolution: 100

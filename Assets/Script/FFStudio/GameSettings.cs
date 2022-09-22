@@ -44,8 +44,11 @@ namespace FFStudio
 	    [ LabelText( "Gate UI Spawn Money Size" ) ] public float gate_ui_spawn_money_size; 
 	    [ LabelText( "Gate UI Spawn Money Color" ) ] public Color gate_ui_spawn_money_color; 
 	    [ LabelText( "Gate UI Canvas Float Position" ) ] public float gate_ui_canvas_float_position; // Absolute position 
+	    [ LabelText( "Gate UI Canvas Float Duration" ) ] public float gate_ui_canvas_float_duration; 
 	    [ LabelText( "Gate Merge Size Cofactor" ) ] public float gate_merge_size_cofactor;  
 	    [ LabelText( "Gate Merge Duration" ) ] public float gate_merge_duration;  
+	    [ LabelText( "Gate Merge Punch Value" ) ] public float gate_merge_punch_value;  
+	    [ LabelText( "Gate Merge Punch Duration" ) ] public float gate_merge_punch_duration;  
     
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
