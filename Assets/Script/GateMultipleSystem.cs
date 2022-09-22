@@ -48,7 +48,7 @@ public class GateMultipleSystem : MonoBehaviour
 
     void TryMerge( GateSpawn leftGate, GateSpawn rightGate )
     {
-		var canMerge = Mathf.Approximately( Mathf.Abs( rightGate.GateCount - leftGate.GateCount ), GameSettings.Instance.gate_merge_buffer );
+		var canMerge = Mathf.Abs( rightGate.GateCount - leftGate.GateCount ) <= GameSettings.Instance.gate_merge_buffer;
 
 		if( canMerge && leftGate.GateCount > 0 && rightGate.GateCount > 0 )
 		{
