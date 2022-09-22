@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +16,8 @@ namespace FFStudio
 
 		static List< Transform > baseModelBones   = new List< Transform >( 96 );
 		static List< Transform > targetModelBones = new List< Transform >( 96 );
+
+		public static StringBuilder stringBuilder = new StringBuilder( 64 );
 
 		public static Vector2 ReturnV2FromUnSignedAngle( this float angle )
 		{
@@ -160,6 +163,11 @@ namespace FFStudio
 		{
 			/* Intentionally empty, by definition. */
 		}
+
+		public static void EmptyMethod( int index )
+		{
+			/* Intentionally empty, by definition. */
+		}
 		
 		public static void EmptyMethod( Vector2 vector2 )
 		{
@@ -172,6 +180,11 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod( Camera camera )
+		{
+			/* Intentionally empty, by definition. */
+		}
+
+		public static void EmptyMethod( Collider collider )
 		{
 			/* Intentionally empty, by definition. */
 		}
