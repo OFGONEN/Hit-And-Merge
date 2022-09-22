@@ -42,7 +42,7 @@ public class GateSpawn : MonoBehaviour
     public UnityMessage onGateActivate;
 // Private
     int gate_spawn_index;
-    char gate_spawn_sign;
+    string gate_spawn_sign;
 
     UnityMessage onTrigger_Ally;
     UnityMessage onAllySpawn;
@@ -187,7 +187,7 @@ public class GateSpawn : MonoBehaviour
 
 		var stringBuilder = ExtensionMethods.stringBuilder;
 		stringBuilder.Clear();
-		stringBuilder.Append( '$' );
+		stringBuilder.Append( '+' );
 		stringBuilder.Append( damage );
 
 		pool_ui_popUpText.GetEntity().Spawn(
@@ -199,13 +199,9 @@ public class GateSpawn : MonoBehaviour
 
 		gate_spawn_count += damage;
 
-		stringBuilder.Clear();
-		stringBuilder.Append( '$' );
-		stringBuilder.Append( gate_spawn_count.ToString( "0.0" ) );
-
-		gate_spawn_text.text = stringBuilder.ToString();
-
 		onSetGateColor();
+		UpdateGateText();
+
 		onGateUpdate( gate_spawn_index );
 	}
 
@@ -218,6 +214,16 @@ public class GateSpawn : MonoBehaviour
 		gameObject.SetActive( false );
     }
 
+	void UpdateGateText()
+	{
+		var stringBuilder = ExtensionMethods.stringBuilder;
+		stringBuilder.Clear();
+		stringBuilder.Append( gate_spawn_sign );
+		stringBuilder.Append( gate_spawn_count.ToString( "0.0" ) );
+
+		gate_spawn_text.text = stringBuilder.ToString();
+	}
+
     void SetGateColor()
     {
         if( gate_spawn_count > 0 )
@@ -226,7 +232,7 @@ public class GateSpawn : MonoBehaviour
 			    main.startColor = GameSettings.Instance.gate_color_positive;
 
 			onSetGateColor  = ExtensionMethods.EmptyMethod;
-			gate_spawn_sign = '+';
+			gate_spawn_sign = "+";
 
 			onAllySpawn = SpawnAlly;
 		}
@@ -252,12 +258,12 @@ public class GateSpawn : MonoBehaviour
 		if( gate_spawn_count < 0 )
         {
 			main.startColor = GameSettings.Instance.gate_color_negative;
-			gate_spawn_sign = '-';
+			gate_spawn_sign = string.Empty;
 		}
         else
         {
 			main.startColor = GameSettings.Instance.gate_color_positive;
-			gate_spawn_sign = '+';
+			gate_spawn_sign = "+";
         }
 
 		gate_spawn_locked_image.enabled        = false;
@@ -273,12 +279,7 @@ public class GateSpawn : MonoBehaviour
 			gate_spawn_collider_projectile.enabled = false;
 		}
 
-		var stringBuiler = ExtensionMethods.stringBuilder;
-		stringBuiler.Clear();
-		stringBuiler.Append( gate_spawn_sign );
-		stringBuiler.Append( gate_spawn_count.ToString( "0.0" ) );
-
-		gate_spawn_text.text = stringBuiler.ToString();
+		UpdateGateText();
 	}
 #endif
 #endregion
