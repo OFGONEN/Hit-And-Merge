@@ -547,3 +547,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 71817d1e59f594089a08722d2e948ce9, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7334785641493999455}
+          m_TargetAssemblyTypeName: AllyGroup, Assembly-CSharp
+          m_MethodName: OnKillAlly
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 71817d1e59f594089a08722d2e948ce9, type: 2}
+            m_ObjectArgumentAssemblyTypeName: FFStudio.IntGameEvent, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
