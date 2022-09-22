@@ -41,7 +41,7 @@ public class GateSpawn : MonoBehaviour
 	public GateValueUpdate onGateUpdate;
     public UnityMessage onGateActivate;
 // Private
-    int gate_spawn_index;
+    [ ReadOnly ] public int gate_spawn_index;
     string gate_spawn_sign;
 
     UnityMessage onTrigger_Ally;
@@ -81,11 +81,6 @@ public class GateSpawn : MonoBehaviour
 #endregion
 
 #region API
-	public void Spawn( int index )
-	{
-		gate_spawn_index = index;
-	}
-
 	public void Merge( float count, float size )
 	{
 		DisableColliders();

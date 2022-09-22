@@ -67,6 +67,7 @@ MonoBehaviour:
   gate_spawn_pivot_scale_left: {fileID: 6745522159554124854}
   gate_spawn_canvas: {fileID: 5383842403381378512}
   gate_spawn_pole_right: {fileID: 3909951888406692198}
+  gate_spawn_index: 0
 --- !u!54 &5383842402961253525
 Rigidbody:
   m_ObjectHideFlags: 0
