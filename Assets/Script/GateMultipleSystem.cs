@@ -24,6 +24,7 @@ public class GateMultipleSystem : MonoBehaviour
 			var gate = gate_list[ i ];
 			gate.onGateUpdate   = OnGateUpdate;
 			gate.onGateActivate = OnGateActivate;
+			gate.Spawn( i );
 		}
     }
 #endregion
