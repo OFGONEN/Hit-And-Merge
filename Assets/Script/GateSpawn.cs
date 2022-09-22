@@ -177,8 +177,8 @@ public class GateSpawn : MonoBehaviour
 		pool_ui_popUpText.GetEntity().Spawn(
 			uiSpawnPosition,
 			stringBuilder.ToString(),
-			GameSettings.Instance.gate_ui_spawn_money_size,
-			GameSettings.Instance.gate_ui_spawn_money_color
+			GameSettings.Instance.gate_ui_spawn_damage_size,
+			GameSettings.Instance.gate_ui_spawn_damage_color
 		);
 
 		gate_spawn_count += damage;
