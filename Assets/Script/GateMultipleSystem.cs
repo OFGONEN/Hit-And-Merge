@@ -22,9 +22,9 @@ public class GateMultipleSystem : MonoBehaviour
         for( var i = 0; i < gate_list.Count; i++ )
         {
 			var gate = gate_list[ i ];
-			gate.onGateUpdate   = OnGateUpdate;
-			gate.onGateActivate = OnGateActivate;
-			gate.Spawn( i );
+			gate.onGateUpdate     = OnGateUpdate;
+			gate.onGateActivate   = OnGateActivate;
+			gate.gate_spawn_index = i;
 		}
     }
 #endregion
@@ -60,6 +60,8 @@ public class GateMultipleSystem : MonoBehaviour
 			leftGate.Merge( rightGate.GateCount, rightGate.GateSize );
 			rightGate.OnMerged();
 			merged = true;
+
+			RemoveAndRearrangeGates( rightGate.gate_spawn_index );
 		}
 
 		return merged;
@@ -69,6 +71,14 @@ public class GateMultipleSystem : MonoBehaviour
     {
         for( var i = 0; i < gate_list.Count; i++ )
 			gate_list[ i ].DisableColliders();
+	}
+
+	void RemoveAndRearrangeGates( int index )
+	{
+		gate_list.RemoveAt( index );
+
+		for( var i = 0; i < gate_list.Count; i++ )
+			gate_list[ i ].gate_spawn_index = i;
 	}
 #endregion
 
