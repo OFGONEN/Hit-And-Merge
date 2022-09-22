@@ -55,7 +55,7 @@ public class GateMultipleSystem : MonoBehaviour
     void OnGateActivate()
     {
         for( var i = 0; i < gate_list.Count; i++ )
-			gate_list[ i ].Disable();
+			gate_list[ i ].DisableColliders();
 	}
 #endregion
 

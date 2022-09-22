@@ -86,7 +86,7 @@ public class GateSpawn : MonoBehaviour
 
 	public void Merge( float count, float size )
 	{
-		Disable();
+		DisableColliders();
 		var sequence = recycledSequence.Recycle();
 
 		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
@@ -96,13 +96,13 @@ public class GateSpawn : MonoBehaviour
 				gate_spawn_count += count;
 				gate_spawn_size += size;
 				ChangeSize( gate_spawn_size );
-				Enable();
+				EnableColliders();
 			} );
 	}
 
 	public void OnMerged()
 	{
-		Disable();
+		DisableColliders();
 
 		var sequence = recycledSequence.Recycle();
 		sequence.Append( transform.DOScale( GameSettings.Instance.gate_merge_size,
@@ -146,13 +146,13 @@ public class GateSpawn : MonoBehaviour
 		gate_spawn_canvas.localPosition        = gate_spawn_canvas.localPosition.SetX( gate_spawn_size / 2f );
 	}
 
-	public void Disable()
+	public void DisableColliders()
 	{
 		gate_spawn_collider_ally.enabled       = false;
 		gate_spawn_collider_projectile.enabled = false;
 	}
 
-	public void Enable()
+	public void EnableColliders()
 	{
 		gate_spawn_collider_ally.enabled       = true;
 		gate_spawn_collider_projectile.enabled = true;
