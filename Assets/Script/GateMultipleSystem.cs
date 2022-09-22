@@ -85,7 +85,7 @@ public class GateMultipleSystem : MonoBehaviour
 		instance.transform.localPosition = Vector3.right * TotalGateSize();
 
         var gate = instance.GetComponent< GateSpawn >();
-		gate.ChangeSize( gate.GateSize / 2f );
+		gate.ChangeSize( GameSettings.Instance.gate_size / 2f );
 
 		gate_list.Add( gate );
 	}
@@ -101,10 +101,9 @@ public class GateMultipleSystem : MonoBehaviour
 		instance.transform.localPosition = Vector3.right * TotalGateSize();
 
 		var gate = instance.GetComponent< GateSpawn >();
-		gate.ChangeSize( gate.GateSize / 4f );
+		gate.ChangeSize( GameSettings.Instance.gate_size / 4f );
 
 		gate_list.Add( gate );
-
 	}
 
     [ Button() ]
@@ -117,6 +116,7 @@ public class GateMultipleSystem : MonoBehaviour
 		instance.transform.localPosition = Vector3.right * TotalGateSize();
 
 		var gate = instance.GetComponent< GateSpawn >();
+		gate.ChangeSize( GameSettings.Instance.gate_size );
 
 		gate_list.Add( gate );
 	}
