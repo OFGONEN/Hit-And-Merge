@@ -41,22 +41,29 @@ public class GateMultipleSystem : MonoBehaviour
     void OnGateUpdate( int index )
     {
 		var gate = gate_list[ index ];
-		if( index - 1 >= 0 )
-			TryMerge( gate_list[ index - 1 ], gate_list[ index ] );
-		else if( index + 1 < gate_list.Count )
+		var tryToMerge = true;
+
+		if( tryToMerge && index - 1 >= 0 )
+			tryToMerge = !TryMerge( gate_list[ index - 1 ], gate_list[ index ] );
+
+		if( tryToMerge && index + 1 < gate_list.Count )
 			TryMerge( gate_list[ index ], gate_list[ index + 1 ] );
 	}
 
-    void TryMerge( GateSpawn leftGate, GateSpawn rightGate )
+    bool TryMerge( GateSpawn leftGate, GateSpawn rightGate )
     {
 		var canMerge = Mathf.Abs( rightGate.GateCount - leftGate.GateCount ) <= GameSettings.Instance.gate_merge_buffer;
+		bool merged = false;
 
 		if( canMerge && leftGate.GateCount > 0 && rightGate.GateCount > 0 )
 		{
 			leftGate.Merge( rightGate.GateCount, rightGate.GateSize );
 			rightGate.OnMerged();
-		}        
-    }
+			merged = true;
+		}
+
+		return merged;
+	}
 
     void OnGateActivate()
     {
