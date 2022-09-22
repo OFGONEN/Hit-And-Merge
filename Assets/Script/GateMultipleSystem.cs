@@ -113,6 +113,15 @@ public class GateMultipleSystem : MonoBehaviour
 		gate_list.Add( gate );
 	}
 
+	[ Button() ]
+	void MergeGate( int leftIndex, int rightIndex )
+	{
+		var leftGate  = gate_list[ leftIndex ];
+		var rightGate = gate_list[ rightIndex ];
+		leftGate.Merge( rightGate.GateCount, rightGate.GateSize );
+		rightGate.OnMerged();
+	}
+
     float TotalGateSize()
     {
 		float size = 0;
