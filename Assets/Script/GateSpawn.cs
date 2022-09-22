@@ -50,6 +50,7 @@ public class GateSpawn : MonoBehaviour
     TriggerMessage onTrigger_Projectile;
 
 	RecycledSequence recycledSequence = new RecycledSequence();
+	RecycledSequence recycledSequence_Locked = new RecycledSequence();
 #endregion
 
 #region Properties
@@ -99,6 +100,10 @@ public class GateSpawn : MonoBehaviour
 				ChangeSize( gate_spawn_size );
 				EnableColliders();
 			} );
+
+		sequence.Append( transform.DOPunchScale( Vector3.one * GameSettings.Instance.gate_merge_duration,
+			GameSettings.Instance.gate_merge_punch_duration
+		) );
 	}
 
 	public void OnMerged()
@@ -106,25 +111,28 @@ public class GateSpawn : MonoBehaviour
 		DisableColliders();
 
 		var sequence = recycledSequence.Recycle();
+
 		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
+		sequence.AppendCallback( () => { gameObject.SetActive( false ); });
 
 		if( gate_spawn_isLocked )
 		{
 			gate_spawn_canvas.SetParent( null );
 			gate_spawn_canvas.GetChild( 1 ).gameObject.SetActive( false );
 
-			sequence.Join( gate_spawn_canvas.DOMove(
+			var sequence_locked = recycledSequence_Locked.Recycle();
+			sequence_locked.Join( gate_spawn_canvas.DOMove(
 				gate_spawn_canvas.position.SetY( GameSettings.Instance.gate_ui_canvas_float_position ),
-				GameSettings.Instance.gate_merge_duration )
+				GameSettings.Instance.gate_ui_canvas_float_duration )
 			);
-		}
 
-		sequence.AppendCallback( () =>
+			sequence_locked.AppendCallback( () =>
 			{
 				gate_spawn_canvas.gameObject.SetActive( false );
-				gameObject.SetActive( false );
+				// gameObject.SetActive( false );
 			});
+		}
 	}
 
     public void OnTrigger_Projectile( Collider collider )
