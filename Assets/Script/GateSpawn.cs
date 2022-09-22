@@ -60,6 +60,7 @@ public class GateSpawn : MonoBehaviour
     {
 		onTrigger_Projectile = Trigger_Projectile;
 		onTrigger_Ally       = Trigger_Ally;
+		onGateActivate       = ExtensionMethods.EmptyMethod;
 		onGateUpdate         = ExtensionMethods.EmptyMethod;
 		onSetGateColor       = ExtensionMethods.EmptyMethod;
 		onAllySpawn          = SpawnAlly;
