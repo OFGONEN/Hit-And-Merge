@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 5383842403063939356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6745522159554124854}
@@ -263,7 +263,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 0.1}
+  m_Size: {x: 5, y: 2, z: 0.1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5383842403063939358
 MonoBehaviour:
@@ -330,8 +330,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2, y: 0.75}
-  m_SizeDelta: {x: 4, y: 2}
+  m_AnchoredPosition: {x: 2.5, y: 0.75}
+  m_SizeDelta: {x: 5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5383842403381378514
 Canvas:
@@ -404,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 5383842403788115679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6745522159554124854}
@@ -421,7 +421,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 0.1}
+  m_Size: {x: 5, y: 2, z: 0.1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5383842403788115617
 MonoBehaviour:
@@ -476,7 +476,7 @@ Transform:
   m_GameObject: {fileID: 6745522159554124853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4877744477435422523}
@@ -521,7 +521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.3}
   m_SizeDelta: {x: 1, y: 1.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6745522160653325837
@@ -621,10 +621,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sparks
       objectReference: {fileID: 0}
-    - target: {fileID: 5389938875379946552, guid: 68d3f4f23539e674e88f3cef4380fa7e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d3f4f23539e674e88f3cef4380fa7e, type: 3}
 --- !u!4 &4877744477435422523 stripped
@@ -723,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004297242384740758, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9004297242384740758, guid: 4eab6caa420d529488aa750260283fd0, type: 3}
       propertyPath: m_LocalPosition.y
