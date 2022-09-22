@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FFStudio;
 using TMPro;
 using Sirenix.OdinInspector;
@@ -18,6 +19,7 @@ public class GateMoney : MonoBehaviour
   [ Title( "Setup" ) ]
     [ LabelText( "Money Gate Start Value" ), SerializeField ] float gate_money_value;
     [ LabelText( "Money Gate Value Gain Cofactor" ), SerializeField ] float gate_money_value_cofactor;
+    [ LabelText( "On Activate Unity Event" ), SerializeField ] UnityEvent gate_money_event_activate;
 
   [ Title( "Components" ) ]
     [ SerializeField ] TextMeshProUGUI gate_text; 
@@ -67,6 +69,8 @@ public class GateMoney : MonoBehaviour
     {
 		notif_currency.SharedValue += gate_money_value;
 		gate_particleSpawner.Spawn( 0 );
+
+		gate_money_event_activate.Invoke();
 
 		gameObject.SetActive( false );
 	}
