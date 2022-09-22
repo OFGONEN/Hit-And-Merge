@@ -266,18 +266,12 @@ public class GateSpawn : MonoBehaviour
 			gate_spawn_sign = "+";
         }
 
-		gate_spawn_locked_image.enabled        = false;
-		gate_spawn_collider_ally.enabled       = true;
-		gate_spawn_collider_projectile.enabled = true;
+		gate_spawn_locked_image.enabled        = gate_spawn_isLocked;
+		gate_spawn_collider_ally.enabled       = !gate_spawn_isLocked;
+		gate_spawn_collider_projectile.enabled = !gate_spawn_isLocked;
         
         if( gate_spawn_isLocked )
-        {
 			main.startColor = GameSettings.Instance.gate_color_locked;
-
-			gate_spawn_locked_image.enabled        = true;
-			gate_spawn_collider_ally.enabled       = false;
-			gate_spawn_collider_projectile.enabled = false;
-		}
 
 		UpdateGateText();
 	}
