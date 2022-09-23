@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: info_projectile_pistol
   m_EditorClassIdentifier: 
   projectile_onHit_pfx_key: bullet_small
-  projectile_speed: 30
+  projectile_speed: 10
