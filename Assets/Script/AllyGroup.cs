@@ -90,7 +90,8 @@ public class AllyGroup : MonoBehaviour
 
 		event_ally_finalStage_Register.Raise();
 
-		recycledTween.Recycle( transform.DOMove( notif_fireRange_position.sharedValue, GameSettings.Instance.ally_group_movement_speed_forward ),
+		recycledTween.Recycle( transform.DOMove( notif_fireRange_position.sharedValue, GameSettings.Instance.ally_group_movement_speed_forward )
+			.SetSpeedBased(),
 			event_ally_finalStage_UnRegister.Raise 
 		);
 	}
