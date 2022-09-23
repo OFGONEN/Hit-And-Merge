@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7334785641493999454}
   - component: {fileID: 7334785641493999455}
+  - component: {fileID: 5583587921159319955}
   m_Layer: 0
   m_Name: ally_group
   m_TagString: Untagged
@@ -466,6 +467,20 @@ MonoBehaviour:
   - {x: 6.4196315, y: 0, z: -2.0858643}
   - {x: 6.602496, y: 0, z: -1.4034044}
   - {x: 6.7130227, y: 0, z: -0.7055684}
+--- !u!114 &5583587921159319955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334785641493999452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8b9286af946534c832e5352b9db9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedReferenceProperty: {fileID: 11400000, guid: 1c45454cc7b4f764fa1ede7cfe18fb1f, type: 2}
+  referenceComponent: {fileID: 7334785641493999454}
 --- !u!1 &7904713929705965301
 GameObject:
   m_ObjectHideFlags: 0
