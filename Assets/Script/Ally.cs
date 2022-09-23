@@ -58,7 +58,7 @@ public class Ally : MonoBehaviour
 
 		event_ally_finalStage_Register.Raise();
 
-		recycledTween.Recycle( transform.DOMove( position, GameSettings.Instance.ally_movement_speed )
+		recycledTween.Recycle( transform.DOMove( position, GameSettings.Instance.ally_movement_speed_finishLine )
 			.SetSpeedBased(),
 			OnFinishLineMovementComplete
 		);
@@ -66,7 +66,7 @@ public class Ally : MonoBehaviour
 
     public void DoLocalMovePosition( Vector3 position )
     {
-		recycledTween.Recycle( transform.DOLocalMove( position, GameSettings.Instance.ally_movement_speed )
+		recycledTween.Recycle( transform.DOLocalMove( position, GameSettings.Instance.ally_movement_speed_group )
 		.SetSpeedBased()
 		);
 	}

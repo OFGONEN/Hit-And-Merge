@@ -11,7 +11,8 @@ namespace FFStudio
 #region Fields (Settings)
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
     [ Title( "Ally" ) ]
-        [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
+        [ LabelText( "Ally Movement Speed In Group" ) ] public float ally_movement_speed_group;
+        [ LabelText( "Ally Movement Speed In FinishLine" ) ] public float ally_movement_speed_finishLine;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
         [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
         
