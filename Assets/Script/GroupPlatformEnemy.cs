@@ -174,7 +174,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 		}
 
 		// Draw spawned enemies
-		Handles.color = Color.blue;
+		Handles.color = Color.red;
 		Handles.DrawWireDisc( transform.position, Vector3.up, enemy_spawn_radius );
 
 		for( var i = 0; i < enemy_spawn_points.Length; i++ )
