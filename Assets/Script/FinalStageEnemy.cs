@@ -39,7 +39,7 @@ public class FinalStageEnemy : MonoBehaviour
 
 		_animator.SetBool( "run", true );
 
-		var targetPosition = transform.position + Vector3.forward * movement_distance;
+		var targetPosition = transform.position + transform.forward * movement_distance;
 
 		recycledTween.Recycle( transform.DOMove( targetPosition, GameSettings.Instance.enemy_finalStage_movement_speed )
 			.SetEase( Ease.Linear )
@@ -96,8 +96,8 @@ public class FinalStageEnemy : MonoBehaviour
 			startPosition = transform.position;
 
 		Handles.DrawWireDisc( startPosition, Vector3.up, 0.1f );
-		Handles.DrawWireDisc( startPosition + Vector3.forward * movement_distance, Vector3.up, 0.1f );
-		Handles.DrawDottedLine( startPosition, startPosition + Vector3.forward * movement_distance, 0.1f );
+		Handles.DrawWireDisc( startPosition + transform.forward * movement_distance, Vector3.up, 0.1f );
+		Handles.DrawDottedLine( startPosition, startPosition + transform.forward * movement_distance, 0.1f );
 	}
 #endif
 #endregion
