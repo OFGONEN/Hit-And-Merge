@@ -180,7 +180,7 @@ public class GroupPlatformEnemy : MonoBehaviour
 		for( var i = 0; i < enemy_spawn_points.Length; i++ )
 		{
 			var worldPosition = transform.TransformPoint( enemy_spawn_points[ i ] );
-			Handles.DrawWireDisc( worldPosition, Vector3.up, 0.25f );
+			Handles.DrawWireDisc( worldPosition, Vector3.up, GameSettings.Instance.enemy_spawn_radius );
 			Handles.Label( worldPosition + Vector3.up / 2f,"Enemy_" + i );
 		}
 
