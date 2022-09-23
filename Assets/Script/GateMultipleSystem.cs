@@ -132,12 +132,45 @@ public class GateMultipleSystem : MonoBehaviour
 	}
 
 	[ Button() ]
-	void MergeGate( int leftIndex, int rightIndex )
+	void SpawnGateWithSize( float size )
 	{
-		var leftGate  = gate_list[ leftIndex ];
-		var rightGate = gate_list[ rightIndex ];
-		leftGate.Merge( rightGate.GateCount, rightGate.GateSize );
-		rightGate.OnMerged();
+		var gateObject = AssetDatabase.LoadAssetAtPath( "Assets/Prefab/Gate/gate_spawn.prefab", typeof( GameObject ) );
+		var instance = PrefabUtility.InstantiatePrefab( gateObject ) as GameObject;
+
+		instance.transform.SetParent( transform );
+		instance.transform.localPosition = Vector3.right * TotalGateSize();
+
+		var gate = instance.GetComponent< GateSpawn >();
+		gate.ChangeSize( size );
+
+		gate_list.Add( gate );
+	}
+
+	[ Button() ]
+	void DeleteGateAtIndex( int index )
+	{
+		if( index < 0 && index >= gate_list.Count ) return;
+
+		DestroyImmediate( gate_list[ index ] );
+		gate_list.RemoveAt( index );
+
+		float totalGateSize = 0;
+
+		for( var i = 0; i < gate_list.Count; i++ )
+		{
+			var gate = gate_list[ i ];
+			gate.transform.localPosition = Vector3.right * totalGateSize;
+			totalGateSize += gate.GateSize;
+		}
+	}
+
+	[ Button() ]
+	void DeleteAllGates()
+	{
+		for( var i = 0; i < gate_list.Count; i++ )
+			DestroyImmediate( gate_list[ i ].gameObject );
+
+		gate_list.Clear();
 	}
 
     float TotalGateSize()
