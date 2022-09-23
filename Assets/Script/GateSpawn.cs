@@ -238,6 +238,7 @@ public class GateSpawn : MonoBehaviour
     {
 		event_ally_spawn.Raise( Mathf.FloorToInt( gate_spawn_count ) );
 		onGateActivate();
+		gate_spawn_event_activate.Invoke();
 		onAllySpawn();
 
 		gameObject.SetActive( false );
