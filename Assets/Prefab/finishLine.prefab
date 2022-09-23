@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4245952753994181940, guid: 26d4073168f8ef5478c1e4db86c1a199, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4245952753994181940, guid: 26d4073168f8ef5478c1e4db86c1a199, type: 3}
       propertyPath: m_LocalPosition.z
@@ -323,6 +323,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41242439a6140c24ab541a148e9e20c9, type: 3}
+--- !u!1 &6362460377892241017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3882032098502979236, guid: 41242439a6140c24ab541a148e9e20c9, type: 3}
+  m_PrefabInstance: {fileID: 7895865270662369501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5997172114956124216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362460377892241017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bf03ab7c803b6428a7aed0211a7483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notif_vector3: {fileID: 11400000, guid: b2aa8fe155653bc48ba1b505bdb3d234, type: 2}
+  _transform: {fileID: 7603796574644124000}
 --- !u!4 &7603796574644124000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 294320654873930173, guid: 41242439a6140c24ab541a148e9e20c9, type: 3}
