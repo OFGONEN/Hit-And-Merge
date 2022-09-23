@@ -275,7 +275,7 @@ public class GateSpawn : MonoBehaviour
 
 	void KillAlly()
 	{
-		event_ally_kill.Raise( Mathf.FloorToInt( gate_spawn_count ) );
+		event_ally_kill.Raise( Mathf.Abs( Mathf.FloorToInt( gate_spawn_count ) ) );
 	}
 #endregion
 
