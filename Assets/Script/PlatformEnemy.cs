@@ -43,8 +43,8 @@ public class PlatformEnemy : MonoBehaviour
 
 		group_enemy_platform = groupPlatformEnemy;
 
-		collider_ally_receiver.enabled       = false;
-		collider_projectile_receiver.enabled = false;
+		collider_ally_receiver.enabled       = true;
+		collider_projectile_receiver.enabled = true;
 
 		_animator.Play( "idle" );
 	}
@@ -57,8 +57,8 @@ public class PlatformEnemy : MonoBehaviour
 
     public void StartRunning()
     {
-		collider_ally_receiver.enabled       = true;
-		collider_projectile_receiver.enabled = true;
+		// collider_ally_receiver.enabled       = true;
+		// collider_projectile_receiver.enabled = true;
 
 		_animator.SetBool( "run", true );
 	}
