@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FFStudio;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -11,6 +12,7 @@ public class GateMultipleSystem : MonoBehaviour
 {
 #region Fields
     [ SerializeField ] List< GateSpawn > gate_list = new List< GateSpawn >( 4 );
+    [ SerializeField ] UnityEvent gate_spawn_event_activate;
 #endregion
 
 #region Properties
@@ -71,6 +73,8 @@ public class GateMultipleSystem : MonoBehaviour
     {
         for( var i = 0; i < gate_list.Count; i++ )
 			gate_list[ i ].DisableColliders();
+
+		gate_spawn_event_activate.Invoke();
 	}
 
 	void RemoveAndRearrangeGates( int index )
