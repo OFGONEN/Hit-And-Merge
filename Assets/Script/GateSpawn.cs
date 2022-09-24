@@ -18,6 +18,7 @@ public class GateSpawn : MonoBehaviour
     [ SerializeField ] IntGameEvent event_ally_spawn;
     [ SerializeField ] IntGameEvent event_ally_kill;
     [ SerializeField ] Pool_UIPopUpText pool_ui_popUpText;
+    [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] bool gate_spawn_isLocked;
@@ -99,6 +100,9 @@ public class GateSpawn : MonoBehaviour
 				gateLockedImage.gameObject.SetActive( false );
 				// gameObject.SetActive( false );
 			} );
+
+			event_particle_spawn.Raise( "blast_lock",
+				transform.position + Vector3.right * gate_spawn_size / 2f + Vector3.up * GameSettings.Instance.gate_height );
 		}
 
 		UnlockGate();
@@ -152,6 +156,9 @@ public class GateSpawn : MonoBehaviour
 				gate_spawn_canvas.gameObject.SetActive( false );
 				// gameObject.SetActive( false );
 			});
+
+			event_particle_spawn.Raise( "blast_lock",
+				transform.position + Vector3.right * gate_spawn_size / 2f + Vector3.up * GameSettings.Instance.gate_height );
 		}
 	}
 
