@@ -176,9 +176,9 @@ public class AllyGroup : MonoBehaviour
 		foreach( var ally in ally_dictionary.Values )
 		{
 			var movePosition = new Vector3(
-				-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
+				-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_finishLine_radius,
 				0,
-				position.z - y * GameSettings.Instance.ally_spawn_radius
+				position.z - y * GameSettings.Instance.ally_finishLine_radius
 			);
 
 			ally.MoveToFinishLine( movePosition );
