@@ -29,6 +29,7 @@ public class GateSpawn : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] ParticleSystem gate_spawn_color;
     [ SerializeField ] TextMeshProUGUI gate_spawn_text;
+    [ SerializeField ] Image gate_spawn_locked_plane_image;
     [ SerializeField ] Image gate_spawn_locked_image;
     [ SerializeField ] Collider gate_spawn_collider_ally;
     [ SerializeField ] Collider gate_spawn_collider_projectile;
@@ -73,7 +74,10 @@ public class GateSpawn : MonoBehaviour
 			onTrigger_Ally       = ExtensionMethods.EmptyMethod;
         }
 
-        if( gate_spawn_count < 0 )
+		gate_spawn_locked_image.enabled       = false;
+		gate_spawn_locked_plane_image.enabled = gate_spawn_isLocked;
+
+		if( gate_spawn_count < 0 )
 		{
 			onSetGateColor = SetGateColor;
 			onAllySpawn    = KillAlly;
@@ -86,18 +90,21 @@ public class GateSpawn : MonoBehaviour
 	{
 		if( gate_spawn_isLocked )
 		{
-			var gateLockedImage = gate_spawn_canvas.GetChild( 0 );
-			gateLockedImage.SetParent( null );
+			gate_spawn_locked_plane_image.enabled = false;
+
+			gate_spawn_locked_image.enabled = true;
+			var lockedImageRectTransform = gate_spawn_locked_image.rectTransform;
+			lockedImageRectTransform.SetParent( null );
 
 			var sequence_locked = recycledSequence_Locked.Recycle();
-			sequence_locked.Join( gateLockedImage.DOMove(
-				gateLockedImage.position.SetY( GameSettings.Instance.gate_ui_canvas_float_position ),
+			sequence_locked.Join( lockedImageRectTransform.DOMove(
+				lockedImageRectTransform.position.SetY( GameSettings.Instance.gate_ui_canvas_float_position ),
 				GameSettings.Instance.gate_ui_canvas_float_duration )
 			);
 
 			sequence_locked.AppendCallback( () =>
 			{
-				gateLockedImage.gameObject.SetActive( false );
+				lockedImageRectTransform.gameObject.SetActive( false );
 				// gameObject.SetActive( false );
 			} );
 
@@ -142,8 +149,11 @@ public class GateSpawn : MonoBehaviour
 
 		if( gate_spawn_isLocked )
 		{
-			gate_spawn_canvas.SetParent( null );
+			gate_spawn_locked_plane_image.enabled = false;
+			gate_spawn_locked_image.enabled       = true;
 			gate_spawn_canvas.GetChild( 1 ).gameObject.SetActive( false );
+
+			gate_spawn_canvas.SetParent( null );
 
 			var sequence_locked = recycledSequence_Locked.Recycle();
 			sequence_locked.Join( gate_spawn_canvas.DOMove(
@@ -308,7 +318,7 @@ public class GateSpawn : MonoBehaviour
 			gate_spawn_sign = "+";
         }
 
-		gate_spawn_locked_image.enabled        = gate_spawn_isLocked;
+		gate_spawn_locked_plane_image.enabled  = gate_spawn_isLocked;
 		gate_spawn_collider_ally.enabled       = !gate_spawn_isLocked;
 		gate_spawn_collider_projectile.enabled = !gate_spawn_isLocked;
         
