@@ -152,31 +152,27 @@ public class AllyGroup : MonoBehaviour
 		var lateralCount  = GameSettings.Instance.AllyLateralCountOnFinalStage;
 		var rowCount      = ally_dictionary.Count / lateralCount;
 
-		// int allyCount = 0;
-
-		// for( var y = 0; y < rowCount; y++ )
-		// {
-		// 	for( var x = 0; x < lateralCount; x++ )
-		// 	{
-		// 		var movePosition = new Vector3(
-		// 			-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
-		// 			0,
-		// 			position.z - y * GameSettings.Instance.ally_spawn_radius
-		// 		);
-
-
-		// 		ally_list[ allyCount ].MoveToFinishLine( movePosition );
-		// 		allyCount++;
-		// 	}
-		// }
-
 		int y = 0;
 		int x = 0;
+		float lateralSpawnPoint = 0;
+		bool putToRight = true;
 
 		foreach( var ally in ally_dictionary.Values )
 		{
+			if( putToRight )
+			{
+				lateralSpawnPoint = Mathf.Abs( lateralSpawnPoint ) + GameSettings.Instance.ally_finishLine_radius;
+				putToRight = false;
+			}
+			else
+			{
+				lateralSpawnPoint = -Mathf.Abs( lateralSpawnPoint );
+				putToRight = true;
+			}
+
 			var movePosition = new Vector3(
-				-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_finishLine_radius,
+				// -GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_finishLine_radius,
+				lateralSpawnPoint,
 				0,
 				position.z - y * GameSettings.Instance.ally_finishLine_radius
 			);
@@ -188,6 +184,8 @@ public class AllyGroup : MonoBehaviour
 			if( x >= lateralCount )
 			{
 				x = 0;
+				lateralSpawnPoint = 0;
+				putToRight = true;
 				y++;
 			}
 		}
