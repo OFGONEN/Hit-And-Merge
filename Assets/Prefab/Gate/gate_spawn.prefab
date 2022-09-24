@@ -53,6 +53,7 @@ MonoBehaviour:
   event_ally_spawn: {fileID: 11400000, guid: 1e900cfe14661cc499e14821292bb5a8, type: 2}
   event_ally_kill: {fileID: 11400000, guid: 71817d1e59f594089a08722d2e948ce9, type: 2}
   pool_ui_popUpText: {fileID: 11400000, guid: eaaacbd90b1464ad2b2a3a962a8a84b2, type: 2}
+  event_particle_spawn: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   gate_spawn_isLocked: 0
   gate_spawn_count: 10
   gate_spawn_size: 5

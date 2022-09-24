@@ -18,6 +18,7 @@ public class GateSpawn : MonoBehaviour
     [ SerializeField ] IntGameEvent event_ally_spawn;
     [ SerializeField ] IntGameEvent event_ally_kill;
     [ SerializeField ] Pool_UIPopUpText pool_ui_popUpText;
+    [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] bool gate_spawn_isLocked;
@@ -99,12 +100,15 @@ public class GateSpawn : MonoBehaviour
 				gateLockedImage.gameObject.SetActive( false );
 				// gameObject.SetActive( false );
 			} );
+
+			event_particle_spawn.Raise( "blast_lock",
+				transform.position + Vector3.right * gate_spawn_size / 2f + Vector3.up * GameSettings.Instance.gate_height );
 		}
 
 		UnlockGate();
 		DisableColliders();
 
-		var sequence = recycledSequence.Recycle();
+		var sequence = recycledSequence.Recycle( OnMergeSequenceComplete );
 
 		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
@@ -152,6 +156,9 @@ public class GateSpawn : MonoBehaviour
 				gate_spawn_canvas.gameObject.SetActive( false );
 				// gameObject.SetActive( false );
 			});
+
+			event_particle_spawn.Raise( "blast_lock",
+				transform.position + Vector3.right * gate_spawn_size / 2f + Vector3.up * GameSettings.Instance.gate_height );
 		}
 	}
 
@@ -196,6 +203,11 @@ public class GateSpawn : MonoBehaviour
 #endregion
 
 #region Implementation
+	void OnMergeSequenceComplete()
+	{
+		onGateUpdate( gate_spawn_index );
+	}
+
 	void UnlockGate()
 	{
 		gate_spawn_isLocked  = false;
@@ -205,6 +217,7 @@ public class GateSpawn : MonoBehaviour
 		EnableColliders();
 		SetGateColor();
 	}
+
     void Trigger_Projectile( Collider collider )
     {
 		var damage = shared_gun_current.GunDamage;
