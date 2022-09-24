@@ -129,6 +129,7 @@ MonoBehaviour:
   renderer_color_setter: {fileID: 3069181080665051178}
   collider_projectile_receiver: {fileID: 193930689289416867}
   collider_ally_receiver: {fileID: 6316519161557583870}
+  collider_damage: {fileID: 8609173660289707909}
 --- !u!54 &4943057336709577426
 Rigidbody:
   m_ObjectHideFlags: 0
