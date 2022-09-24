@@ -104,7 +104,7 @@ public class GateSpawn : MonoBehaviour
 		UnlockGate();
 		DisableColliders();
 
-		var sequence = recycledSequence.Recycle();
+		var sequence = recycledSequence.Recycle( OnMergeSequenceComplete );
 
 		sequence.Append( transform.DOScale( gate_spawn_size * GameSettings.Instance.gate_merge_size_cofactor,
 			GameSettings.Instance.gate_merge_duration ) );
@@ -196,6 +196,11 @@ public class GateSpawn : MonoBehaviour
 #endregion
 
 #region Implementation
+	void OnMergeSequenceComplete()
+	{
+		onGateUpdate( gate_spawn_index );
+	}
+
 	void UnlockGate()
 	{
 		gate_spawn_isLocked  = false;
@@ -205,6 +210,7 @@ public class GateSpawn : MonoBehaviour
 		EnableColliders();
 		SetGateColor();
 	}
+
     void Trigger_Projectile( Collider collider )
     {
 		var damage = shared_gun_current.GunDamage;
