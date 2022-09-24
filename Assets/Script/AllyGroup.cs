@@ -154,22 +154,11 @@ public class AllyGroup : MonoBehaviour
 
 		int y = 0;
 		int x = 0;
-		float lateralSpawnPoint = 0;
+		float lateralSpawnPoint = -GameSettings.Instance.ally_finishLine_radius / 2f;
 		bool putToRight = true;
 
 		foreach( var ally in ally_dictionary.Values )
 		{
-			if( putToRight )
-			{
-				lateralSpawnPoint = Mathf.Abs( lateralSpawnPoint ) + GameSettings.Instance.ally_finishLine_radius;
-				putToRight = false;
-			}
-			else
-			{
-				lateralSpawnPoint = -Mathf.Abs( lateralSpawnPoint );
-				putToRight = true;
-			}
-
 			var movePosition = new Vector3(
 				// -GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_finishLine_radius,
 				lateralSpawnPoint,
@@ -187,6 +176,17 @@ public class AllyGroup : MonoBehaviour
 				lateralSpawnPoint = 0;
 				putToRight = true;
 				y++;
+			}
+			
+			if( putToRight )
+			{
+				lateralSpawnPoint = Mathf.Abs( lateralSpawnPoint );
+				putToRight = false;
+			}
+			else
+			{
+				lateralSpawnPoint = -Mathf.Abs( lateralSpawnPoint ) - GameSettings.Instance.ally_finishLine_radius;
+				putToRight = true;
 			}
 		}
 	}
