@@ -63,6 +63,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+      - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6844921694743611502}
+          m_TargetAssemblyTypeName: FinalStageEnemy, Assembly-CSharp
+          m_MethodName: OnLevelFinished
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7769859425106782416
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +137,7 @@ MonoBehaviour:
   event_enemy_finalStage_UnRegister: {fileID: 11400000, guid: 0b6154938bb7d435c93ef3bafa64d1bc, type: 2}
   _animator: {fileID: 5410032542357887047}
   renderer_color_setter: {fileID: 3069181080665051178}
+  collider_projectile_receiver: {fileID: 193930689289416867}
 --- !u!54 &4591787999020520183
 Rigidbody:
   m_ObjectHideFlags: 0

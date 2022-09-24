@@ -21,6 +21,7 @@ public class FinalStageEnemy : MonoBehaviour
   [ Title( "Components" ) ]
     [ SerializeField ] Animator _animator;
     [ SerializeField ] ColorSetter renderer_color_setter;
+    [ SerializeField ] Collider collider_projectile_receiver;
 
 // Private
     RecycledTween recycledTween = new RecycledTween();
@@ -33,6 +34,12 @@ public class FinalStageEnemy : MonoBehaviour
 #endregion
 
 #region API
+	public void OnLevelFinished()
+	{
+		recycledTween.Kill();
+		collider_projectile_receiver.enabled = false;
+	}
+
     public void OnFinalStageEnemyStartRun()
     {
 		event_enemy_finalStage_Register.Raise();
