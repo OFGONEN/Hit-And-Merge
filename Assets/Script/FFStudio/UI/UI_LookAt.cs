@@ -27,6 +27,7 @@ namespace FFStudio
 
 		void OnEnable()
 		{
+			lookAt_Transform = lookAt_Reference.SharedValue as Transform;
 			updateMethod = LookAtTarget;
 		}
 
