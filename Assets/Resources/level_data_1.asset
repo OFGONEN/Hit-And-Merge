@@ -15,4 +15,4 @@ MonoBehaviour:
   scene_index: 1
   scene_overrideAsActiveScene: 0
   ally_count: 1
-  money_value: 0
+  money_value: 5

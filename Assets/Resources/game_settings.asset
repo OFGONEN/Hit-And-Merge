@@ -49,7 +49,7 @@ MonoBehaviour:
   game_input_resolution: 100
   game_finalStage_shoot_delay: 0.35
   game_finalStage_offset: 1
-  maxLevelCount: 6
+  maxLevelCount: 10
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2
   ui_particle_spawn_delay: 0.2
