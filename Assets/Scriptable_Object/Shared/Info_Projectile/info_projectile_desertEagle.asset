@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: info_projectile_desertEagle
   m_EditorClassIdentifier: 
   projectile_onHit_pfx_key: bullet_mid
-  projectile_speed: 10
+  projectile_speed: 17

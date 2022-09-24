@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   ally_movement_speed_group: 2
-  ally_movement_speed_finishLine: 10
+  ally_movement_speed_finishLine: 4
   ally_spawn_radius: 0.3375
-  ally_finishLine_radius: 0.50625
   ally_spawn_radius_buffer: 0.05625
   ally_group_count_max: 331
-  ally_group_movement_speed_forward: 10
+  ally_group_movement_speed_forward: 3.5
   ally_group_movement_speed_lateral: 10
   ally_group_movement_clamp: 5
   ally_group_reArrange_delay: 0.75
-  enemy_finalStage_movement_speed: 2.5
+  enemy_finalStage_movement_speed: 2
   enemy_spawn_radius: 0.225
   enemy_movement_lookAt: 0.15
   enemy_death_duration: 0.65
@@ -50,7 +49,7 @@ MonoBehaviour:
   game_input_resolution: 100
   game_finalStage_shoot_delay: 0.35
   game_finalStage_offset: 1
-  maxLevelCount: 1
+  maxLevelCount: 10
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2
   ui_particle_spawn_delay: 0.2
