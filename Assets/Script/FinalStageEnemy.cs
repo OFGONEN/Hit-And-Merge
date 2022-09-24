@@ -71,6 +71,7 @@ public class FinalStageEnemy : MonoBehaviour
 		event_particle_spawn.Raise( "death_red", RandomSpawnPoint() );
 		pool_money.Spawn( RandomSpawnPoint()  );
 
+		collider_projectile_receiver.enabled = false;
 		renderer_color_setter.SetColor( GameSettings.Instance.enemy_death_color );
 
 		recycledTween.Recycle( transform.DOScale( 0, GameSettings.Instance.enemy_death_duration ) );
@@ -78,6 +79,7 @@ public class FinalStageEnemy : MonoBehaviour
 
     void OnMovementComplete()
     {
+		collider_projectile_receiver.enabled = false;
 		_animator.SetBool( "run", false );
 		event_enemy_finalStage_UnRegister.Raise();
     }
