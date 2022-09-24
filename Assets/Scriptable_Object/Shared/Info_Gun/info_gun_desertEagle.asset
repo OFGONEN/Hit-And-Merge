@@ -15,4 +15,4 @@ MonoBehaviour:
   pool_projectile: {fileID: 11400000, guid: 618681ceb702516408a8435de4679ae5, type: 2}
   gun_mesh: {fileID: 2632225203687983189, guid: ae057288376b54840bba7ee1dc6781f9, type: 3}
   gun_damage: 0.5
-  gun_fireRate: 0.7
+  gun_fireRate: 0.75
