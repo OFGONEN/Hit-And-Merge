@@ -14,6 +14,7 @@ namespace FFStudio
         [ LabelText( "Ally Movement Speed In Group" ) ] public float ally_movement_speed_group;
         [ LabelText( "Ally Movement Speed In FinishLine" ) ] public float ally_movement_speed_finishLine;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
+        [ LabelText( "Ally finish line radius" ) ] public float ally_finishLine_radius;
         [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
         
     [ Title( "Ally Group" ) ]
@@ -103,7 +104,7 @@ namespace FFStudio
 
 #region Property
         public float UIParticleDuration => ui_particle_spawn_duration + ui_particle_return_duration + ui_particle_movement_duration;
-        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp / ally_spawn_radius );
+        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp * 2f / ally_finishLine_radius );
 #endregion
 
 #region Fields (Singleton Related)

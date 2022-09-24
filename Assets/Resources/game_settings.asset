@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   ally_movement_speed_group: 2
-  ally_movement_speed_finishLine: 2
+  ally_movement_speed_finishLine: 10
   ally_spawn_radius: 0.3375
+  ally_finishLine_radius: 0.50625
   ally_spawn_radius_buffer: 0.05625
   ally_group_count_max: 331
-  ally_group_movement_speed_forward: 1
+  ally_group_movement_speed_forward: 10
   ally_group_movement_speed_lateral: 10
   ally_group_movement_clamp: 5
   ally_group_reArrange_delay: 0.75
