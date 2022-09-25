@@ -58,7 +58,7 @@ MonoBehaviour:
   game_finalStage_shoot_delay: 0.35
   game_finalStage_offset: 1
   game_tween_count: 500
-  game_sequence_count: 50
+  game_sequence_count: 125
   maxLevelCount: 10
   ui_particle_spawn_rotationRange: 20
   ui_particle_spawn_size: 1.2
