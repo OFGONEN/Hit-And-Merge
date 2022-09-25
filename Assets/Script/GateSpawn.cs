@@ -234,7 +234,8 @@ public class GateSpawn : MonoBehaviour
 		var gateHeight = GameSettings.Instance.gate_height;
 		var uiSpawnPosition = collider.transform.position;
 
-		uiSpawnPosition.y = Random.Range( gateHeight / 4f, gateHeight );
+		uiSpawnPosition.y = Random.Range( gateHeight * GameSettings.Instance.gate_ui_spawn_height_ratio_bottom,
+			 gateHeight * GameSettings.Instance.gate_ui_spawn_height_ratio_upper );
 		uiSpawnPosition.z = transform.position.z + GameSettings.Instance.gate_ui_spawn_offset;
 
 		var stringBuilder = ExtensionMethods.stringBuilder;

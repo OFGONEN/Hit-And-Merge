@@ -34,6 +34,8 @@ MonoBehaviour:
   gate_color_positive: {r: 0, g: 0.6313726, b: 1, a: 1}
   gate_color_negative: {r: 1, g: 0, b: 0.1254902, a: 1}
   gate_color_locked: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  gate_ui_spawn_height_ratio_bottom: 0.8
+  gate_ui_spawn_height_ratio_upper: 1.3
   gate_ui_spawn_offset: -0.15
   gate_ui_spawn_damage_size: 3
   gate_ui_spawn_damage_color: {r: 1, g: 1, b: 1, a: 1}
