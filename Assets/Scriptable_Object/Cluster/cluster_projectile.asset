@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c61c9bd987427340a04f903a1b9ca9d, type: 3}
   m_Name: cluster_projectile
   m_EditorClassIdentifier: 
-  cluster_count: 0
+  event_cluster_updated: {fileID: 11400000, guid: 70819154a95ee034f8bac561399aad16, type: 2}
+  cluster_count: 256
