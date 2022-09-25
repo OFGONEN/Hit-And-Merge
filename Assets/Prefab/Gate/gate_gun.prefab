@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 239187794976232285}
   - component: {fileID: 239187794976232281}
   - component: {fileID: 239187794976232280}
+  - component: {fileID: 3133878822835625133}
   m_Layer: 0
   m_Name: gate_gun
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shared_gun_current: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
   gate_gun_health: 100
+  gate_particleSpawner: {fileID: 3133878822835625133}
   gate_collider_projectile: {fileID: 239187795079722796}
   gate_gun_loot: {fileID: 0}
   gate_gun_image: {fileID: 5190251225466983948}
@@ -72,6 +74,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3133878822835625133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239187794976232284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f753b2c2b78147c181c65650f11a67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleDatas:
+  - particle_event: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
+    alias: blast_gun
+    parent: 0
+    offset: {x: 2.5, y: 2, z: 0}
+    size: 1
 --- !u!1 &239187795079722705
 GameObject:
   m_ObjectHideFlags: 0

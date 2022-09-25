@@ -15,6 +15,7 @@ public class GateGun : MonoBehaviour, IGate
     [ LabelText( "Gun Gate Health" ), SerializeField ] float gate_gun_health;
 
   [ Title( "Components" ) ]
+    [ SerializeField ] ParticleSpawner gate_particleSpawner; 
 	[ SerializeField ] Collider gate_collider_projectile;
     [ SerializeField ] GameObject gate_gun_loot; 
     [ SerializeField ] Image gate_gun_image; 
@@ -37,6 +38,8 @@ public class GateGun : MonoBehaviour, IGate
 
         if( gate_gun_health_current >= gate_gun_health )
         {
+			gate_particleSpawner.Spawn( 0 );
+
 			gate_gun_loot.transform.SetParent( null );
 			gate_gun_loot.SetActive( true );
 
