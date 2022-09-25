@@ -181,6 +181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9042173675327443319}
     m_Modifications:
+    - target: {fileID: 1084563312657848, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1681046568612450, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
       propertyPath: m_Name
       value: Tracer_GoldFire_Medium_Projectile
@@ -229,13 +233,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4382174037961564, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922670003012162, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 198039901826658266, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 198039901826658266, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198297839452806300, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198297839452806300, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198297839452806300, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 198356421454905678, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
       propertyPath: emitterVelocityMode
@@ -249,6 +273,18 @@ PrefabInstance:
       propertyPath: InitialModule.maxNumParticles
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 199137496349654608, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199137496349654608, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f49b4aa32c08d4f41884157dd0eb832b, type: 2}
+    - target: {fileID: 199414583292174222, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f30c62ad4e7ec16408c08b1ef9f7a051, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ce53d8e70445004299196bae55a8309, type: 3}
 --- !u!4 &1546302896665560501 stripped
