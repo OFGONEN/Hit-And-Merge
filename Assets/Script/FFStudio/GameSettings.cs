@@ -65,6 +65,8 @@ namespace FFStudio
         [ LabelText( "Input Resolution" ) ] public float game_input_resolution;
         [ LabelText( "Final Stage Shooting Delay" ) ] public float game_finalStage_shoot_delay = 0.35f;
         [ LabelText( "Final Stage Offset" ) ] public float game_finalStage_offset;
+        [ LabelText( "DoTween Tween Count" ) ] public int game_tween_count = 500;
+        [ LabelText( "DoTween Sequence Count" ) ] public int game_sequence_count = 50;
     
     [ Title( "Project Setup", "These settings should not be edited by Level Designer(s).", TitleAlignments.Centered ) ]
         public int maxLevelCount;
