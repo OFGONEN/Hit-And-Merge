@@ -22,6 +22,8 @@ namespace FFStudio
         public TextMeshProUGUI level_count_text;
         public TextMeshProUGUI level_information_text;
         public UI_Patrol_Scale level_information_text_Scale;
+        public UIEntity image_level_completed;
+        public UIEntity image_level_failed;
         public Image image_tapToStart;
         public Image loadingScreenImage;
         public Image foreGroundImage;
@@ -101,11 +103,12 @@ namespace FFStudio
 
 			// Tween tween = null;
 
-			level_information_text.text = "Completed \n\n Tap to Continue";
+			level_information_text.text = "Tap to Continue";
 
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+					.Join( image_level_completed.GoToTargetPosition() )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
 
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
@@ -118,11 +121,12 @@ namespace FFStudio
             var sequence = DOTween.Sequence();
 
 			// Tween tween = null;
-			level_information_text.text = "Level Failed \n\n Tap to Continue";
+			level_information_text.text = "Tap to Continue";
 
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_failed.GoToTargetPosition() )
 					.AppendCallback( () => tapInputListener.response = Resetlevel );
 
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
@@ -158,6 +162,7 @@ namespace FFStudio
 
 			sequence.Append( foreGroundImage.DOFade( 1f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 			        .Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_completed.GoToStartPosition() )
 			        .AppendCallback( loadNewLevelEvent.Raise );
 		}
 
@@ -169,6 +174,7 @@ namespace FFStudio
 
 			sequence.Append( foreGroundImage.DOFade( 1f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 			        .Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_failed.GoToStartPosition() )
 			        .AppendCallback( resetLevelEvent.Raise );
 		}
 #endregion
