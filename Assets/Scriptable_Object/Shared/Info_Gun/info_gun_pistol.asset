@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: info_gun_pistol
   m_EditorClassIdentifier: 
   pool_projectile: {fileID: 11400000, guid: 33a0b25878c7c9749b1a3df227ca2b5d, type: 2}
-  gun_mesh: {fileID: 0}
-  gun_damage: 1
-  gun_fireRate: 0.35
+  gun_mesh: {fileID: -9201165820359124677, guid: d0b7f5f41db513343b6905bb395044dd, type: 3}
+  gun_damage: 0.1
+  gun_fireRate: 1

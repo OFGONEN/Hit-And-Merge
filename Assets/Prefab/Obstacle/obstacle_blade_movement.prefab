@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2317565807145173772}
   - component: {fileID: 5514597767713507204}
   m_Layer: 29
-  m_Name: obstacle_plade_movement
+  m_Name: obstacle_blade_movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

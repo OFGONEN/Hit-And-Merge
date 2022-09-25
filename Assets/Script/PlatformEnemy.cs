@@ -19,6 +19,7 @@ public class PlatformEnemy : MonoBehaviour
     [ SerializeField ] ColorSetter renderer_color_setter;
     [ SerializeField ] Collider collider_projectile_receiver;
     [ SerializeField ] Collider collider_ally_receiver;
+    [ SerializeField ] Collider collider_damage;
 
 // Private Fields
 	RecycledTween recycledTween = new RecycledTween();
@@ -43,8 +44,9 @@ public class PlatformEnemy : MonoBehaviour
 
 		group_enemy_platform = groupPlatformEnemy;
 
-		collider_ally_receiver.enabled       = false;
-		collider_projectile_receiver.enabled = false;
+		collider_ally_receiver.enabled       = true;
+		collider_projectile_receiver.enabled = true;
+		collider_damage.enabled              = true;
 
 		_animator.Play( "idle" );
 	}
@@ -57,8 +59,8 @@ public class PlatformEnemy : MonoBehaviour
 
     public void StartRunning()
     {
-		collider_ally_receiver.enabled       = true;
-		collider_projectile_receiver.enabled = true;
+		// collider_ally_receiver.enabled       = true;
+		// collider_projectile_receiver.enabled = true;
 
 		_animator.SetBool( "run", true );
 	}
@@ -86,6 +88,10 @@ public class PlatformEnemy : MonoBehaviour
     {
 		transform.parent = pool_enemy_platform.PoolParent;
 
+		collider_ally_receiver.enabled       = false;
+		collider_projectile_receiver.enabled = false;
+		collider_damage.enabled              = false;
+
 		renderer_color_setter.SetColor( GameSettings.Instance.enemy_death_color );
 
 		_animator.SetTrigger( "die" );
@@ -96,6 +102,10 @@ public class PlatformEnemy : MonoBehaviour
 
     void InstantlyDie()
     {
+		collider_ally_receiver.enabled       = false;
+		collider_projectile_receiver.enabled = false;
+		collider_damage.enabled              = false;
+
 		event_particle_spawn.Raise( "death_red", RandomSpawnPoint() );
 		ReturnToPool();
 	}

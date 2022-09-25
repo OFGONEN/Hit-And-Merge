@@ -11,8 +11,10 @@ namespace FFStudio
 #region Fields (Settings)
     // Info: You can use Title() attribute ONCE for every game-specific group of settings.
     [ Title( "Ally" ) ]
-        [ LabelText( "Ally movement speed" ) ] public float ally_movement_speed;
+        [ LabelText( "Ally Movement Speed In Group" ) ] public float ally_movement_speed_group;
+        [ LabelText( "Ally Movement Speed In FinishLine" ) ] public float ally_movement_speed_finishLine;
         [ LabelText( "Ally spawn radius" ) ] public float ally_spawn_radius;
+        [ LabelText( "Ally finish line radius" ) ] public float ally_finishLine_radius;
         [ LabelText( "Ally buffer spawn radius" ) ] public float ally_spawn_radius_buffer;
         
     [ Title( "Ally Group" ) ]
@@ -31,6 +33,25 @@ namespace FFStudio
 
     [ Title( "Projectile" ) ]
         [ LabelText( "Projectile Travel Distance" ) ] public float projectile_travel_distance;
+
+    [ Title( "Gate" ) ]
+        [ LabelText( "Gate Height" ) ] public float gate_height;
+        [ LabelText( "Gate Size" ) ] public float gate_size = 5;
+        [ LabelText( "Gate Merge Buffer" ) ] public float gate_merge_buffer = 0.1f;
+        [ LabelText( "Gate Color Positive" ) ] public Color gate_color_positive;
+        [ LabelText( "Gate Color Negative" ) ] public Color gate_color_negative;
+        [ LabelText( "Gate Color Locked" ) ] public Color gate_color_locked;
+	    [ LabelText( "Gate UI Spawn Offset" ) ] public float gate_ui_spawn_offset; 
+	    [ LabelText( "Gate UI Spawn Damage Size" ) ] public float gate_ui_spawn_damage_size; 
+	    [ LabelText( "Gate UI Spawn Damage Color" ) ] public Color gate_ui_spawn_damage_color; 
+	    [ LabelText( "Gate UI Spawn Money Size" ) ] public float gate_ui_spawn_money_size; 
+	    [ LabelText( "Gate UI Spawn Money Color" ) ] public Color gate_ui_spawn_money_color; 
+	    [ LabelText( "Gate UI Canvas Float Position" ) ] public float gate_ui_canvas_float_position; // Absolute position 
+	    [ LabelText( "Gate UI Canvas Float Duration" ) ] public float gate_ui_canvas_float_duration; 
+	    [ LabelText( "Gate Merge Size Cofactor" ) ] public float gate_merge_size_cofactor;  
+	    [ LabelText( "Gate Merge Duration" ) ] public float gate_merge_duration;  
+	    [ LabelText( "Gate Merge Punch Value" ) ] public float gate_merge_punch_value;  
+	    [ LabelText( "Gate Merge Punch Duration" ) ] public float gate_merge_punch_duration;  
     
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
@@ -83,7 +104,7 @@ namespace FFStudio
 
 #region Property
         public float UIParticleDuration => ui_particle_spawn_duration + ui_particle_return_duration + ui_particle_movement_duration;
-        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp / ally_spawn_radius );
+        public float AllyLateralCountOnFinalStage => Mathf.FloorToInt( ally_group_movement_clamp * 2f / ally_finishLine_radius );
 #endregion
 
 #region Fields (Singleton Related)

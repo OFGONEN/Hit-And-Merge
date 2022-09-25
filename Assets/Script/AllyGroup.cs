@@ -26,6 +26,7 @@ public class AllyGroup : MonoBehaviour
 // Private	
     Dictionary< int, Ally > ally_dictionary = new Dictionary<int, Ally>( 331 );
     List< Ally > ally_list = new List< Ally >( 331 );
+    List< Ally > ally_list_kill_cache = new List< Ally >( 32 );
 
 	[ ShowInInspector, ReadOnly ] int spawn_index     = 0;
 	[ ShowInInspector, ReadOnly ] int spawn_row_ceil  = 0;
@@ -89,7 +90,8 @@ public class AllyGroup : MonoBehaviour
 
 		event_ally_finalStage_Register.Raise();
 
-		recycledTween.Recycle( transform.DOMove( notif_fireRange_position.sharedValue, GameSettings.Instance.ally_group_movement_speed_forward ),
+		recycledTween.Recycle( transform.DOMove( notif_fireRange_position.sharedValue, GameSettings.Instance.ally_group_movement_speed_forward )
+			.SetSpeedBased(),
 			event_ally_finalStage_UnRegister.Raise 
 		);
 	}
@@ -101,6 +103,27 @@ public class AllyGroup : MonoBehaviour
 
 		for( var i = 0; i < spawnCount; i++ )
 			onAllySpawn();
+	}
+
+	public void OnKillAlly( IntGameEvent gameEvent )
+	{
+		var eventValue = gameEvent.eventValue;
+		var killCount = Mathf.Min( eventValue, ally_dictionary.Count );
+
+		ally_list_kill_cache.Clear();
+
+		int count = 0;
+		foreach( var ally in ally_dictionary.Values )
+		{
+			ally_list_kill_cache.Add( ally );
+			count++;
+
+			if( count == killCount )
+				break;
+		}
+
+		foreach( var ally in ally_list_kill_cache )
+			ally.OnTrigger(); // Insta Death
 	}
 
     public void OnAllyDied( IntGameEvent gameEvent )
@@ -129,33 +152,18 @@ public class AllyGroup : MonoBehaviour
 		var lateralCount  = GameSettings.Instance.AllyLateralCountOnFinalStage;
 		var rowCount      = ally_dictionary.Count / lateralCount;
 
-		// int allyCount = 0;
-
-		// for( var y = 0; y < rowCount; y++ )
-		// {
-		// 	for( var x = 0; x < lateralCount; x++ )
-		// 	{
-		// 		var movePosition = new Vector3(
-		// 			-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
-		// 			0,
-		// 			position.z - y * GameSettings.Instance.ally_spawn_radius
-		// 		);
-
-
-		// 		ally_list[ allyCount ].MoveToFinishLine( movePosition );
-		// 		allyCount++;
-		// 	}
-		// }
-
 		int y = 0;
 		int x = 0;
+		float lateralSpawnPoint = -GameSettings.Instance.ally_finishLine_radius / 2f;
+		bool putToRight = true;
 
 		foreach( var ally in ally_dictionary.Values )
 		{
 			var movePosition = new Vector3(
-				-GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_spawn_radius,
+				// -GameSettings.Instance.ally_group_movement_clamp + x * GameSettings.Instance.ally_finishLine_radius,
+				lateralSpawnPoint,
 				0,
-				position.z - y * GameSettings.Instance.ally_spawn_radius
+				position.z - y * GameSettings.Instance.ally_finishLine_radius
 			);
 
 			ally.MoveToFinishLine( movePosition );
@@ -165,7 +173,20 @@ public class AllyGroup : MonoBehaviour
 			if( x >= lateralCount )
 			{
 				x = 0;
+				lateralSpawnPoint = 0;
+				putToRight = true;
 				y++;
+			}
+			
+			if( putToRight )
+			{
+				lateralSpawnPoint = Mathf.Abs( lateralSpawnPoint );
+				putToRight = false;
+			}
+			else
+			{
+				lateralSpawnPoint = -Mathf.Abs( lateralSpawnPoint ) - GameSettings.Instance.ally_finishLine_radius;
+				putToRight = true;
 			}
 		}
 	}
