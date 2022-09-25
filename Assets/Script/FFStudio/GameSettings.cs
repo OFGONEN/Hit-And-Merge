@@ -30,6 +30,7 @@ namespace FFStudio
         [ LabelText( "Platform Enemy Path Look At" ) ] public float enemy_movement_lookAt = 1f;
         [ LabelText( "Enemy Death Duration" ) ] public float enemy_death_duration;
         [ LabelText( "Enemy Death Color" ) ] public Color enemy_death_color;
+        [ LabelText( "Enemy Color" ) ] public Color enemy_color;
 
     [ Title( "Projectile" ) ]
         [ LabelText( "Projectile Travel Distance" ) ] public float projectile_travel_distance;

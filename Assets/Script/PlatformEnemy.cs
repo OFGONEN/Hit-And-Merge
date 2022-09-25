@@ -42,6 +42,8 @@ public class PlatformEnemy : MonoBehaviour
 		transform.forward    = forward;
 		transform.localScale = Vector3.one;
 
+		renderer_color_setter.SetColor( GameSettings.Instance.enemy_color );
+
 		group_enemy_platform = groupPlatformEnemy;
 
 		collider_ally_receiver.enabled       = true;

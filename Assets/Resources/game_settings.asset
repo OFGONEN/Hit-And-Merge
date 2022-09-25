@@ -27,6 +27,7 @@ MonoBehaviour:
   enemy_movement_lookAt: 0.15
   enemy_death_duration: 0.65
   enemy_death_color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+  enemy_color: {r: 0.5647059, g: 0.043137256, b: 0.019607844, a: 1}
   projectile_travel_distance: 30
   gate_height: 2
   gate_size: 5
