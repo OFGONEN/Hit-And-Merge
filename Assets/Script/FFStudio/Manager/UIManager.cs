@@ -22,6 +22,7 @@ namespace FFStudio
         public TextMeshProUGUI level_count_text;
         public TextMeshProUGUI level_information_text;
         public UI_Patrol_Scale level_information_text_Scale;
+        public Image image_tapToStart;
         public Image loadingScreenImage;
         public Image foreGroundImage;
         public RectTransform tutorialObjects;
@@ -57,7 +58,7 @@ namespace FFStudio
             levelCompleteResponse.response = LevelCompleteResponse;
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
-			level_information_text.text = "Tap to Start";
+			level_information_text.text = string.Empty;
         }
 #endregion
 
@@ -133,6 +134,8 @@ namespace FFStudio
 
 		private void StartLevel()
 		{
+			image_tapToStart.enabled = false;
+
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
