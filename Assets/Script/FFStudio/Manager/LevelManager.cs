@@ -72,12 +72,12 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelStartedResponse()
         {
+			gun_info_default.ChangeData( gun_info_current );
             enemy_finalStage_count = 0;
         }
 
         public void OnLevelLoadStart()
         {
-			gun_info_default.ChangeData( gun_info_current );
 		}
 
         public void OnEnemyFinalStageRegister()
