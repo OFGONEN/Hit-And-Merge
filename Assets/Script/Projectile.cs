@@ -88,6 +88,12 @@ public class Projectile : MonoBehaviour, IClusterEntity
     {
 		ProjectileReturnToPool();
 	}
+
+	public void OnClusterUpdated()
+	{
+        if( projectile_distance >= GameSettings.Instance.projectile_travel_distance )
+			ProjectileReturnToPool();
+	}
 #endregion
 
 #region Implementation
@@ -96,9 +102,6 @@ public class Projectile : MonoBehaviour, IClusterEntity
 		var delta = Time.deltaTime * projectile_info.ProjectileSpeed;
 
         projectile_distance += delta;
-
-        if( projectile_distance >= GameSettings.Instance.projectile_travel_distance )
-			ProjectileReturnToPool();
 
 		var position    = transform.position;
 		    position.z += delta;
