@@ -60,6 +60,8 @@ namespace FFStudio
     
     [ Title( "Camera" ) ]
         [ LabelText( "Follow Speed (Z)" ), SuffixLabel( "units/seconds" ), Min( 0 ) ] public float camera_follow_speed_depth = 2.8f;
+        [ LabelText( "End Level Offset" ) ] public Vector3 camera_finalStage_offset;
+        [ LabelText( "End Level Offset Tween Duration" ) ] public float camera_finalStage_duration;
     
     [ Title( "Game" ) ]
         [ LabelText( "Level Complete Event Raise Delay" ) ] public float game_event_level_complete_delay;

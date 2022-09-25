@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using UnityEngine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 namespace FFStudio
@@ -19,6 +20,7 @@ namespace FFStudio
         Vector3 followOffset;
 
         UnityMessage updateMethod;
+        RecycledTween recycledTween = new RecycledTween();
 #endregion
 
 #region Properties
@@ -35,7 +37,9 @@ namespace FFStudio
         {
             levelRevealEventListener.OnDisable();
             levelEndEventListener.OnDisable();
-        }
+
+			recycledTween.Kill();
+		}
 
         void Awake()
         {
@@ -52,6 +56,17 @@ namespace FFStudio
 #endregion
 
 #region API
+        public void OnAllyGroupShootStart() 
+        {
+			updateMethod = ExtensionMethods.EmptyMethod;
+
+            var target_position   = transform_target.position - followOffset;
+                target_position.x = 0;
+
+			target_position += GameSettings.Instance.camera_finalStage_offset;
+
+			recycledTween.Recycle( transform.DOMove( target_position, GameSettings.Instance.camera_finalStage_duration ) );
+		}
 #endregion
 
 #region Implementation

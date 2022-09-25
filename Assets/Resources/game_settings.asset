@@ -51,6 +51,8 @@ MonoBehaviour:
   gate_merge_punch_value: 1
   gate_merge_punch_duration: 0.35
   camera_follow_speed_depth: 2.8
+  camera_finalStage_offset: {x: 0, y: 2.5, z: -1.5}
+  camera_finalStage_duration: 0.5
   game_event_level_complete_delay: 1
   game_input_resolution: 100
   game_finalStage_shoot_delay: 0.35
