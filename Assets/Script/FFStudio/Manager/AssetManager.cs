@@ -54,6 +54,8 @@ namespace FFStudio
 			pool_UI_particle.InitPool( parent_pool_ui, false );
 
 			onAwakeEvent.Invoke();
+
+			DG.Tweening.DOTween.SetTweensCapacity( GameSettings.Instance.game_tween_count, GameSettings.Instance.game_sequence_count );
 		}
 
 		void Start()
