@@ -41,6 +41,8 @@ namespace FFStudio
         [ LabelText( "Gate Color Positive" ) ] public Color gate_color_positive;
         [ LabelText( "Gate Color Negative" ) ] public Color gate_color_negative;
         [ LabelText( "Gate Color Locked" ) ] public Color gate_color_locked;
+	    [ LabelText( "Gate UI Spawn Height Ratio Bottom" ) ] public float gate_ui_spawn_height_ratio_bottom; 
+	    [ LabelText( "Gate UI Spawn Height Ratio Upper" ) ] public float gate_ui_spawn_height_ratio_upper; 
 	    [ LabelText( "Gate UI Spawn Offset" ) ] public float gate_ui_spawn_offset; 
 	    [ LabelText( "Gate UI Spawn Damage Size" ) ] public float gate_ui_spawn_damage_size; 
 	    [ LabelText( "Gate UI Spawn Damage Color" ) ] public Color gate_ui_spawn_damage_color; 
@@ -48,6 +50,8 @@ namespace FFStudio
 	    [ LabelText( "Gate UI Spawn Money Color" ) ] public Color gate_ui_spawn_money_color; 
 	    [ LabelText( "Gate UI Canvas Float Position" ) ] public float gate_ui_canvas_float_position; // Absolute position 
 	    [ LabelText( "Gate UI Canvas Float Duration" ) ] public float gate_ui_canvas_float_duration; 
+        [ LabelText( "Gate UI Text Punch Value" ) ] public float gate_ui_text_punch_value;  
+	    [ LabelText( "Gate UI Text Punch Duration" ) ] public float gate_ui_text_punch_duration;  
 	    [ LabelText( "Gate Merge Size Cofactor" ) ] public float gate_merge_size_cofactor;  
 	    [ LabelText( "Gate Merge Duration" ) ] public float gate_merge_duration;  
 	    [ LabelText( "Gate Merge Punch Value" ) ] public float gate_merge_punch_value;  

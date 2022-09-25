@@ -51,8 +51,9 @@ public class GateSpawn : MonoBehaviour
     UnityMessage onSetGateColor;
     TriggerMessage onTrigger_Projectile;
 
-	RecycledSequence recycledSequence = new RecycledSequence();
+	RecycledSequence recycledSequence        = new RecycledSequence();
 	RecycledSequence recycledSequence_Locked = new RecycledSequence();
+	RecycledTween    recycledTween_Text      = new RecycledTween();
 #endregion
 
 #region Properties
@@ -234,7 +235,8 @@ public class GateSpawn : MonoBehaviour
 		var gateHeight = GameSettings.Instance.gate_height;
 		var uiSpawnPosition = collider.transform.position;
 
-		uiSpawnPosition.y = Random.Range( gateHeight / 4f, gateHeight );
+		uiSpawnPosition.y = Random.Range( gateHeight * GameSettings.Instance.gate_ui_spawn_height_ratio_bottom,
+			 gateHeight * GameSettings.Instance.gate_ui_spawn_height_ratio_upper );
 		uiSpawnPosition.z = transform.position.z + GameSettings.Instance.gate_ui_spawn_offset;
 
 		var stringBuilder = ExtensionMethods.stringBuilder;
@@ -253,6 +255,13 @@ public class GateSpawn : MonoBehaviour
 
 		onSetGateColor();
 		UpdateGateText();
+
+		// gate text punch scale
+		if( !recycledTween_Text.IsPlaying() )
+			recycledTween_Text.Recycle( gate_spawn_text.rectTransform.DOPunchScale(
+				GameSettings.Instance.gate_ui_text_punch_value * Vector3.one,
+				GameSettings.Instance.gate_ui_text_punch_duration
+			) );
 
 		onGateUpdate( gate_spawn_index );
 	}

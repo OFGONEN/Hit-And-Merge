@@ -7,11 +7,12 @@ using FFStudio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 
-public class Ally : MonoBehaviour
+public class Ally : MonoBehaviour , IClusterEntity
 {
 #region Fields
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] Pool_Ally pool_ally;
+    [ SerializeField ] Cluster cluster_ally;
     [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
     [ SerializeField ] IntGameEvent event_ally_died;
     [ SerializeField ] GunInfo shared_gun_info;
@@ -35,17 +36,42 @@ public class Ally : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		Subscribe_Cluster();
+	}
+
     private void OnDisable()
     {
+		UnSubscribe_Cluster();
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
+
     private void Awake()
     {
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
-    private void Update()
-    {
+#endregion
+
+#region IClusterAPI
+	public void Subscribe_Cluster()
+	{
+		cluster_ally.Subscribe( this );
+	}
+
+	public void UnSubscribe_Cluster()
+	{
+		cluster_ally.UnSubscribe( this );
+	}
+
+	public void OnUpdate_Cluster()
+	{
 		onUpdateMethod();
+	}
+
+	public int GetID()
+	{
+		return GetInstanceID();
 	}
 #endregion
 

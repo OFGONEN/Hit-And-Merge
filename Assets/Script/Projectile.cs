@@ -6,10 +6,11 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IClusterEntity
 {
 #region Fields
   [ Title( "Setup" ) ]
+    [ SerializeField ] Cluster cluster_projectile;
     [ SerializeField ] ProjectileInfo projectile_info;
     [ SerializeField ] Pool_Projectile pool_projectile;
     [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
@@ -21,21 +22,45 @@ public class Projectile : MonoBehaviour
 #endregion
 
 #region Properties
-    private void OnDisable()
-    {
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
-	}
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		Subscribe_Cluster();
+	}
+
+	private void OnDisable()
+	{
+		UnSubscribe_Cluster();
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
 	private void Awake()
 	{
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
+#endregion
 
-    private void Update()
-    {
+#region IClusterAPI
+	public void Subscribe_Cluster()
+	{
+		cluster_projectile.Subscribe( this );
+	}
+
+	public void UnSubscribe_Cluster()
+	{
+		cluster_projectile.UnSubscribe( this );
+	}
+
+	public void OnUpdate_Cluster()
+	{
 		onUpdateMethod();
+	}
+
+	public int GetID()
+	{
+		return GetInstanceID();
 	}
 #endregion
 
@@ -63,6 +88,12 @@ public class Projectile : MonoBehaviour
     {
 		ProjectileReturnToPool();
 	}
+
+	public void OnClusterUpdated()
+	{
+        if( projectile_distance >= GameSettings.Instance.projectile_travel_distance )
+			ProjectileReturnToPool();
+	}
 #endregion
 
 #region Implementation
@@ -71,9 +102,6 @@ public class Projectile : MonoBehaviour
 		var delta = Time.deltaTime * projectile_info.ProjectileSpeed;
 
         projectile_distance += delta;
-
-        if( projectile_distance >= GameSettings.Instance.projectile_travel_distance )
-			ProjectileReturnToPool();
 
 		var position    = transform.position;
 		    position.z += delta;

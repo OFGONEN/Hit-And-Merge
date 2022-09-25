@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool_ally: {fileID: 11400000, guid: df6fbabccc7888e4dac185ae472eb78e, type: 2}
+  cluster_ally: {fileID: 11400000, guid: fed0558d27245054b8322a2c3a0fb70d, type: 2}
   event_particle_spawn: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   event_ally_died: {fileID: 11400000, guid: e67778a17b8b141079c155282271dd77, type: 2}
   shared_gun_info: {fileID: 11400000, guid: 58e21fdc3f55d5549b9498e77e371bf8, type: 2}
