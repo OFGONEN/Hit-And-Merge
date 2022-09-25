@@ -41,6 +41,11 @@ namespace FFStudio
 #endregion
 
 #region Unity API
+		private void OnDisable()
+		{
+			Kill();
+		}
+
         void Awake()
         {
 			index_playing = -1;
