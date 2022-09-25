@@ -2,13 +2,15 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
 	[ CreateAssetMenu( fileName = "cluster_", menuName = "FF/Data/Cluster" ) ]
 	public class Cluster : ScriptableObject
 	{
-		public int cluster_count;
+		[ SerializeField ] GameEvent event_cluster_updated;
+		[ SerializeField ] int cluster_count;
 		Dictionary< int, IClusterEntity > cluster_entities;
 
 		public void Init()
@@ -40,6 +42,8 @@ namespace FFStudio
 		{
 			foreach( var entity in cluster_entities.Values )
 				entity.OnUpdate_Cluster();
+
+			event_cluster_updated.Raise();
 		}
 	}
 }
