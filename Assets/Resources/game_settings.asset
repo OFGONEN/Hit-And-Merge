@@ -38,10 +38,10 @@ MonoBehaviour:
   gate_ui_spawn_height_ratio_bottom: 1
   gate_ui_spawn_height_ratio_upper: 1.5
   gate_ui_spawn_offset: -0.15
-  gate_ui_spawn_money_size: 3
-  gate_ui_spawn_money_color: {r: 0.12583709, g: 1, b: 0, a: 1}
   gate_ui_spawn_damage_size: 1.75
   gate_ui_spawn_damage_color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  gate_ui_spawn_money_size: 2
+  gate_ui_spawn_money_color: {r: 0.12583709, g: 1, b: 0, a: 0.7490196}
   gate_ui_canvas_float_position: 3
   gate_ui_canvas_float_duration: 1
   gate_ui_text_punch_value: 0.3
