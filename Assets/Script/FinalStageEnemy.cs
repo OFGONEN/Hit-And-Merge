@@ -14,6 +14,7 @@ public class FinalStageEnemy : MonoBehaviour
   [ Title( "Setup")]
     [ SerializeField ] float movement_distance;
     [ SerializeField ] Pool_Money pool_money;
+    [ SerializeField ] SharedVector3Notifier notif_position_cage;
     [ SerializeField ] ParticleSpawnEvent event_particle_spawn;
     [ SerializeField ] GameEvent event_enemy_finalStage_Register;
     [ SerializeField ] GameEvent event_enemy_finalStage_UnRegister;
@@ -24,6 +25,7 @@ public class FinalStageEnemy : MonoBehaviour
     [ SerializeField ] Collider collider_projectile_receiver;
 
 // Private
+	UnityMessage onUnregisterRaise;
     RecycledTween recycledTween = new RecycledTween();
 #endregion
 
@@ -31,18 +33,22 @@ public class FinalStageEnemy : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		recycledTween.Kill();
+	}
+
+	private void Start()
+	{
+		onUnregisterRaise = ExtensionMethods.EmptyMethod;
+	}
 #endregion
 
 #region API
-	public void OnLevelFinished()
-	{
-		recycledTween.Kill();
-		collider_projectile_receiver.enabled = false;
-	}
-
     public void OnFinalStageEnemyStartRun()
     {
 		event_enemy_finalStage_Register.Raise();
+		onUnregisterRaise = event_enemy_finalStage_UnRegister.Raise;
 
 		_animator.SetBool( "run", true );
 
@@ -50,7 +56,8 @@ public class FinalStageEnemy : MonoBehaviour
 
 		recycledTween.Recycle( transform.DOMove( targetPosition, GameSettings.Instance.enemy_finalStage_movement_speed )
 			.SetEase( Ease.Linear )
-			.SetSpeedBased(),
+			.SetSpeedBased()
+			.OnUpdate( OnMovementUpdate ),
 			OnMovementComplete );
 	}
 
@@ -61,6 +68,16 @@ public class FinalStageEnemy : MonoBehaviour
 #endregion
 
 #region Implementation
+	void OnMovementUpdate()
+	{
+		if( transform.position.z >= notif_position_cage.sharedValue.z )
+		{
+			collider_projectile_receiver.enabled = false;
+			onUnregisterRaise();
+			onUnregisterRaise = ExtensionMethods.EmptyMethod;
+		}
+	}
+
     void Die()
     {
 		event_enemy_finalStage_UnRegister.Raise();
@@ -81,7 +98,9 @@ public class FinalStageEnemy : MonoBehaviour
     {
 		collider_projectile_receiver.enabled = false;
 		_animator.SetBool( "run", false );
-		event_enemy_finalStage_UnRegister.Raise();
+
+		onUnregisterRaise();
+		onUnregisterRaise = ExtensionMethods.EmptyMethod;	
     }
 
     Vector3 RandomSpawnPoint()
