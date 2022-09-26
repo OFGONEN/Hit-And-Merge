@@ -19,7 +19,7 @@ MonoBehaviour:
   ally_spawn_radius_buffer: 0.05625
   ally_group_count_max: 331
   ally_group_movement_speed_forward: 3.5
-  ally_group_movement_speed_lateral: 10
+  ally_group_movement_speed_lateral: 6
   ally_group_movement_clamp: 5
   ally_group_reArrange_delay: 0.75
   enemy_finalStage_movement_speed: 2
