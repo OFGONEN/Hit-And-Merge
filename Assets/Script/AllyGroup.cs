@@ -32,6 +32,7 @@ public class AllyGroup : MonoBehaviour
 	[ ShowInInspector, ReadOnly ] int spawn_row_ceil  = 0;
 	[ ShowInInspector, ReadOnly ] int spawn_row_floor = 0;
 	[ ShowInInspector, ReadOnly ] int spawn_row_index = 0;
+	[ ShowInInspector, ReadOnly ] bool ally_group_is_finishLine = false;
 	float movement_clamp = 0;
 
 	RecycledTween recycledTween = new RecycledTween();
@@ -85,6 +86,9 @@ public class AllyGroup : MonoBehaviour
 
 	public void OnFinishLine()
 	{
+		ally_group_is_finishLine = true;
+		recycledTween_ReArrange.Kill();
+
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 		AlignAlliesOnFinalStage();
 
@@ -253,7 +257,7 @@ public class AllyGroup : MonoBehaviour
 			movement_clamp = ( spawn_row_index + 0.5f ) * GameSettings.Instance.ally_spawn_radius;
 		}
 
-		if( !recycledTween_ReArrange.IsPlaying() )
+		if( !ally_group_is_finishLine && !recycledTween_ReArrange.IsPlaying() )
 			recycledTween_ReArrange.Recycle( DOVirtual.DelayedCall(
 				GameSettings.Instance.ally_group_reArrange_delay,
 				ArrangeAllies
