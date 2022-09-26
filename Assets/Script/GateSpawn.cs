@@ -83,6 +83,8 @@ public class GateSpawn : MonoBehaviour
 			onSetGateColor = SetGateColor;
 			onAllySpawn    = KillAlly;
 		}
+
+		UpdateGateText();
 	}
 #endregion
 

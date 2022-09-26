@@ -41,6 +41,11 @@ namespace FFStudio
 #endregion
 
 #region Unity API
+		private void OnDisable()
+		{
+			Kill();
+		}
+
         void Awake()
         {
 			index_playing = -1;
@@ -106,7 +111,8 @@ namespace FFStudio
 		[ Button() ]
         public void Kill()
         {
-			tweenDatas[ index_playing ].Kill();
+			if( IsPlaying )
+				tweenDatas[ index_playing ].Kill();
 		}
 #endregion
 

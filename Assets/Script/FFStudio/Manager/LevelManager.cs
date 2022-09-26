@@ -72,12 +72,12 @@ namespace FFStudio
         // Info: Called from Editor.
         public void LevelStartedResponse()
         {
-			gun_info_default.ChangeData( gun_info_current );
             enemy_finalStage_count = 0;
         }
 
         public void OnLevelLoadStart()
         {
+			gun_info_current.ChangeData( gun_info_default );
 		}
 
         public void OnEnemyFinalStageRegister()
@@ -128,7 +128,6 @@ namespace FFStudio
 			sequence.AppendCallback( event_enemy_finalStage_run.Raise );
 			sequence.AppendInterval( GameSettings.Instance.game_finalStage_shoot_delay );
 			sequence.AppendCallback( event_ally_finalStage_shoot.Raise );
-
 		}
 #endregion
     }
