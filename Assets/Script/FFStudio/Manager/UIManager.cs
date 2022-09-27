@@ -114,7 +114,7 @@ namespace FFStudio
 			level_information_text.text = "Tap to Continue";
 			EnableIncrementals_LevelEnd();
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.Join( image_level_completed.GoToTargetPosition() )
@@ -133,7 +133,7 @@ namespace FFStudio
 			level_information_text.text = "Tap to Continue";
 			EnableIncrementals_LevelEnd();
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
                     .Join( image_level_failed.GoToTargetPosition() )
