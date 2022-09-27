@@ -923,8 +923,8 @@ MonoBehaviour:
   notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
   incremental_empty: {fileID: 11400000, guid: a342f8dcfb8d647038ff973022e73d04, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
-  color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  color_negative: {r: 1, g: 0, b: 0, a: 1}
+  color_inactive: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  color_negative: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   _button: {fileID: 2333093322967050199}
   text_value: {fileID: 8977009580832882666}
   text_cost: {fileID: 3749069068955084864}
@@ -2242,8 +2242,8 @@ MonoBehaviour:
   notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
   incremental_empty: {fileID: 11400000, guid: a18f53fce17884dc4974a317b14bb60d, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
-  color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  color_negative: {r: 1, g: 0, b: 0, a: 1}
+  color_inactive: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  color_negative: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   _button: {fileID: 7477320942239277897}
   text_value: {fileID: 2422014194632943814}
   text_cost: {fileID: 4477442297679923746}
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   incremental_empty: {fileID: 11400000, guid: 35e97268643904472b449c2a09ede464, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  color_negative: {r: 1, g: 0, b: 0, a: 1}
+  color_negative: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
   _button: {fileID: 759244080071336145}
   text_value: {fileID: 2805660607301164503}
   text_cost: {fileID: 802329687492420055}
@@ -3791,7 +3791,7 @@ MonoBehaviour:
   incremental_manPower: {fileID: 11400000, guid: 32d03746c58a34e2db897d57d6332496, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
-  color_negative: {r: 1, g: 0, b: 0, a: 1}
+  color_negative: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
   _button: {fileID: 8770913463327030268}
   text_value: {fileID: 7766309791062615678}
   text_cost: {fileID: 5003210139128865070}
