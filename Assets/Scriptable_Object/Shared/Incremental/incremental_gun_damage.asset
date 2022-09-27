@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7014ace47a88342a49df754afcf425b1, type: 3}
   m_Name: incremental_gun_damage
   m_EditorClassIdentifier: 
-  incremental_empty_array: []
+  incremental_key: incremental_gun_damage
+  incremental_empty_array:
+  - incremental_cost: 10
+  - incremental_cost: 20
+  - incremental_cost: 30
+  - incremental_cost: 40
+  - incremental_cost: 50

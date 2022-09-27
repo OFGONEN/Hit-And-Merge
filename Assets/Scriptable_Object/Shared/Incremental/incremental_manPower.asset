@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272b2ee46bd5b4cd1974848230073a1c, type: 3}
   m_Name: incremental_manPower
   m_EditorClassIdentifier: 
-  incremental_man_array: []
+  incremental_man_array:
+  - incremental_man: 1
+    incremental_cost: 10
+  - incremental_man: 2
+    incremental_cost: 20
+  - incremental_man: 3
+    incremental_cost: 30
+  - incremental_man: 4
+    incremental_cost: 40
+  - incremental_man: 5
+    incremental_cost: 50
