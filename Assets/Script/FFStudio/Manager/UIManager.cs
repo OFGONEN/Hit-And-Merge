@@ -22,9 +22,19 @@ namespace FFStudio
         public TextMeshProUGUI level_count_text;
         public TextMeshProUGUI level_information_text;
         public UI_Patrol_Scale level_information_text_Scale;
+        public UIEntity image_level_completed;
+        public UIEntity image_level_failed;
+        public Image image_tapToStart;
         public Image loadingScreenImage;
         public Image foreGroundImage;
         public RectTransform tutorialObjects;
+    
+    [ Title( "UI Incremental Buttons" ) ]
+        [ SerializeField ] UIIncrementalButtonManPower ui_incremental_manPower;
+        [ SerializeField ] UIIncrementalButtonEmpty ui_incremental_money;
+        [ SerializeField ] UIIncrementalButtonEmpty ui_incremental_gun_damage;
+        [ SerializeField ] UIIncrementalButtonEmpty ui_incremental_gun_fireRate;
+        [ SerializeField ] RectTransform ui_incremental_gun_background;
 
     [ Title( "Fired Events" ) ]
         public GameEvent levelRevealedEvent;
@@ -57,7 +67,7 @@ namespace FFStudio
             levelCompleteResponse.response = LevelCompleteResponse;
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
-			level_information_text.text = "Tap to Start";
+			level_information_text.text = string.Empty;
         }
 #endregion
 
@@ -70,15 +80,16 @@ namespace FFStudio
 								.AppendCallback( () => tapInputListener.response = StartLevel );
 
 			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			EnableIncrementals_LevelStart();
 
             levelLoadedResponse.response = NewLevelLoaded;
         }
 
         private void NewLevelLoaded()
         {
-			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
-
+			level_count_text.text       = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 			level_information_text.text = "Tap to Start";
+			EnableIncrementals_LevelStart();
 
 			var sequence = DOTween.Sequence();
 
@@ -100,11 +111,13 @@ namespace FFStudio
 
 			// Tween tween = null;
 
-			level_information_text.text = "Completed \n\n Tap to Continue";
+			level_information_text.text = "Tap to Continue";
+			EnableIncrementals_LevelEnd();
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+					.Join( image_level_completed.GoToTargetPosition() )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
 
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
@@ -117,11 +130,13 @@ namespace FFStudio
             var sequence = DOTween.Sequence();
 
 			// Tween tween = null;
-			level_information_text.text = "Level Failed \n\n Tap to Continue";
+			level_information_text.text = "Tap to Continue";
+			EnableIncrementals_LevelEnd();
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_failed.GoToTargetPosition() )
 					.AppendCallback( () => tapInputListener.response = Resetlevel );
 
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
@@ -133,6 +148,9 @@ namespace FFStudio
 
 		private void StartLevel()
 		{
+			DisableIncrementals_LevelStart();
+			image_tapToStart.enabled = false;
+
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
@@ -149,24 +167,64 @@ namespace FFStudio
 
 		private void LoadNewLevel()
 		{
+			DisableIncrementals_LevelEnd();
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
 			var sequence = DOTween.Sequence();
 
 			sequence.Append( foreGroundImage.DOFade( 1f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 			        .Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_completed.GoToStartPosition() )
 			        .AppendCallback( loadNewLevelEvent.Raise );
 		}
 
 		private void Resetlevel()
 		{
+			DisableIncrementals_LevelEnd();
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
 			var sequence = DOTween.Sequence();
 
 			sequence.Append( foreGroundImage.DOFade( 1f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 			        .Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+                    .Join( image_level_failed.GoToStartPosition() )
 			        .AppendCallback( resetLevelEvent.Raise );
+		}
+
+        void EnableIncrementals_LevelStart()
+        {
+			ui_incremental_manPower.gameObject.SetActive( true );
+			ui_incremental_money.gameObject.SetActive( true );
+
+			ui_incremental_manPower.Configure();
+			ui_incremental_money.Configure();
+        }
+
+		void EnableIncrementals_LevelEnd()
+		{
+			ui_incremental_gun_damage.gameObject.SetActive( true );
+			ui_incremental_gun_fireRate.gameObject.SetActive( true );
+			ui_incremental_gun_background.gameObject.SetActive( true );
+
+			ui_incremental_gun_damage.Configure();
+			ui_incremental_gun_fireRate.Configure();
+		}
+
+		void DisableIncrementals_LevelStart()
+		{
+			ui_incremental_manPower.gameObject.SetActive( false );
+			ui_incremental_money.gameObject.SetActive( false );
+
+			ui_incremental_manPower.Configure();
+			ui_incremental_money.Configure();
+		}
+
+		void DisableIncrementals_LevelEnd()
+		{
+			ui_incremental_gun_damage.gameObject.SetActive( false );
+			ui_incremental_gun_fireRate.gameObject.SetActive( false );
+
+			ui_incremental_gun_background.gameObject.SetActive( false );
 		}
 #endregion
     }

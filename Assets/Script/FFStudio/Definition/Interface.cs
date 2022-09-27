@@ -9,4 +9,9 @@ namespace FFStudio
 		void OnUpdate_Cluster();
 		int GetID();
 	}
+
+	public interface IGate
+	{
+		void Disable();
+	}
 }

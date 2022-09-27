@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a4511363c21cb416cb793ffbd4008502
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pool_enemy_platform: {fileID: 11400000, guid: 482a5a1459181234386345b03de94ece, type: 2}
+  - event_particle_spawn: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
+  - _animator: {instanceID: 0}
+  - renderer_color_setter: {instanceID: 0}
+  - collider_projectile_receiver: {instanceID: 0}
+  - collider_ally_receiver: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

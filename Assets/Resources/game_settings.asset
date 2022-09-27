@@ -12,8 +12,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
+  ally_movement_speed_group: 4
+  ally_movement_speed_finishLine: 4
+  ally_spawn_radius: 0.3375
+  ally_finishLine_radius: 0.50625
+  ally_spawn_radius_buffer: 0.05625
+  ally_group_count_max: 331
+  ally_group_movement_speed_forward: 5
+  ally_group_movement_speed_lateral: 6
+  ally_group_movement_clamp: 5
+  ally_group_reArrange_delay: 0.75
+  enemy_finalStage_movement_speed: 2
+  enemy_spawn_radius: 0.225
+  enemy_movement_lookAt: 0.15
+  enemy_death_duration: 0.65
+  enemy_death_color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+  enemy_color: {r: 0.5647059, g: 0.043137256, b: 0.019607844, a: 1}
+  projectile_travel_distance: 30
+  gate_height: 2
+  gate_size: 5
+  gate_merge_buffer: 0.1
+  gate_color_positive: {r: 0, g: 0.6313726, b: 1, a: 1}
+  gate_color_negative: {r: 1, g: 0, b: 0.1254902, a: 1}
+  gate_color_locked: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  gate_ui_spawn_height_ratio_bottom: 1
+  gate_ui_spawn_height_ratio_upper: 1.5
+  gate_ui_spawn_offset: -0.15
+  gate_ui_spawn_damage_size: 1.75
+  gate_ui_spawn_damage_color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  gate_ui_spawn_money_size: 2
+  gate_ui_spawn_money_color: {r: 0.12583709, g: 1, b: 0, a: 0.7490196}
+  gate_ui_canvas_float_position: 3
+  gate_ui_canvas_float_duration: 1
+  gate_ui_text_punch_value: 0.3
+  gate_ui_text_punch_duration: 0.35
+  gate_merge_size_cofactor: 0.33333334
+  gate_merge_duration: 0.25
+  gate_merge_punch_value: 1
+  gate_merge_punch_duration: 0.35
   camera_follow_speed_depth: 2.8
-  maxLevelCount: 1
+  camera_finalStage_offset: {x: 0, y: 2.5, z: -1.5}
+  camera_finalStage_duration: 0.5
+  game_event_level_complete_delay: 1
+  game_input_resolution: 100
+  game_finalStage_shoot_delay: 0.35
+  game_finalStage_offset: 1
+  game_tween_count: 500
+  game_sequence_count: 125
+  maxLevelCount: 10
+  ui_particle_spawn_rotationRange: 20
+  ui_particle_spawn_size: 1.2
+  ui_particle_spawn_delay: 0.2
+  ui_particle_spawn_duration: 0.75
+  ui_particle_spawn_ease: 1
+  ui_particle_return_duration: 0.35
+  ui_particle_return_ease: 1
+  ui_particle_movement_duration: 0.65
+  ui_particle_movement_ease: 1
+  ui_particle_movement_size_end: 0.35
+  ui_particle_movement_size_end_duration: 0.325
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   ui_Entity_Move_TweenDuration: 0.5
@@ -23,12 +80,6 @@ MonoBehaviour:
   ui_Entity_JoyStick_Gap: 50
   ui_PopUp_height: 1
   ui_PopUp_duration: 0.75
-  ui_particle_spawn_width: 10
-  ui_particle_spawn_duration: 0.1
-  ui_particle_spawn_ease: 1
-  ui_particle_target_waitTime: 0.16
-  ui_particle_target_duration: 0.4
-  ui_particle_target_ease: 1
   swipeThreshold: 2
   ui_safeArea_offset_top: 88
   debug_ui_text_float_height: 1

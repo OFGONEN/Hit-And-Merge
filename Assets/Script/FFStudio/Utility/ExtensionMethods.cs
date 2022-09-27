@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,8 +14,16 @@ namespace FFStudio
 	{
 		public static readonly string SAVE_PATH = Application.persistentDataPath + "/Saves/";
 
+		public static string Key_Currency                = "currency";
+		public static string Key_Incremental_ManPower    = "incremental_man";
+		public static string Key_Incremental_Money       = "incremental_money";
+		public static string Key_Incremental_GunDamage   = "incremental_gun_damage";
+		public static string Key_Incremental_GunFireRate = "incremental_gun_fireRate";
+
 		static List< Transform > baseModelBones   = new List< Transform >( 96 );
 		static List< Transform > targetModelBones = new List< Transform >( 96 );
+
+		public static StringBuilder stringBuilder = new StringBuilder( 64 );
 
 		public static Vector2 ReturnV2FromUnSignedAngle( this float angle )
 		{
@@ -80,6 +89,11 @@ namespace FFStudio
 		public static Vector3 ConvertV3( this Vector2 v2 )
 		{
 			return new Vector3( v2.x, v2.y, 0 );
+		}
+
+		public static Vector3 ConvertV3_Z( this Vector2 v2 )
+		{
+			return new Vector3( v2.x, 0, v2.y );
 		}
 
 		public static Vector3 RandomPointBetween( this Vector3 first, Vector3 second )
@@ -155,6 +169,11 @@ namespace FFStudio
 		{
 			/* Intentionally empty, by definition. */
 		}
+
+		public static void EmptyMethod( int index )
+		{
+			/* Intentionally empty, by definition. */
+		}
 		
 		public static void EmptyMethod( Vector2 vector2 )
 		{
@@ -167,6 +186,11 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod( Camera camera )
+		{
+			/* Intentionally empty, by definition. */
+		}
+
+		public static void EmptyMethod( Collider collider )
 		{
 			/* Intentionally empty, by definition. */
 		}

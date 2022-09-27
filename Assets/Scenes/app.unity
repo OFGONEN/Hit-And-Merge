@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.11764706, g: 0.7372549, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d0523d8917957bb429a32997cb0e52b2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.41886, g: 0.83410484, b: 1.0489215, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -164,10 +164,6 @@ PrefabInstance:
     - target: {fileID: 4785473945952465757, guid: 92bc29e88e0e9554e9beb439332ae113, type: 3}
       propertyPath: m_Name
       value: manager_postProcess
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785473945952465757, guid: 92bc29e88e0e9554e9beb439332ae113, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4785473945952465759, guid: 92bc29e88e0e9554e9beb439332ae113, type: 3}
       propertyPath: m_RootOrder
@@ -638,6 +634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 797da1a9d36c74949965f5c3a417702f, type: 3}
+--- !u!224 &124199664350933745 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 124199665187945366, guid: 797da1a9d36c74949965f5c3a417702f, type: 3}
+  m_PrefabInstance: {fileID: 124199664350933744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &961601379311836342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +878,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: manager_asset
       objectReference: {fileID: 0}
+    - target: {fileID: 4364745634903858524, guid: ceed65b0ed263c842930cd7fefac090a, type: 3}
+      propertyPath: parent_pool_ui
+      value: 
+      objectReference: {fileID: 124199664350933745}
+    - target: {fileID: 4364745634903858524, guid: ceed65b0ed263c842930cd7fefac090a, type: 3}
+      propertyPath: pool_ui_parent
+      value: 
+      objectReference: {fileID: 124199664350933745}
     - target: {fileID: 4364745634903858525, guid: ceed65b0ed263c842930cd7fefac090a, type: 3}
       propertyPath: m_RootOrder
       value: 8

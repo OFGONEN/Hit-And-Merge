@@ -8,8 +8,6 @@ namespace FFStudio
 {
 	public class MovementTweenData : TweenData
 	{
-		public enum MovementMode { Local, World }
-
 #region Fields
 	[ Title( "Movement Tween" ) ]
 		[ BoxGroup( "Tween" ), PropertyOrder( int.MinValue ) ] public bool useDelta = true;

@@ -19,9 +19,17 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		[ SerializeField ] GameSettings gameSettings;
 		[ SerializeField ] CurrentLevelData currentLevelData;
+		[ SerializeField ] RectTransform parent_pool_ui;
 
 	[ Title( "Pool" ) ]
+		[ SerializeField ] Pool_Money pool_money;
+		[ SerializeField ] Pool_Projectile pool_projectile_pistol;
+		[ SerializeField ] Pool_Projectile pool_projectile_desertEagle;
+		[ SerializeField ] Pool_Projectile pool_projectile_uzi;
+		[ SerializeField ] Pool_PlatformEnemy pool_enemy_platform;
+		[ SerializeField ] Pool_Ally pool_ally;
 		[ SerializeField ] Pool_UIPopUpText pool_UIPopUpText;
+		[ SerializeField ] UIParticlePool pool_UI_particle;
 #endregion
 
 #region UnityAPI
@@ -34,8 +42,20 @@ namespace FFStudio
 		{
 			Vibration.Init();
 
+			pool_money.InitPool( transform, false );
+			pool_projectile_pistol.InitPool( transform, false );
+			pool_projectile_desertEagle.InitPool( transform, false );
+			pool_projectile_uzi.InitPool( transform, false );
+			pool_enemy_platform.InitPool( transform, false );
+			pool_ally.InitPool( transform, false );
+
+			// UI Pools
 			pool_UIPopUpText.InitPool( transform, false );
+			pool_UI_particle.InitPool( parent_pool_ui, false );
+
 			onAwakeEvent.Invoke();
+
+			DG.Tweening.DOTween.SetTweensCapacity( GameSettings.Instance.game_tween_count, GameSettings.Instance.game_sequence_count );
 		}
 
 		void Start()
@@ -43,8 +63,6 @@ namespace FFStudio
 			onStartEvent.Invoke();
 		}
 #endregion
-
-
 
 #region API
 		public void VibrateAPI( IntGameEvent vibrateEvent )

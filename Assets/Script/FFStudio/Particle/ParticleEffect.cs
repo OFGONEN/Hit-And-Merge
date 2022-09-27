@@ -34,6 +34,11 @@ namespace FFStudio
 		{
 			particles = GetComponentInChildren< ParticleSystem >();
 
+#if UNITY_EDITOR
+			if( particles == null )
+				return;
+#endif
+
 			var mainParticle             = particles.main;
 			    mainParticle.stopAction  = ParticleSystemStopAction.Callback;
 			    mainParticle.playOnAwake = false;

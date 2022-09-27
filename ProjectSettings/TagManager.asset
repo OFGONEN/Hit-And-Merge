@@ -30,14 +30,14 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Interaction
+  - Border
+  - Projectile_Receiver
+  - Projectile
+  - Damage_Receiver
+  - Damage
+  - Ally_Receiver
+  - Ally
   m_SortingLayers:
   - name: Default
     uniqueID: 0
