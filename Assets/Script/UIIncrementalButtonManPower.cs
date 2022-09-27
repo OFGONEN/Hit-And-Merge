@@ -14,6 +14,7 @@ public class UIIncrementalButtonManPower : MonoBehaviour
   [ Title( "Shared" ) ]
     [ SerializeField ] Currency notif_currency;
     [ SerializeField ] IncrementalManPower incremental_manPower;
+    [ SerializeField ] GameEvent event_incremental_power;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Color color_positive;
@@ -54,6 +55,8 @@ public class UIIncrementalButtonManPower : MonoBehaviour
 
 	public void OnButtonPress()
 	{
+		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
+		event_incremental_power.Raise();
 		incremental_index++;
 
 		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
