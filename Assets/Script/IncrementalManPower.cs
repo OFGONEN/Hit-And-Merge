@@ -11,7 +11,9 @@ public class IncrementalManPower : ScriptableObject
 {
     [ SerializeField ] IncrementalManPowerData[] incremental_man_array;
 
-    public IncrementalManPowerData ReturnIncrementalAtIndex( int index )
+	public int IncrementalCount => incremental_man_array.Length;
+
+	public IncrementalManPowerData ReturnIncrementalAtIndex( int index )
     {
 		return incremental_man_array[ index ];
 	}
