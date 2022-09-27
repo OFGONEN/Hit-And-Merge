@@ -140,4 +140,11 @@ namespace FFStudio
 		public Color color;
 		[ MappedFloat ] public float threshold;
 	}
+
+	[ Serializable ]
+	public struct IncrementalManPower
+	{
+		public int incremental_man;
+		public int incremental_cost;
+	}
 }
