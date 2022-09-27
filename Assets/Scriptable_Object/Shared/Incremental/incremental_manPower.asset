@@ -14,14 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incremental_man_array:
   - incremental_man: 1
-    incremental_cost: 10
-  - incremental_man: 2
-    incremental_cost: 20
-  - incremental_man: 3
-    incremental_cost: 30
-  - incremental_man: 4
-    incremental_cost: 40
-  - incremental_man: 5
     incremental_cost: 50
+  - incremental_man: 2
+    incremental_cost: 100
+  - incremental_man: 3
+    incremental_cost: 200
+  - incremental_man: 4
+    incremental_cost: 300
+  - incremental_man: 5
+    incremental_cost: 450
   - incremental_man: 6
-    incremental_cost: 60
+    incremental_cost: 600
+  - incremental_man: 7
+    incremental_cost: 800
+  - incremental_man: 8
+    incremental_cost: 1000
+  - incremental_man: 9
+    incremental_cost: 1250
+  - incremental_man: 10
+    incremental_cost: 1500

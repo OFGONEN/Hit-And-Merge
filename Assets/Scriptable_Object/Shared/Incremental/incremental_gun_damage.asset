@@ -14,8 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incremental_key: incremental_gun_damage
   incremental_empty_array:
-  - incremental_cost: 10
-  - incremental_cost: 20
-  - incremental_cost: 30
-  - incremental_cost: 40
+  - incremental_cost: 25
   - incremental_cost: 50
+  - incremental_cost: 100
+  - incremental_cost: 150
+  - incremental_cost: 200
+  - incremental_cost: 350
+  - incremental_cost: 500
+  - incremental_cost: 750
+  - incremental_cost: 1000
+  - incremental_cost: 1250
+  - incremental_cost: 1500
+  - incremental_cost: 1750
+  - incremental_cost: 2000
+  - incremental_cost: 2500
+  - incremental_cost: 3000
