@@ -10,6 +10,8 @@ public class IncrementalEmpty : ScriptableObject
 {
     [ SerializeField ] IncrementalEmptyData[] incremental_empty_array;
 
+	public int IncrementalCount => incremental_empty_array.Length;
+
     public IncrementalEmptyData ReturnIncrementalAtIndex( int index )
     {
 		return incremental_empty_array[ index ];
