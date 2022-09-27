@@ -38,7 +38,7 @@ public class UIIncrementalButtonEmpty : MonoBehaviour
 #region API
     public void Configure()
     {
-		incremental_index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.Key_Incremental_ManPower, 0 );
+		incremental_index = PlayerPrefsUtility.Instance.GetInt( incremental_empty.IncrementalKey, 0 );
 		incremental       = incremental_empty.ReturnIncrementalAtIndex( incremental_index );
 
 		text_value.text = "Lvl " + incremental_index;

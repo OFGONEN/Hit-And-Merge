@@ -8,8 +8,10 @@ using FFStudio;
 [ CreateAssetMenu( fileName = "incremental_", menuName = "FF/Data/Incremental/Empty" ) ]
 public class IncrementalEmpty : ScriptableObject
 {
+    [ SerializeField ] string incremental_key;
     [ SerializeField ] IncrementalEmptyData[] incremental_empty_array;
 
+	public string IncrementalKey => incremental_key;
 	public int IncrementalCount => incremental_empty_array.Length;
 
     public IncrementalEmptyData ReturnIncrementalAtIndex( int index )
