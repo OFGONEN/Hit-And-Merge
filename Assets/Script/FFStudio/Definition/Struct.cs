@@ -142,9 +142,15 @@ namespace FFStudio
 	}
 
 	[ Serializable ]
-	public struct IncrementalManPower
+	public struct IncrementalManPowerData
 	{
 		public int incremental_man;
+		public int incremental_cost;
+	}
+
+	[ Serializable ]
+	public struct IncrementalEmptyData
+	{
 		public int incremental_cost;
 	}
 }
