@@ -14,8 +14,11 @@ namespace FFStudio
 	{
 		public static readonly string SAVE_PATH = Application.persistentDataPath + "/Saves/";
 
-		public static string Key_Currency = "currency";
-		public static string Key_Incremental_ManPower = "incremental_man";
+		public static string Key_Currency                = "currency";
+		public static string Key_Incremental_ManPower    = "incremental_man";
+		public static string Key_Incremental_Money       = "incremental_money";
+		public static string Key_Incremental_GunDamage   = "incremental_gun_damage";
+		public static string Key_Incremental_GunFireRate = "incremental_gun_fireRate";
 
 		static List< Transform > baseModelBones   = new List< Transform >( 96 );
 		static List< Transform > targetModelBones = new List< Transform >( 96 );
