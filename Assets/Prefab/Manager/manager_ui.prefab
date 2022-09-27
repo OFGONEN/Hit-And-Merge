@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 581053458770097784}
   - component: {fileID: 2333093322967050199}
   - component: {fileID: 2115561756014340816}
+  - component: {fileID: 5688104435648833546}
   m_Layer: 5
   m_Name: image_incremental_gun_fireRate
   m_TagString: Untagged
@@ -927,6 +928,37 @@ MonoBehaviour:
   _button: {fileID: 2333093322967050199}
   text_value: {fileID: 8977009580832882666}
   text_cost: {fileID: 3749069068955084864}
+--- !u!114 &5688104435648833546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934403079381998173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: ca6059dde5d43435b9a6cd2003cea6e1, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2115561756014340816}
+          m_TargetAssemblyTypeName: UIIncrementalButtonEmpty, Assembly-CSharp
+          m_MethodName: Configure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1038116796409536744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2091,7 @@ GameObject:
   - component: {fileID: 7122721399789439979}
   - component: {fileID: 7477320942239277897}
   - component: {fileID: 7841951042969559054}
+  - component: {fileID: 570769343846450735}
   m_Layer: 5
   m_Name: image_incremental_gun_damage
   m_TagString: Untagged
@@ -2214,6 +2247,37 @@ MonoBehaviour:
   _button: {fileID: 7477320942239277897}
   text_value: {fileID: 2422014194632943814}
   text_cost: {fileID: 4477442297679923746}
+--- !u!114 &570769343846450735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315283934126430420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: ca6059dde5d43435b9a6cd2003cea6e1, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7841951042969559054}
+          m_TargetAssemblyTypeName: UIIncrementalButtonEmpty, Assembly-CSharp
+          m_MethodName: Configure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3439076288939436447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,6 +3047,7 @@ GameObject:
   - component: {fileID: 121447932725721931}
   - component: {fileID: 759244080071336145}
   - component: {fileID: 3981971637508765844}
+  - component: {fileID: 2086858626631071147}
   m_Layer: 5
   m_Name: image_incremental_money
   m_TagString: Untagged
@@ -3138,6 +3203,37 @@ MonoBehaviour:
   _button: {fileID: 759244080071336145}
   text_value: {fileID: 2805660607301164503}
   text_cost: {fileID: 802329687492420055}
+--- !u!114 &2086858626631071147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386244594342888933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: ca6059dde5d43435b9a6cd2003cea6e1, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3981971637508765844}
+          m_TargetAssemblyTypeName: UIIncrementalButtonEmpty, Assembly-CSharp
+          m_MethodName: Configure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7527067917822843038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,6 +3627,7 @@ GameObject:
   - component: {fileID: 230651808124979353}
   - component: {fileID: 8770913463327030268}
   - component: {fileID: 8988592848892292525}
+  - component: {fileID: 5455513514823569113}
   m_Layer: 5
   m_Name: image_incremental_power
   m_TagString: Untagged
@@ -3698,6 +3795,37 @@ MonoBehaviour:
   _button: {fileID: 8770913463327030268}
   text_value: {fileID: 7766309791062615678}
   text_cost: {fileID: 5003210139128865070}
+--- !u!114 &5455513514823569113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505690631026475552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: ca6059dde5d43435b9a6cd2003cea6e1, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8988592848892292525}
+          m_TargetAssemblyTypeName: UIIncrementalButtonManPower, Assembly-CSharp
+          m_MethodName: Configure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &3483446906375662878
 PrefabInstance:
   m_ObjectHideFlags: 0
