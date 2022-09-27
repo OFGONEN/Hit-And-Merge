@@ -15,7 +15,7 @@ public class IncrementalManPower : ScriptableObject
 
 	public IncrementalManPowerData ReturnIncrementalAtIndex( int index )
     {
-		return incremental_man_array[ index ];
+		return incremental_man_array[ Mathf.Min( index, incremental_man_array.Length - 1 ) ];
 	}
 
 	public int ReturnIncrementalValueAtIndex( int index )

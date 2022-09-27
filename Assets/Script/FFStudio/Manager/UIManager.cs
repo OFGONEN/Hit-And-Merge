@@ -112,13 +112,13 @@ namespace FFStudio
 			// Tween tween = null;
 
 			level_information_text.text = "Tap to Continue";
-			EnableIncrementals_LevelEnd();
 
 			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.Join( image_level_completed.GoToTargetPosition() )
-					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
+					.AppendCallback( () => tapInputListener.response = LoadNewLevel )
+					.AppendCallback( EnableIncrementals_LevelEnd );
 
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
             elephantLevelEvent.elephantEventType = ElephantEvent.LevelCompleted;
@@ -131,20 +131,18 @@ namespace FFStudio
 
 			// Tween tween = null;
 			level_information_text.text = "Tap to Continue";
-			EnableIncrementals_LevelEnd();
 
 			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-                    // .Append( tween ) // TODO: UIElements tween.
+					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-                    .Join( image_level_failed.GoToTargetPosition() )
-					.AppendCallback( () => tapInputListener.response = Resetlevel );
+					.Join( image_level_failed.GoToTargetPosition() )
+					.AppendCallback( () => tapInputListener.response = Resetlevel )
+					.AppendCallback( EnableIncrementals_LevelEnd );
 
-            elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
+			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
             elephantLevelEvent.elephantEventType = ElephantEvent.LevelFailed;
             elephantLevelEvent.Raise();
         }
-
-
 
 		private void StartLevel()
 		{
