@@ -39,8 +39,8 @@ public class UIIncrementalButtonManPower : MonoBehaviour
 #region API
     public void Configure()
     {
-		incremental_index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.Key_Incremental_ManPower, 0 );
-		incremental       = incremental_manPower.ReturnIncrementalAtIndex( incremental_index );
+		incremental_index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.Key_Incremental_ManPower, -1 );
+		incremental       = incremental_manPower.ReturnIncrementalAtIndex( incremental_index + 1 );
 
 		text_value.text = incremental.incremental_man + " Man";
 		text_cost.text  = incremental.incremental_cost.ToString();
@@ -55,8 +55,6 @@ public class UIIncrementalButtonManPower : MonoBehaviour
 
 	public void OnButtonPress()
 	{
-		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
-		event_incremental_power.Raise();
 		incremental_index++;
 
 		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
