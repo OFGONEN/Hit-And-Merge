@@ -12,7 +12,7 @@ public class UIIncrementalButtonManPower : MonoBehaviour
 {
 #region Fields
   [ Title( "Shared" ) ]
-    [ SerializeField ] SharedFloatNotifier notif_currency;
+    [ SerializeField ] Currency notif_currency;
     [ SerializeField ] IncrementalManPower incremental_manPower;
 
   [ Title( "Setup" ) ]
@@ -59,6 +59,7 @@ public class UIIncrementalButtonManPower : MonoBehaviour
 		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
 
 		notif_currency.SharedValue -= incremental.incremental_cost;
+		notif_currency.SaveCurrency();
 	}
 #endregion
 

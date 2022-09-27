@@ -12,7 +12,7 @@ public class UIIncrementalButtonEmpty : MonoBehaviour
 {
 #region Fields
   [ Title( "Shared" ) ]
-    [ SerializeField ] SharedFloatNotifier notif_currency;
+    [ SerializeField ] Currency notif_currency;
     [ SerializeField ] IncrementalEmpty incremental_empty;
 
   [ Title( "Setup" ) ]
@@ -59,6 +59,7 @@ public class UIIncrementalButtonEmpty : MonoBehaviour
 		PlayerPrefsUtility.Instance.SetInt( incremental_empty.IncrementalKey, incremental_index );
 
 		notif_currency.SharedValue -= incremental.incremental_cost;
+		notif_currency.SaveCurrency();
 	}
 #endregion
 

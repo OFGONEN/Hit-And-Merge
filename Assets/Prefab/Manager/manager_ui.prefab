@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234679a3755db42ec85124595a39ba37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
+  notif_currency: {fileID: 0}
   incremental_empty: {fileID: 11400000, guid: a342f8dcfb8d647038ff973022e73d04, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234679a3755db42ec85124595a39ba37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
+  notif_currency: {fileID: 0}
   incremental_empty: {fileID: 11400000, guid: a18f53fce17884dc4974a317b14bb60d, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
@@ -3195,7 +3195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234679a3755db42ec85124595a39ba37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
+  notif_currency: {fileID: 0}
   incremental_empty: {fileID: 11400000, guid: 35e97268643904472b449c2a09ede464, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
@@ -3787,7 +3787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c04efb092954eeca98d7beaf13a487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif_currency: {fileID: 11400000, guid: 1979c5167aa494433bead2d4ee4a22cb, type: 2}
+  notif_currency: {fileID: 0}
   incremental_manPower: {fileID: 11400000, guid: 32d03746c58a34e2db897d57d6332496, type: 2}
   color_positive: {r: 1, g: 1, b: 1, a: 1}
   color_inactive: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}

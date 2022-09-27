@@ -17,4 +17,9 @@ public class IncrementalManPower : ScriptableObject
     {
 		return incremental_man_array[ index ];
 	}
+
+	public int ReturnIncrementalValueAtIndex( int index )
+	{
+		return incremental_man_array[ index ].incremental_man;
+	}
 }
