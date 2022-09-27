@@ -23,3 +23,5 @@ MonoBehaviour:
     incremental_cost: 40
   - incremental_man: 5
     incremental_cost: 50
+  - incremental_man: 6
+    incremental_cost: 60

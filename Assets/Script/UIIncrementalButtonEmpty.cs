@@ -41,7 +41,7 @@ public class UIIncrementalButtonEmpty : MonoBehaviour
 		incremental_index = PlayerPrefsUtility.Instance.GetInt( incremental_empty.IncrementalKey, 0 );
 		incremental       = incremental_empty.ReturnIncrementalAtIndex( incremental_index );
 
-		text_value.text = "Lvl " + incremental_index;
+		text_value.text = "Lvl " + ( incremental_index + 1 );
 		text_cost.text  = incremental.incremental_cost.ToString();
 
 		if( incremental_index >= incremental_empty.IncrementalCount - 1 )
@@ -56,7 +56,7 @@ public class UIIncrementalButtonEmpty : MonoBehaviour
 	{
 		incremental_index++;
 
-		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.Key_Incremental_ManPower, incremental_index );
+		PlayerPrefsUtility.Instance.SetInt( incremental_empty.IncrementalKey, incremental_index );
 
 		notif_currency.SharedValue -= incremental.incremental_cost;
 	}
