@@ -14,6 +14,7 @@ public class AllyGroup : MonoBehaviour
   [ Title( "Shared Variable" ) ]
     [ SerializeField ] SharedIntNotifier notif_ally_count;
     [ SerializeField ] SharedVector3Notifier notif_fireRange_position;
+    [ SerializeField ] IncrementalManPower incremental_manPower;
     [ SerializeField ] Pool_Ally pool_ally;
     [ SerializeField ] SharedVector2 shared_input_delta; // updates every frame
     [ SerializeField ] GameEvent event_ally_finalStage_Register;
@@ -62,7 +63,8 @@ public class AllyGroup : MonoBehaviour
 	private void Start()
 	{
 		notif_ally_count.SetValue_NotifyAlways( 0 );
-		OnSpawnAlly( CurrentLevelData.Instance.levelData.ally_count );
+
+		OnSpawnAlly( ReturnAllySpawnCount() );
 	}
 
     private void Update()
@@ -72,6 +74,14 @@ public class AllyGroup : MonoBehaviour
 #endregion
 
 #region API
+	public void OnIncrementalPowerUnlocked()
+	{
+		var prevCount = notif_ally_count.sharedValue;
+		var currentCount = ReturnAllySpawnCount();
+
+		OnSpawnAlly( currentCount - prevCount );
+	}
+
     public void OnLevelStarted()
     {
 		onAllySpawn    = SpawnAlly_Running;
@@ -141,6 +151,20 @@ public class AllyGroup : MonoBehaviour
 #endregion
 
 #region Implementation
+	int ReturnAllySpawnCount()
+	{
+		int levelDataAllyCount = CurrentLevelData.Instance.levelData.ally_count;
+		int incrementalAllyCount = 0;
+		int incrementalIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.Key_Incremental_ManPower, -1 );
+
+		if( incrementalIndex >= 0 )
+		{
+			incrementalAllyCount = incremental_manPower.ReturnIncrementalValueAtIndex( incrementalIndex );
+		}
+
+		return levelDataAllyCount + incrementalAllyCount;
+	}
+
     void OnSpawnAlly( int count )
     {
 		var spawnCount = Mathf.Min( GameSettings.Instance.ally_group_count_max - ally_dictionary.Count, count );
