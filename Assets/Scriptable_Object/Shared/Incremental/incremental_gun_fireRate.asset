@@ -14,17 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incremental_key: incremental_gun_fireRate
   incremental_empty_array:
-  - incremental_cost: 25
-  - incremental_cost: 75
-  - incremental_cost: 125
-  - incremental_cost: 200
-  - incremental_cost: 275
-  - incremental_cost: 350
-  - incremental_cost: 500
+  - incremental_cost: 50
+  - incremental_cost: 150
+  - incremental_cost: 300
+  - incremental_cost: 450
   - incremental_cost: 600
-  - incremental_cost: 700
-  - incremental_cost: 800
-  - incremental_cost: 900
+  - incremental_cost: 750
   - incremental_cost: 1000
   - incremental_cost: 1250
   - incremental_cost: 1500
+  - incremental_cost: 2000
+  - incremental_cost: 2500
+  - incremental_cost: 3000
+  - incremental_cost: 4000
+  - incremental_cost: 5000
+  - incremental_cost: 6000
